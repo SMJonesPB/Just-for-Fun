@@ -147,18 +147,21 @@ while bingo == False:
                         column1[0] = True
                         topLeftBottomRight[0] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 1:
                         row2[0] = True
                         column1[1] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 2:
                         row3[0] = True
                         column1[2] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 3:
@@ -172,6 +175,7 @@ while bingo == False:
                         column1[4] = True
                         bottomLeftTopRight[0] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                 elif c == 1:
@@ -179,6 +183,7 @@ while bingo == False:
                         row1[1] = True
                         column2[0] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 1:
@@ -186,12 +191,14 @@ while bingo == False:
                         column2[1] = True
                         topLeftBottomRight[1] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 2:
                         row3[1] = True
                         column1[2] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 3:
@@ -199,12 +206,14 @@ while bingo == False:
                         column1[3] = True
                         bottomLeftTopRight[1] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     else:
                         row5[1] = True
                         column1[4] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
                 
                 elif c == 2:
@@ -212,12 +221,14 @@ while bingo == False:
                         row1[2] = True
                         column3[0] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 1:
                         row2[2] = True
                         column3[1] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 2:
@@ -226,18 +237,21 @@ while bingo == False:
                         topLeftBottomRight[2] = True
                         bottomLeftTopRight[2] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 3:
                         row4[2] = True
                         column1[3] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     else:
                         row5[2] = True
                         column3[4] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                 elif c == 3:
@@ -245,6 +259,7 @@ while bingo == False:
                         row1[3] = True
                         column4[0] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 1:
@@ -252,12 +267,14 @@ while bingo == False:
                         column4[1] = True
                         bottomLeftTopRight[3] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 2:
                         row3[3] = True
                         column4[2] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 3:
@@ -265,12 +282,14 @@ while bingo == False:
                         column4[3] = True
                         topLeftBottomRight[3] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
     
                     else:
                         row5[3] = True
                         column4[4] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                 else:
@@ -280,24 +299,28 @@ while bingo == False:
                         column5[0] = True
                         bottomLeftTopRight[4] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 1:
                         row2[4] = True
                         column5[1] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 2:
                         row3[4] = True
                         column5[2] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     elif r == 3:
                         row4[4] = True
                         column1[3] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
                     else:
@@ -305,6 +328,7 @@ while bingo == False:
                         column5[4] = True
                         topLeftBottomRight[4] = True
                         markedCard[r][c] = True
+                        print("Match!")
                         print("\n".join(str(i) for i in markedCard))
 
 
