@@ -5,7 +5,7 @@ My version of Blackjack includes having up to four hands by splitting your origi
 which are in the game Casino Island to Go. A 5-Card Charlie is having 5 cards in your hand without busting, and you automatically win if you get one.
 """
 
-row, column = (8, 2)
+row, column = (52, 2)
 deck = [["" for i in range(column)] for j in range(row)]
 deck[0][0], deck[0][1] = "Ace", "Spade"
 deck[1][0], deck[1][1] = "Ace", "Club"
@@ -15,7 +15,6 @@ deck[4][0], deck[4][1] = "2", "Spade"
 deck[5][0], deck[5][1] = "2", "Club"
 deck[6][0], deck[6][1] = "2", "Heart"
 deck[7][0], deck[7][1] = "2", "Diamond"
-"""
 deck[8][0], deck[8][1] = "3", "Spade"
 deck[9][0], deck[9][1] = "3", "Club"
 deck[10][0], deck[10][1] = "3", "Heart"
@@ -60,7 +59,6 @@ deck[48][0], deck[48][1] = "King", "Spade"
 deck[49][0], deck[49][1] = "King", "Club"
 deck[50][0], deck[50][1] = "King", "Heart"
 deck[51][0], deck[51][1] = "King", "Diamond"
-"""
 random.shuffle(deck)
 player1Hand = []
 player2Hand = []
