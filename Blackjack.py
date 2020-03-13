@@ -255,7 +255,6 @@ def player1Turn():
         print("\n")
         if len(player1Hand) == 2 and total == 21:
             print("Blackjack!")
-            player1Total.append(total)
             turn = False
             break
 
@@ -301,7 +300,6 @@ def player1Turn():
                 print("Total: ", total)
                 print("\n")
                 print("5-Card Charlie!")
-                player1Total.append(total)
                 turn = False
             
             else:
@@ -400,7 +398,6 @@ def player1Turn():
                         print("Total: ", total1)
                         print("\n")
                         print("5-Card Charlie!")
-                        player1Total.append(total1)
                         turnHand1 = False
                     
                     else:
@@ -500,7 +497,6 @@ def player1Turn():
                                 print("Total: ", total11)
                                 print("\n")
                                 print("5-Card Charlie!")
-                                player1Total.append(total11)
                                 turnHand11 = False
                                     
                             else:
@@ -598,7 +594,6 @@ def player1Turn():
                                 print("Total: ", total12)
                                 print("\n")
                                 print("5-Card Charlie!")
-                                player1Total.append(total12)
                                 turnHand12 = False
                                 turnHand1 = False
                             
@@ -697,7 +692,6 @@ def player1Turn():
                             print("Total: ", total2)
                             print("\n")
                             print("5-Card Charlie!")
-                            player1Total.append(total2)
                             turnHand2 = False
                             turn = False
 
@@ -797,7 +791,6 @@ def player1Turn():
                                     print("Total: ", total21)
                                     print("\n")
                                     print("5-Card Charlie!")
-                                    player1Total.append(total21)
                                     turnHand21 = False
                                 
                                 else:
@@ -825,7 +818,6 @@ def player1Turn():
                                 else:
                                     total22 += int(hand22[card][0])
 
-                            print("Total: ", total22)
                             turnHand22 = True
                             while turnHand22 == True:
                                 print("\n")
@@ -900,7 +892,6 @@ def player1Turn():
                                         print("Total: ", total22)
                                         print("\n")
                                         print("5-Card Charlie!")
-                                        player1Total.append(total22)
                                         turnHand22 = False
                                         turnHand2 = False
                                         turn = False
@@ -915,10 +906,1361 @@ def player1Turn():
                                     turn = False
 
 def player2Turn():
-    pass
+    total = 0
+    for card in range(0, len(player2Hand)):
+        if player2Hand[card][0] == "Jack" or player2Hand[card][0] == "Queen" or player2Hand[card][0] == "King":
+            total += 10
+
+        elif player2Hand[card][0] == "Ace":
+            if total > 10:
+                total += 1
+
+            else:
+                total += 11
+
+        else:
+            total += int(player2Hand[card][0])
+
+    turn = True
+    while turn == True:
+        print("Player 2's hand")
+        print("\n".join(str(i) for i in player2Hand))
+        print("\n")
+        print("Total: ", total)
+        print("\n")
+        print("The dealer's hand")
+        print(dealerHand[0])
+        print("\n")
+        if len(player2Hand) == 2 and total == 21:
+            print("Blackjack!")
+            turn = False
+            break
+
+        if len(player2Hand) == 2:
+            if player2Hand[0][0] == player2Hand[1][0]:
+                choice = input("Do you want to hit stand, surrender, or split your hand? ")
+
+            else:
+                choice = input("Do you want to hit, stand, or surrender? ")
+
+        else:
+            choice = input("Do you want to hit or stand?" )
+        
+        if choice == "hit":
+            player2Hand.append(deck.pop(0))
+            last = player2Hand[-1][0]
+            if last == "Jack" or last == "Queen" or last == "King":
+                total += 10
+
+            elif last == "Ace":
+                if total < 10:
+                    total += 11
+
+                else:
+                    total += 1
+
+            else:
+                total += int(last)
+
+            if total > 21:
+                print("Player 2's hand")
+                print("\n".join(str(i) for i in player2Hand))
+                print("\n")
+                print("Total: ", total)
+                print("Bust")
+                player2Total.append(total)
+                turn = False
+
+            elif total <= 21 and len(player1Hand) == 5:
+                print("Player 2's hand")
+                print("\n".join(str(i) for i in player2Hand))
+                print("\n")
+                print("Total: ", total)
+                print("\n")
+                print("5-Card Charlie!")
+                turn = False
+            
+            else:
+                continue
+
+        elif choice == "stand":
+            player2Total.append(total)
+            turn = False
+
+        elif choice == "surrender":
+            turn = False
+
+        elif choice == "split":
+            hand1 = [player2Hand[0]]
+            hand2 = [player2Hand[1]]
+            
+            #The first half of the first split
+            hand1.append(deck.pop(0))
+            total1 = 0
+            for card in range(0, len(hand1)):
+                if hand1[card][0] == "Jack" or hand1[card][0] == "Queen" or hand1[card][0] == "King":
+                    total1 += 10
+
+                elif hand1[card][0] == "Ace":
+                    if total1 > 10:
+                        total1 += 1
+
+                    else:
+                        total1 += 11
+
+                else:
+                    total1 += int(hand1[card][0])
+
+            turnHand1 = True
+            while turnHand1 == True:
+                print("Player 2's hand 1-0")
+                print("\n".join(str(i) for i in hand1))
+                print("\n")
+                print("Total: ", total1)
+                print("\n")
+                print("The dealer's hand")
+                print(dealerHand[0])
+                print("\n")
+                if len(hand1) == 2 and total1 == 21:
+                    print("Blackjack!")
+
+                if len(hand1) == 2:
+                    if hand1[0][0] == hand1[1][0]:
+                        if hand1[0][0] != "Ace":
+                            choice = input("Do you want to hit, stand or split your hand? ")
+                        
+                        else:
+                            choice = input("Do you want to split your hand or stand? ")
+
+
+                    else:
+                        if hand1[0][0] != "Ace":
+                            choice = input("Do you want to hit or stand? ")
+
+                        else:
+                            player2Total.append(total1)
+                            turnHand1 = False
+
+                else:
+                    choice = input("Do you want to hit or stand? ")
+                
+                if choice == "hit":
+                    hand1.append(deck.pop(0))
+                    last = hand1[-1][0]
+                    if last == "Jack" or last == "Queen" or last == "King":
+                        total1 += 10
+
+                    elif last == "Ace":
+                        if total1 < 10:
+                            total1 += 11
+
+                        else:
+                            total1 += 1
+
+                    else:
+                        total1 += int(last)
+
+                    if total1 > 21:
+                        print("Player 2's hand 1-0")
+                        print("\n".join(str(i) for i in hand1))
+                        print("\n")
+                        print("Total: ", total1)
+                        print("Bust")
+                        player2Total.append(total1)
+                        turnHand1 = False
+
+                    elif total1 <= 21 and len(hand1) == 5:
+                        print("Player 2's hand 1-0")
+                        print("\n".join(str(i) for i in hand1))
+                        print("\n")
+                        print("Total: ", total1)
+                        print("\n")
+                        print("5-Card Charlie!")
+                        turnHand1 = False
+                    
+                    else:
+                        continue
+
+
+                elif choice == "stand":
+                    player2Total.append(total1)
+                    turnHand1 = False
+
+                elif choice == "split":
+                    hand11 = [hand1[0]]
+                    hand12 = [hand1[1]]
+
+                    #The first half of the first half of the first split
+                    hand11.append(deck.pop(0))
+                    total11 = 0
+                    for card in range(0, len(hand11)):
+                        if hand11[card][0] == "Jack" or hand11[card][0] == "Queen" or hand11[card][0] == "King":
+                            total11 += 10
+
+                        elif hand11[card][0] == "Ace":
+                            if total11 > 10:
+                                total11 += 1
+
+                            else:
+                                total11 += 11
+
+                        else:
+                            total11 += int(hand11[card][0])
+
+                    turnHand11 = True
+                    while turnHand11 == True:
+                        print("\n")
+                        print("Player 2's hand 1-1")
+                        print("\n".join(str(i) for i in hand11))
+                        print("\n")
+                        print("Total: ", total11)
+                        print("\n")
+                        print("The dealer's hand")
+                        print("\n")
+                        print(dealerHand[0])
+                        print("\n")
+                        if len(hand11) == 2 and total11 == 21:
+                            print("Blackjack!")
+
+                        if len(hand11) == 2:
+                            if hand11[0][0] == hand11[1][0]:
+                                if hand11[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+                                
+                                else:
+                                    player2Total.append(total11)
+                                    turnHand11 = False
+
+
+                            else:
+                                if hand1[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+
+                                else:
+                                    player2Total.append(total1)
+                                    turnHand1 = False
+
+                        else:
+                            choice = input("Do you want to hit or stand? ")
+                        
+                        if choice == "hit":
+                            hand11.append(deck.pop(0))
+                            last = hand11[-1][0]
+                            if last == "Jack" or last == "Queen" or last == "King":
+                                total11 += 10
+
+                            elif last == "Ace":
+                                if total11 > 10:
+                                    total11 += 1
+
+                                else:
+                                    total11 += 11
+
+                            else:
+                                total11 += int(last)
+
+                            if total11 > 21:
+                                player1Total.append(total11)
+                                print("Player 2's hand 1-1")
+                                print("\n".join(str(i) for i in hand11))
+                                print("\n")
+                                print("Total: ", total11)
+                                print("Bust")
+                                turnHand11 = False
+
+                            elif total11 <= 21 and len(hand11) == 5:
+                                print("Player 2's hand 1-1")
+                                print("\n".join(str(i) for i in hand11))
+                                print("\n")
+                                print("Total: ", total11)
+                                print("\n")
+                                print("5-Card Charlie!")
+                                turnHand11 = False
+                                    
+                            else:
+                                continue
+
+                        else:
+                            player2Total.append(total11)
+                            turnHand11 = False
+
+                    #The second half of the first half of the first split
+                    hand12.append(deck.pop(0))
+                    total12 = 0
+                    for card in range(0, len(hand12)):
+                        if hand12[card][0] == "Jack" or hand12[card][0] == "Queen" or hand12[card][0] == "King":
+                            total12 += 10
+
+                        elif hand12[card][0] == "Ace":
+                            if total12 > 10:
+                                total12 += 1
+
+                            else:
+                                total12 += 11
+
+                        else:
+                            total12 += int(hand12[card][0])
+
+                    turnHand12 = True
+                    while turnHand12 == True:
+                        print("\n")
+                        print("Player 2's hand 1-2")
+                        print("\n".join(str(i) for i in hand12))
+                        print("\n")
+                        print("Total: ", total12)
+                        print("\n")
+                        print("The dealer's hand")
+                        print("\n")
+                        print(dealerHand[0])
+                        print("\n")
+                        if len(hand12) == 2 and total12 == 21:
+                            print("Blackjack!")
+                        
+                        if len(hand1) == 2:
+                            if hand12[0][0] == hand12[1][0]:
+                                if hand12[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+                                
+                                else:
+                                    player2Total.append(total12)
+                                    turnHand12 = False
+                                    turnHand1 = False
+
+
+                            else:
+                                if hand12[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+
+                                else:
+                                    player2Total.append(total12)
+                                    turnHand12 = False
+                                    turnHand1 = False
+
+                        else:
+                            choice = input("Do you want to hit or stand? ")
+
+                        if choice == "hit":
+                            hand12.append(deck.pop(0))
+                            for card in range(0, len(hand12)):
+                                if hand12[card][0] == "Jack" or hand12[card][0] == "Queen" or hand12[card][0] == "King":
+                                    total12 += 10
+
+                                elif hand12[card][0] == "Ace":
+                                    if total12 > 10:
+                                        total12 += 1
+
+                                    else:
+                                        total12 += 11
+
+                                else:
+                                    total12 += int(hand12[card][0])
+
+                            if total12 > 21:
+                                player2Total.append(total12)
+                                print("Player 2's hand 1-2")
+                                print("\n".join(str(i) for i in hand12))
+                                print("\n")
+                                print("Total: ", total12)
+                                print("Bust")
+                                turnHand12 = False
+                                turnHand1 = False
+
+                            elif total12 <= 21 and len(hand12) == 5:
+                                print("Player 2's hand 1-2")
+                                print("\n".join(str(i) for i in hand12))
+                                print("\n")
+                                print("Total: ", total12)
+                                print("\n")
+                                print("5-Card Charlie!")
+                                turnHand12 = False
+                                turnHand1 = False
+                            
+                            else:
+                                continue
+                            
+                        else:
+                            player1Total.append(total12)
+                            turnHand12 = False
+                            turnHand1 = False
+
+            #The second half of the first split
+            else:
+                hand2.append(deck.pop(0))
+                total2 = 0
+                for card in range(0, len(hand2)):
+                    if hand2[card][0] == "Jack" or hand2[card][0] == "Queen" or hand2[card][0] == "King":
+                        total2 += 10
+
+                    elif hand2[card][0] == "Ace":
+                        if total > 10:
+                            total2 += 1
+
+                        else:
+                            total2 += 11
+
+                    else:
+                        total2 += int(hand2[card][0])
+
+                turnHand2 = True
+                while turnHand2 == True:
+                    print("\n")
+                    print("Player 2's hand 2-0")
+                    print("\n".join(str(i) for i in hand2))
+                    print("\n")
+                    print("Total: ", total2)
+                    print("\n")
+                    print("The dealer's hand")
+                    print("\n")
+                    print(dealerHand[0])
+                    print("\n")
+                    if len(hand2) == 2 and total2 == 21:
+                        print("Blackjack!")
+
+                    if len(hand1) == 2:
+                        if hand2[0][0] == hand2[1][0]:
+                            if hand2[0][0] != "Ace":
+                                choice = input("Do you want to hit, stand or split your hand? ")
+                            
+                            else:
+                                choice = input("Do you want to split your hand or stand? ")
+
+
+                        else:
+                            if hand2[0][0] != "Ace":
+                                choice = input("Do you want to hit or stand? ")
+
+                            else:
+                                player2Total.append(total2)
+                                turnHand2 = False
+                                turn = False
+
+                    else:
+                        choice = input("Do you want to hit or stand? ")
+
+                    if choice == "hit":
+                        hand2.append(deck.pop(0))
+                        last = hand2[-1][0]
+                        if last == "Jack" or last == "Queen" or last == "King":
+                            total2 += 10
+
+                        elif last == "Ace":
+                            if total2 > 10:
+                                total2 += 1
+
+                            else:
+                                total2 += 11
+
+                        else:
+                            total2 += int(last)
+
+                        if total2 > 21:
+                            player2Total.append(total2)
+                            print("Player 2's Hand 2-0")
+                            print("\n".join(str(i) for i in hand2))
+                            print("\n")
+                            print("Total: ", total2)
+                            print("Bust")
+                            turnHand2 = False
+                            turn = False
+
+                        elif total2 <= 21 and len(hand2) == 5:
+                            print("Player 2's hand 2-0")
+                            print("\n".join(str(i) for i in hand2))
+                            print("\n")
+                            print("Total: ", total2)
+                            print("\n")
+                            print("5-Card Charlie!")
+                            turnHand2 = False
+                            turn = False
+
+                        else:
+                            continue
+                    
+                    elif choice == "stand":
+                        player2Total.append(total2)
+                        turnHand2 = False
+                        turn = False
+                    
+                    elif choice == "split":
+                        hand21 = [hand2[0]]
+                        hand22 = [hand2[1]]
+
+                        #The first half of the second half of the first split
+                        hand21.append(deck.pop(0))
+                        total21 = 0
+                        for card in range(0, len(hand21)):
+                            if hand21[card][0] == "Jack" or hand21[card][0] == "Queen" or hand21[card][0] == "King":
+                                total21 += 10
+
+                            elif hand21[card][0] == "Ace":
+                                if total21 > 10:
+                                    total21 += 1
+
+                                else:
+                                    total21 += 11
+
+                            else:
+                                total21 += int(hand21[card][0])
+
+                        turnHand21 = True
+                        while turnHand21 == True:
+                            print("\n")
+                            print("Player 2's hand 2-1")
+                            print("\n".join(str(i) for i in hand21))
+                            print("\n")
+                            print("Total: ", total21)
+                            print("\n")
+                            print("The dealer's hand")
+                            print("\n")
+                            print(dealerHand[0])
+                            print("\n")
+                            if len(hand21) == 2 and total21 == 21:
+                                print("Blackjack!")
+
+                            if len(hand1) == 2:
+                                if hand21[0][0] == hand21[1][0]:
+                                    if hand21[0][0] != "Ace":
+                                        choice = input("Do you want to hit or stand? ")
+                                    
+                                    else:
+                                        player2Total.append(total21)
+                                        turnHand21 = False
+
+
+                                else:
+                                    if hand1[0][0] != "Ace":
+                                        choice = input("Do you want to hit or stand? ")
+
+                                    else:
+                                        player2Total.append(total21)
+                                        turnHand21 = False
+
+                            else:
+                                choice = input("Do you want to hit or stand? ")
+
+                            if choice == "hit":
+                                hand21.append(deck.pop(0))
+                                last = hand21[-1][0]
+                                if last == "Jack" or last == "Queen" or last == "King":
+                                    total21 += 10
+
+                                elif last == "Ace":
+                                    if total21 > 10:
+                                        total21 += 1
+
+                                    else: total21 += 11
+
+                                else:
+                                    total21 += int(last)
+
+                                if total21 > 21:
+                                    player2Total.append(total21)
+                                    print("Player 2's hand 2-1")
+                                    print("\n".join(str(i) for i in hand21))
+                                    print("\n")
+                                    print("Total: ", total21)
+                                    print("Bust")
+                                    turnHand21 = False
+
+                                elif total21 <= 21 and len(hand21) == 5:
+                                    print("Player 2's hand 2-1")
+                                    print("\n".join(str(i) for i in hand21))
+                                    print("\n")
+                                    print("Total: ", total21)
+                                    print("\n")
+                                    print("5-Card Charlie!")
+                                    turnHand21 = False
+                                
+                                else:
+                                    continue
+
+                            else:
+                                player2Total.append(total21)
+                                turnHand21 = False
+
+                        #The second half of the second half of the first split
+                        else:
+                            hand22.append(deck.pop(0))
+                            total22 = 0
+                            for card in range(0, len(hand22)):
+                                if hand22[card][0] == "Jack" or hand22[card][0] == "Queen" or hand22[card][0] == "King":
+                                    total22 += 10
+
+                                elif hand22[card][0] == "Ace":
+                                    if total22 > 10:
+                                        total22 += 1
+
+                                    else:
+                                        total22 += 11
+
+                                else:
+                                    total22 += int(hand22[card][0])
+
+                            turnHand22 = True
+                            while turnHand22 == True:
+                                print("\n")
+                                print("Player 2's hand 2-2")
+                                print("\n".join(str(i) for i in hand22))
+                                print("\n")
+                                print("Total: ", total22)
+                                print("\n")
+                                print("The dealer's hand")
+                                print("\n")
+                                print(dealerHand[0])
+                                print("\n")
+                                if len(hand22) == 2 and total22 == 21:
+                                    print("Blackjack!")
+
+                                if len(hand22) == 2:
+                                    if hand22[0][0] == hand22[1][0]:
+                                        if hand1[0][0] != "Ace":
+                                            choice = input("Do you want to hit or stand? ")
+                                        
+                                        else:
+                                            player2Total.append(total22)
+                                            turnHand22 = False
+                                            turnHand2 = False
+                                            turn = False
+
+
+                                    else:
+                                        if hand1[0][0] != "Ace":
+                                            choice = input("Do you want to hit or stand? ")
+
+                                        else:
+                                            player2Total.append(total22)
+                                            turnHand22 = False
+                                            turnHand2 = False
+                                            turn = False
+
+                                else:
+                                    choice = input("Do you want to hit or stand? ")
+
+                                if choice == "hit":
+                                    hand22.append(deck.pop(0))
+                                    last = hand22[-1][0]
+                                    if last == "Jack" or last == "Queen" or last == "King":
+                                        total22 += 10
+
+                                    elif last == "Ace":
+                                        if total22 > 10:
+                                            total22 += 1
+
+                                        else:
+                                            total22 += 11
+
+                                    else:
+                                        total22 += int(last)
+
+                                    if total22 > 21:
+                                        player2Total.append(total22)
+                                        print("Player 2's hand 2-2")
+                                        print("\n".join(str(i) for i in hand22))
+                                        print("\n")
+                                        print("Total: ", total22)
+                                        print("Bust")
+                                        turnHand22 = False
+                                        turnHand2 = False
+                                        turn = False
+
+                                    elif total22 <= 21 and len(hand22) == 5:
+                                        print("Player 2's hand 2-2")
+                                        print("\n".join(str(i) for i in hand22))
+                                        print("\n")
+                                        print("Total: ", total22)
+                                        print("\n")
+                                        print("5-Card Charlie!")
+                                        turnHand22 = False
+                                        turnHand2 = False
+                                        turn = False
+                                    
+                                    else:
+                                        continue
+
+                                else:
+                                    player2Total.append(total22)
+                                    turnHand22 = False
+                                    turnHand2 = False
+                                    turn = False
 
 def player3Turn():
-    pass
+    total = 0
+    for card in range(0, len(player3Hand)):
+        if player3Hand[card][0] == "Jack" or player3Hand[card][0] == "Queen" or player3Hand[card][0] == "King":
+            total += 10
+
+        elif player3Hand[card][0] == "Ace":
+            if total > 10:
+                total += 1
+
+            else:
+                total += 11
+
+        else:
+            total += int(player3Hand[card][0])
+
+    turn = True
+    while turn == True:
+        print("Player 3's hand")
+        print("\n".join(str(i) for i in player3Hand))
+        print("\n")
+        print("Total: ", total)
+        print("\n")
+        print("The dealer's hand")
+        print(dealerHand[0])
+        print("\n")
+        if len(player3Hand) == 2 and total == 21:
+            print("Blackjack!")
+            turn = False
+            break
+
+        if len(player3Hand) == 2:
+            if player3Hand[0][0] == player3Hand[1][0]:
+                choice = input("Do you want to hit stand, surrender, or split your hand? ")
+
+            else:
+                choice = input("Do you want to hit, stand, or surrender? ")
+
+        else:
+            choice = input("Do you want to hit or stand?" )
+        
+        if choice == "hit":
+            player3Hand.append(deck.pop(0))
+            last = player3Hand[-1][0]
+            if last == "Jack" or last == "Queen" or last == "King":
+                total += 10
+
+            elif last == "Ace":
+                if total < 10:
+                    total += 11
+
+                else:
+                    total += 1
+
+            else:
+                total += int(last)
+
+            if total > 21:
+                print("Player 3's hand")
+                print("\n".join(str(i) for i in player3Hand))
+                print("\n")
+                print("Total: ", total)
+                print("Bust")
+                player3Total.append(total)
+                turn = False
+
+            elif total <= 21 and len(player3Hand) == 5:
+                print("Player 3's hand")
+                print("\n".join(str(i) for i in player3Hand))
+                print("\n")
+                print("Total: ", total)
+                print("\n")
+                print("5-Card Charlie!")
+                turn = False
+            
+            else:
+                continue
+
+        elif choice == "stand":
+            player3Total.append(total)
+            turn = False
+
+        elif choice == "surrender":
+            turn = False
+
+        elif choice == "split":
+            hand1 = [player3Hand[0]]
+            hand2 = [player3Hand[1]]
+            
+            #The first half of the first split
+            hand1.append(deck.pop(0))
+            total1 = 0
+            for card in range(0, len(hand1)):
+                if hand1[card][0] == "Jack" or hand1[card][0] == "Queen" or hand1[card][0] == "King":
+                    total1 += 10
+
+                elif hand1[card][0] == "Ace":
+                    if total1 > 10:
+                        total1 += 1
+
+                    else:
+                        total1 += 11
+
+                else:
+                    total1 += int(hand1[card][0])
+
+            turnHand1 = True
+            while turnHand1 == True:
+                print("Player 3's hand 1-0")
+                print("\n".join(str(i) for i in hand1))
+                print("\n")
+                print("Total: ", total1)
+                print("\n")
+                print("The dealer's hand")
+                print(dealerHand[0])
+                print("\n")
+                if len(hand1) == 2 and total1 == 21:
+                    print("Blackjack!")
+
+                if len(hand1) == 2:
+                    if hand1[0][0] == hand1[1][0]:
+                        if hand1[0][0] != "Ace":
+                            choice = input("Do you want to hit, stand or split your hand? ")
+                        
+                        else:
+                            choice = input("Do you want to split your hand or stand? ")
+
+
+                    else:
+                        if hand1[0][0] != "Ace":
+                            choice = input("Do you want to hit or stand? ")
+
+                        else:
+                            player3Total.append(total1)
+                            turnHand1 = False
+
+                else:
+                    choice = input("Do you want to hit or stand? ")
+                
+                if choice == "hit":
+                    hand1.append(deck.pop(0))
+                    last = hand1[-1][0]
+                    if last == "Jack" or last == "Queen" or last == "King":
+                        total1 += 10
+
+                    elif last == "Ace":
+                        if total1 < 10:
+                            total1 += 11
+
+                        else:
+                            total1 += 1
+
+                    else:
+                        total1 += int(last)
+
+                    if total1 > 21:
+                        print("Player 3's hand 1-0")
+                        print("\n".join(str(i) for i in hand1))
+                        print("\n")
+                        print("Total: ", total1)
+                        print("Bust")
+                        player3Total.append(total1)
+                        turnHand1 = False
+
+                    elif total1 <= 21 and len(hand1) == 5:
+                        print("Player 3's hand 1-0")
+                        print("\n".join(str(i) for i in hand1))
+                        print("\n")
+                        print("Total: ", total1)
+                        print("\n")
+                        print("5-Card Charlie!")
+                        turnHand1 = False
+                    
+                    else:
+                        continue
+
+
+                elif choice == "stand":
+                    player3Total.append(total1)
+                    turnHand1 = False
+
+                elif choice == "split":
+                    hand11 = [hand1[0]]
+                    hand12 = [hand1[1]]
+
+                    #The first half of the first half of the first split
+                    hand11.append(deck.pop(0))
+                    total11 = 0
+                    for card in range(0, len(hand11)):
+                        if hand11[card][0] == "Jack" or hand11[card][0] == "Queen" or hand11[card][0] == "King":
+                            total11 += 10
+
+                        elif hand11[card][0] == "Ace":
+                            if total11 > 10:
+                                total11 += 1
+
+                            else:
+                                total11 += 11
+
+                        else:
+                            total11 += int(hand11[card][0])
+
+                    turnHand11 = True
+                    while turnHand11 == True:
+                        print("\n")
+                        print("Player 3's hand 1-1")
+                        print("\n".join(str(i) for i in hand11))
+                        print("\n")
+                        print("Total: ", total11)
+                        print("\n")
+                        print("The dealer's hand")
+                        print("\n")
+                        print(dealerHand[0])
+                        print("\n")
+                        if len(hand11) == 2 and total11 == 21:
+                            print("Blackjack!")
+
+                        if len(hand11) == 2:
+                            if hand11[0][0] == hand11[1][0]:
+                                if hand11[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+                                
+                                else:
+                                    player3Total.append(total11)
+                                    turnHand11 = False
+
+
+                            else:
+                                if hand1[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+
+                                else:
+                                    player3Total.append(total1)
+                                    turnHand1 = False
+
+                        else:
+                            choice = input("Do you want to hit or stand? ")
+                        
+                        if choice == "hit":
+                            hand11.append(deck.pop(0))
+                            last = hand11[-1][0]
+                            if last == "Jack" or last == "Queen" or last == "King":
+                                total11 += 10
+
+                            elif last == "Ace":
+                                if total11 > 10:
+                                    total11 += 1
+
+                                else:
+                                    total11 += 11
+
+                            else:
+                                total11 += int(last)
+
+                            if total11 > 21:
+                                player3Total.append(total11)
+                                print("Player 3's hand 1-1")
+                                print("\n".join(str(i) for i in hand11))
+                                print("\n")
+                                print("Total: ", total11)
+                                print("Bust")
+                                turnHand11 = False
+
+                            elif total11 <= 21 and len(hand11) == 5:
+                                print("Player 3's hand 1-1")
+                                print("\n".join(str(i) for i in hand11))
+                                print("\n")
+                                print("Total: ", total11)
+                                print("\n")
+                                print("5-Card Charlie!")
+                                turnHand11 = False
+                                    
+                            else:
+                                continue
+
+                        else:
+                            player3Total.append(total11)
+                            turnHand11 = False
+
+                    #The second half of the first half of the first split
+                    hand12.append(deck.pop(0))
+                    total12 = 0
+                    for card in range(0, len(hand12)):
+                        if hand12[card][0] == "Jack" or hand12[card][0] == "Queen" or hand12[card][0] == "King":
+                            total12 += 10
+
+                        elif hand12[card][0] == "Ace":
+                            if total12 > 10:
+                                total12 += 1
+
+                            else:
+                                total12 += 11
+
+                        else:
+                            total12 += int(hand12[card][0])
+
+                    turnHand12 = True
+                    while turnHand12 == True:
+                        print("\n")
+                        print("Player 3's hand 1-2")
+                        print("\n".join(str(i) for i in hand12))
+                        print("\n")
+                        print("Total: ", total12)
+                        print("\n")
+                        print("The dealer's hand")
+                        print("\n")
+                        print(dealerHand[0])
+                        print("\n")
+                        if len(hand12) == 2 and total12 == 21:
+                            print("Blackjack!")
+                        
+                        if len(hand1) == 2:
+                            if hand12[0][0] == hand12[1][0]:
+                                if hand12[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+                                
+                                else:
+                                    player3Total.append(total12)
+                                    turnHand12 = False
+                                    turnHand1 = False
+
+
+                            else:
+                                if hand12[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+
+                                else:
+                                    player3Total.append(total12)
+                                    turnHand12 = False
+                                    turnHand1 = False
+
+                        else:
+                            choice = input("Do you want to hit or stand? ")
+
+                        if choice == "hit":
+                            hand12.append(deck.pop(0))
+                            for card in range(0, len(hand12)):
+                                if hand12[card][0] == "Jack" or hand12[card][0] == "Queen" or hand12[card][0] == "King":
+                                    total12 += 10
+
+                                elif hand12[card][0] == "Ace":
+                                    if total12 > 10:
+                                        total12 += 1
+
+                                    else:
+                                        total12 += 11
+
+                                else:
+                                    total12 += int(hand12[card][0])
+
+                            if total12 > 21:
+                                player1Total.append(total12)
+                                print("Player 3's hand 1-2")
+                                print("\n".join(str(i) for i in hand12))
+                                print("\n")
+                                print("Total: ", total12)
+                                print("Bust")
+                                turnHand12 = False
+                                turnHand1 = False
+
+                            elif total12 <= 21 and len(hand12) == 5:
+                                print("Player 3's hand 1-2")
+                                print("\n".join(str(i) for i in hand12))
+                                print("\n")
+                                print("Total: ", total12)
+                                print("\n")
+                                print("5-Card Charlie!")
+                                turnHand12 = False
+                                turnHand1 = False
+                            
+                            else:
+                                continue
+                            
+                        else:
+                            player3Total.append(total12)
+                            turnHand12 = False
+                            turnHand1 = False
+
+            #The second half of the first split
+            else:
+                hand2.append(deck.pop(0))
+                total2 = 0
+                for card in range(0, len(hand2)):
+                    if hand2[card][0] == "Jack" or hand2[card][0] == "Queen" or hand2[card][0] == "King":
+                        total2 += 10
+
+                    elif hand2[card][0] == "Ace":
+                        if total > 10:
+                            total2 += 1
+
+                        else:
+                            total2 += 11
+
+                    else:
+                        total2 += int(hand2[card][0])
+
+                turnHand2 = True
+                while turnHand2 == True:
+                    print("\n")
+                    print("Player 3's hand 2-0")
+                    print("\n".join(str(i) for i in hand2))
+                    print("\n")
+                    print("Total: ", total2)
+                    print("\n")
+                    print("The dealer's hand")
+                    print("\n")
+                    print(dealerHand[0])
+                    print("\n")
+                    if len(hand2) == 2 and total2 == 21:
+                        print("Blackjack!")
+
+                    if len(hand1) == 2:
+                        if hand2[0][0] == hand2[1][0]:
+                            if hand2[0][0] != "Ace":
+                                choice = input("Do you want to hit, stand or split your hand? ")
+                            
+                            else:
+                                choice = input("Do you want to split your hand or stand? ")
+
+
+                        else:
+                            if hand2[0][0] != "Ace":
+                                choice = input("Do you want to hit or stand? ")
+
+                            else:
+                                player3Total.append(total2)
+                                turnHand2 = False
+                                turn = False
+
+                    else:
+                        choice = input("Do you want to hit or stand? ")
+
+                    if choice == "hit":
+                        hand2.append(deck.pop(0))
+                        last = hand2[-1][0]
+                        if last == "Jack" or last == "Queen" or last == "King":
+                            total2 += 10
+
+                        elif last == "Ace":
+                            if total2 > 10:
+                                total2 += 1
+
+                            else:
+                                total2 += 11
+
+                        else:
+                            total2 += int(last)
+
+                        if total2 > 21:
+                            player3Total.append(total2)
+                            print("Player 1's Hand 2-0")
+                            print("\n".join(str(i) for i in hand2))
+                            print("\n")
+                            print("Total: ", total2)
+                            print("Bust")
+                            turnHand2 = False
+                            turn = False
+
+                        elif total2 <= 21 and len(hand2) == 5:
+                            print("Player 3's hand 2-0")
+                            print("\n".join(str(i) for i in hand2))
+                            print("\n")
+                            print("Total: ", total2)
+                            print("\n")
+                            print("5-Card Charlie!")
+                            player3Total.append(total2)
+                            turnHand2 = False
+                            turn = False
+
+                        else:
+                            continue
+                    
+                    elif choice == "stand":
+                        player3Total.append(total2)
+                        turnHand2 = False
+                        turn = False
+                    
+                    elif choice == "split":
+                        hand21 = [hand2[0]]
+                        hand22 = [hand2[1]]
+
+                        #The first half of the second half of the first split
+                        hand21.append(deck.pop(0))
+                        total21 = 0
+                        for card in range(0, len(hand21)):
+                            if hand21[card][0] == "Jack" or hand21[card][0] == "Queen" or hand21[card][0] == "King":
+                                total21 += 10
+
+                            elif hand21[card][0] == "Ace":
+                                if total21 > 10:
+                                    total21 += 1
+
+                                else:
+                                    total21 += 11
+
+                            else:
+                                total21 += int(hand21[card][0])
+
+                        turnHand21 = True
+                        while turnHand21 == True:
+                            print("\n")
+                            print("Player 3's hand 2-1")
+                            print("\n".join(str(i) for i in hand21))
+                            print("\n")
+                            print("Total: ", total21)
+                            print("\n")
+                            print("The dealer's hand")
+                            print("\n")
+                            print(dealerHand[0])
+                            print("\n")
+                            if len(hand21) == 2 and total21 == 21:
+                                print("Blackjack!")
+
+                            if len(hand1) == 2:
+                                if hand21[0][0] == hand21[1][0]:
+                                    if hand21[0][0] != "Ace":
+                                        choice = input("Do you want to hit or stand? ")
+                                    
+                                    else:
+                                        player3Total.append(total21)
+                                        turnHand21 = False
+
+
+                                else:
+                                    if hand1[0][0] != "Ace":
+                                        choice = input("Do you want to hit or stand? ")
+
+                                    else:
+                                        player3Total.append(total21)
+                                        turnHand21 = False
+
+                            else:
+                                choice = input("Do you want to hit or stand? ")
+
+                            if choice == "hit":
+                                hand21.append(deck.pop(0))
+                                last = hand21[-1][0]
+                                if last == "Jack" or last == "Queen" or last == "King":
+                                    total21 += 10
+
+                                elif last == "Ace":
+                                    if total21 > 10:
+                                        total21 += 1
+
+                                    else: total21 += 11
+
+                                else:
+                                    total21 += int(last)
+
+                                if total21 > 21:
+                                    player3Total.append(total21)
+                                    print("Player 3's hand 2-1")
+                                    print("\n".join(str(i) for i in hand21))
+                                    print("\n")
+                                    print("Total: ", total21)
+                                    print("Bust")
+                                    turnHand21 = False
+
+                                elif total21 <= 21 and len(hand21) == 5:
+                                    print("Player 3's hand 2-1")
+                                    print("\n".join(str(i) for i in hand21))
+                                    print("\n")
+                                    print("Total: ", total21)
+                                    print("\n")
+                                    print("5-Card Charlie!")
+                                    turnHand21 = False
+                                
+                                else:
+                                    continue
+
+                            else:
+                                player3Total.append(total21)
+                                turnHand21 = False
+
+                        #The second half of the second half of the first split
+                        else:
+                            hand22.append(deck.pop(0))
+                            total22 = 0
+                            for card in range(0, len(hand22)):
+                                if hand22[card][0] == "Jack" or hand22[card][0] == "Queen" or hand22[card][0] == "King":
+                                    total22 += 10
+
+                                elif hand22[card][0] == "Ace":
+                                    if total22 > 10:
+                                        total22 += 1
+
+                                    else:
+                                        total22 += 11
+
+                                else:
+                                    total22 += int(hand22[card][0])
+
+                            turnHand22 = True
+                            while turnHand22 == True:
+                                print("\n")
+                                print("Player 3's hand 2-2")
+                                print("\n".join(str(i) for i in hand22))
+                                print("\n")
+                                print("Total: ", total22)
+                                print("\n")
+                                print("The dealer's hand")
+                                print("\n")
+                                print(dealerHand[0])
+                                print("\n")
+                                if len(hand22) == 2 and total22 == 21:
+                                    print("Blackjack!")
+
+                                if len(hand22) == 2:
+                                    if hand22[0][0] == hand22[1][0]:
+                                        if hand1[0][0] != "Ace":
+                                            choice = input("Do you want to hit or stand? ")
+                                        
+                                        else:
+                                            player3Total.append(total22)
+                                            turnHand22 = False
+                                            turnHand2 = False
+                                            turn = False
+
+
+                                    else:
+                                        if hand1[0][0] != "Ace":
+                                            choice = input("Do you want to hit or stand? ")
+
+                                        else:
+                                            player3Total.append(total22)
+                                            turnHand22 = False
+                                            turnHand2 = False
+                                            turn = False
+
+                                else:
+                                    choice = input("Do you want to hit or stand? ")
+
+                                if choice == "hit":
+                                    hand22.append(deck.pop(0))
+                                    last = hand22[-1][0]
+                                    if last == "Jack" or last == "Queen" or last == "King":
+                                        total22 += 10
+
+                                    elif last == "Ace":
+                                        if total22 > 10:
+                                            total22 += 1
+
+                                        else:
+                                            total22 += 11
+
+                                    else:
+                                        total22 += int(last)
+
+                                    if total22 > 21:
+                                        player1Total.append(total22)
+                                        print("Player 3's hand 2-2")
+                                        print("\n".join(str(i) for i in hand22))
+                                        print("\n")
+                                        print("Total: ", total22)
+                                        print("Bust")
+                                        turnHand22 = False
+                                        turnHand2 = False
+                                        turn = False
+
+                                    elif total22 <= 21 and len(hand22) == 5:
+                                        print("Player 3's hand 2-2")
+                                        print("\n".join(str(i) for i in hand22))
+                                        print("\n")
+                                        print("Total: ", total22)
+                                        print("\n")
+                                        print("5-Card Charlie!")
+                                        turnHand22 = False
+                                        turnHand2 = False
+                                        turn = False
+                                    
+                                    else:
+                                        continue
+
+                                else:
+                                    player3Total.append(total22)
+                                    turnHand22 = False
+                                    turnHand2 = False
+                                    turn = False
 
 def dealerTurn():
     global dealerTotal
