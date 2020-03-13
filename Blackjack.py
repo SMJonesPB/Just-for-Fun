@@ -100,111 +100,132 @@ def playBlackjack():
     if numberOfPlayers == "1":
         player1Turn()
         dealerTurn()
-        for total in player1Total:
-            if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                print("Player 1 wins!")
+        if player1Total == []:
+            print("Player 1 surrenders.")
+
+        else:
+            for total in player1Total:
+                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                    print("Player 1 wins!")
  
 
-            elif total < dealerTotal and dealerTotal <= 21:
-                print("Player 1 loses.")
+                elif total < dealerTotal and dealerTotal <= 21:
+                    print("Player 1 loses.")
 
-            elif total == dealerTotal and total <= 21:
-                print("Player 1 pushes.")
+                elif total == dealerTotal and total <= 21:
+                    print("Player 1 pushes.")
 
-            elif player1Total == []:
-                print("Player 1 surrenders.")
-
-            elif total > 21:
-                print("Player 1 busts.")
+                elif total > 21:
+                    print("Player 1 busts.")
 
     elif numberOfPlayers == "2":
         player1Turn()
         player2Turn()
         dealerTurn()
-        for total in player1Total:
-            if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                print("Player 1 wins!")
+        if player1Total == []:
+            print("Player 1 surrenders.")
 
-            elif total < dealerTotal and dealerTotal <= 21:
-                print("Player 1 loses.")
+        else:
+            for total in player1Total:
+                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                    print("Player 1 wins!")
 
-            elif total == dealerTotal and total <= 21:
-                print("Player 1 pushes.")
-            
-            elif player1Total == []:
-                print("Player 1 surrenders.")
-            
-            elif total > 21:
-                print("Player 1 busts.")
+                elif total < dealerTotal and dealerTotal <= 21:
+                    print("Player 1 loses.")
 
-        for total in player2Total:
-            if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                print("Player 2 wins!")
+                elif total == dealerTotal and total <= 21:
+                    print("Player 1 pushes.")
+                
+                elif player1Total == []:
+                    print("Player 1 surrenders.")
+                
+                elif total > 21:
+                    print("Player 1 busts.")
 
-            elif total < dealerTotal and dealerTotal <= 21:
-                print("Player 2 loses.")
+        if player2Total == []:
+            print("Player 2 surrenders.")
 
-            elif total == dealerTotal and total <= 21:
-                print("Player 2 pushes.")
-            
-            elif player2Total == []:
-                print("Player 2 surrenders.")
-            
-            elif total > 21:
-                print("Player 2 busts.")
+        else:
+            for total in player2Total:
+                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                    print("Player 2 wins!")
+
+                elif total < dealerTotal and dealerTotal <= 21:
+                    print("Player 2 loses.")
+
+                elif total == dealerTotal and total <= 21:
+                    print("Player 2 pushes.")
+                
+                elif player2Total == []:
+                    print("Player 2 surrenders.")
+                
+                elif total > 21:
+                    print("Player 2 busts.")
 
     elif numberOfPlayers == "3":
         player1Turn()
         player2Turn()
         player3Turn()
         dealerTurn()
-        for total in player1Total:
-            if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                print("Player 1 wins!")
+        if player1Total == []:
+            print("Player 1 surrenders.")
 
-            elif total < dealerTotal and dealerTotal <= 21:
-                print("Player 1 loses.")
+        else:
+            for total in player1Total:
+                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                    print("Player 1 wins!")
 
-            elif total == dealerTotal and total <= 21:
-                print("Player 1 pushes.")
+                elif total < dealerTotal and dealerTotal <= 21:
+                    print("Player 1 loses.")
+
+                elif total == dealerTotal and total <= 21:
+                    print("Player 1 pushes.")
+                    
+                elif player1Total == []:
+                    print("Player 1 surrenders.")
                 
-            elif player1Total == []:
-                print("Player 1 surrenders.")
-            
-            elif total >21:
-                print("Player 1 busts.")
+                elif total >21:
+                    print("Player 1 busts.")
 
-        for total in player2Total:
-            if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                print("Player 2 wins!")
+        if player2Total == []:
+            print("Player 2 surrenders.")
 
-            elif total < dealerTotal and dealerTotal <= 21:
-                print("Player 2 loses.")
+        else:
+            for total in player2Total:
+                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                    print("Player 2 wins!")
 
-            elif total == dealerTotal and total <= 21:
-                print("Player 2 pushes.")
+                elif total < dealerTotal and dealerTotal <= 21:
+                    print("Player 2 loses.")
 
-            elif player2Total == []:
-                print("Player 2 surrenders.")
-            
-            elif total > 21:
-                print("Player 2 busts.")
+                elif total == dealerTotal and total <= 21:
+                    print("Player 2 pushes.")
 
-        for total in player3Total:
-            if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                print("Player 3 wins!")
+                elif player2Total == []:
+                    print("Player 2 surrenders.")
+                
+                elif total > 21:
+                    print("Player 2 busts.")
 
-            elif total < dealerTotal and dealerTotal <= 21:
-                print("Player 3 loses.")
+        if player3Total == []:
+            print("Player 3 surrenders.")
 
-            elif total == dealerTotal and total <= 21:
-                print("Player 3 pushes.")
+        else:
+            for total in player3Total:
+                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                    print("Player 3 wins!")
 
-            elif player3Total == []:
-                print("Player 3 surrenders.")
-            
-            elif total > 21:
-                print("Player 3 busts.")
+                elif total < dealerTotal and dealerTotal <= 21:
+                    print("Player 3 loses.")
+
+                elif total == dealerTotal and total <= 21:
+                    print("Player 3 pushes.")
+
+                elif player3Total == []:
+                    print("Player 3 surrenders.")
+                
+                elif total > 21:
+                    print("Player 3 busts.")
 
 def player1Turn():
     total = 0
@@ -232,6 +253,12 @@ def player1Turn():
         print("The dealer's hand")
         print(dealerHand[0])
         print("\n")
+        if len(player1Hand) == 2 and total == 21:
+            print("Blackjack!")
+            player1Total.append(total)
+            turn = False
+            break
+
         if len(player1Hand) == 2:
             if player1Hand[0][0] == player1Hand[1][0]:
                 choice = input("Do you want to hit stand, surrender, or split your hand? ")
@@ -241,7 +268,7 @@ def player1Turn():
 
         else:
             choice = input("Do you want to hit or stand?" )
-
+        
         if choice == "hit":
             player1Hand.append(deck.pop(0))
             last = player1Hand[-1][0]
@@ -313,11 +340,14 @@ def player1Turn():
                 print("Player 1's hand 1-0")
                 print("\n".join(str(i) for i in hand1))
                 print("\n")
-                print("Total: ", total)
+                print("Total: ", total1)
                 print("\n")
                 print("The dealer's hand")
                 print(dealerHand[0])
                 print("\n")
+                if len(hand1) == 2 and total1 == 21:
+                    print("Blackjack!")
+
                 if len(hand1) == 2:
                     if hand1[0][0] == hand1[1][0]:
                         if hand1[0][0] != "Ace":
@@ -328,11 +358,16 @@ def player1Turn():
 
 
                     else:
-                        choice = input("Do you want to hit or stand? ")
+                        if hand1[0][0] != "Ace":
+                            choice = input("Do you want to hit or stand? ")
+
+                        else:
+                            player1Total.append(total1)
+                            turnHand1 = False
 
                 else:
                     choice = input("Do you want to hit or stand? ")
-
+                
                 if choice == "hit":
                     hand1.append(deck.pop(0))
                     last = hand1[-1][0]
@@ -356,7 +391,7 @@ def player1Turn():
                         print("Total: ", total1)
                         print("Bust")
                         player1Total.append(total1)
-                        turn1 = False
+                        turnHand1 = False
 
                     elif total1 <= 21 and len(hand1) == 5:
                         print("Player 1's hand 1-0")
@@ -409,7 +444,30 @@ def player1Turn():
                         print("\n")
                         print(dealerHand[0])
                         print("\n")
-                        choice = input("Do you want to hit or stand? ")
+                        if len(hand11) == 2 and total11 == 21:
+                            print("Blackjack!")
+
+                        if len(hand11) == 2:
+                            if hand11[0][0] == hand11[1][0]:
+                                if hand11[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+                                
+                                else:
+                                    player1Total.append(total11)
+                                    turnHand11 = False
+
+
+                            else:
+                                if hand1[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+
+                                else:
+                                    player1Total.append(total1)
+                                    turnHand1 = False
+
+                        else:
+                            choice = input("Do you want to hit or stand? ")
+                        
                         if choice == "hit":
                             hand11.append(deck.pop(0))
                             last = hand11[-1][0]
@@ -481,7 +539,32 @@ def player1Turn():
                         print("\n")
                         print(dealerHand[0])
                         print("\n")
-                        choice = input("Do you want to hit or stand?" )
+                        if len(hand12) == 2 and total12 == 21:
+                            print("Blackjack!")
+                        
+                        if len(hand1) == 2:
+                            if hand12[0][0] == hand12[1][0]:
+                                if hand12[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+                                
+                                else:
+                                    player1Total.append(total12)
+                                    turnHand12 = False
+                                    turnHand1 = False
+
+
+                            else:
+                                if hand12[0][0] != "Ace":
+                                    choice = input("Do you want to hit or stand? ")
+
+                                else:
+                                    player1Total.append(total12)
+                                    turnHand12 = False
+                                    turnHand1 = False
+
+                        else:
+                            choice = input("Do you want to hit or stand? ")
+
                         if choice == "hit":
                             hand12.append(deck.pop(0))
                             for card in range(0, len(hand12)):
@@ -557,16 +640,26 @@ def player1Turn():
                     print("\n")
                     print(dealerHand[0])
                     print("\n")
-                    if len(hand2) == 2:
+                    if len(hand2) == 2 and total2 == 21:
+                        print("Blackjack!")
+
+                    if len(hand1) == 2:
                         if hand2[0][0] == hand2[1][0]:
                             if hand2[0][0] != "Ace":
-                                choice = input("Do you want to hit, stand, or split your hand? ")
-
+                                choice = input("Do you want to hit, stand or split your hand? ")
+                            
                             else:
                                 choice = input("Do you want to split your hand or stand? ")
 
+
                         else:
-                            choice = input("Do you want to hit or stand? ")
+                            if hand2[0][0] != "Ace":
+                                choice = input("Do you want to hit or stand? ")
+
+                            else:
+                                player1Total.append(total2)
+                                turnHand2 = False
+                                turn = False
 
                     else:
                         choice = input("Do you want to hit or stand? ")
@@ -649,7 +742,30 @@ def player1Turn():
                             print("\n")
                             print(dealerHand[0])
                             print("\n")
-                            choice = input("Do you want to hit or stand?")
+                            if len(hand21) == 2 and total21 == 21:
+                                print("Blackjack!")
+
+                            if len(hand1) == 2:
+                                if hand21[0][0] == hand21[1][0]:
+                                    if hand21[0][0] != "Ace":
+                                        choice = input("Do you want to hit or stand? ")
+                                    
+                                    else:
+                                        player1Total.append(total21)
+                                        turnHand21 = False
+
+
+                                else:
+                                    if hand1[0][0] != "Ace":
+                                        choice = input("Do you want to hit or stand? ")
+
+                                    else:
+                                        player1Total.append(total21)
+                                        turnHand21 = False
+
+                            else:
+                                choice = input("Do you want to hit or stand? ")
+
                             if choice == "hit":
                                 hand21.append(deck.pop(0))
                                 last = hand21[-1][0]
@@ -722,7 +838,34 @@ def player1Turn():
                                 print("\n")
                                 print(dealerHand[0])
                                 print("\n")
-                                choice = input("Do you want to hit or stand?")
+                                if len(hand22) == 2 and total22 == 21:
+                                    print("Blackjack!")
+
+                                if len(hand22) == 2:
+                                    if hand22[0][0] == hand22[1][0]:
+                                        if hand1[0][0] != "Ace":
+                                            choice = input("Do you want to hit or stand? ")
+                                        
+                                        else:
+                                            player1Total.append(total22)
+                                            turnHand22 = False
+                                            turnHand2 = False
+                                            turn = False
+
+
+                                    else:
+                                        if hand1[0][0] != "Ace":
+                                            choice = input("Do you want to hit or stand? ")
+
+                                        else:
+                                            player1Total.append(total22)
+                                            turnHand22 = False
+                                            turnHand2 = False
+                                            turn = False
+
+                                else:
+                                    choice = input("Do you want to hit or stand? ")
+
                                 if choice == "hit":
                                     hand22.append(deck.pop(0))
                                     last = hand22[-1][0]
@@ -801,6 +944,12 @@ def dealerTurn():
         print("\n")
         print("Total: ", dealerTotal)
         print("\n")
+        if len(dealerHand) == 2 and dealerTotal == 21:
+            print("Blackjack!")
+            player1Total.append(dealerTotal)
+            turn = False
+            break
+
         choice = input("Do you want to hit or stand? ")
         if choice == "hit":
             dealerHand.append(deck.pop(0))
