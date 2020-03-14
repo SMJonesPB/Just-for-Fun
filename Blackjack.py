@@ -101,7 +101,7 @@ def playBlackjack():
         player1Turn()
         dealerTurn()
         if player1Total == []:
-            print("Player 1 surrenders.")
+            print("Player 1 surrenders or has a Blackjack.")
 
         else:
             for total in player1Total:
@@ -123,7 +123,7 @@ def playBlackjack():
         player2Turn()
         dealerTurn()
         if player1Total == []:
-            print("Player 1 surrenders.")
+            print("Player 1 surrenders or has a Blackjack.")
 
         else:
             for total in player1Total:
@@ -135,15 +135,12 @@ def playBlackjack():
 
                 elif total == dealerTotal and total <= 21:
                     print("Player 1 pushes.")
-                
-                elif player1Total == []:
-                    print("Player 1 surrenders.")
-                
+                          
                 elif total > 21:
                     print("Player 1 busts.")
 
         if player2Total == []:
-            print("Player 2 surrenders.")
+            print("Player 2 surrenders or has a Blackjack.")
 
         else:
             for total in player2Total:
@@ -156,8 +153,6 @@ def playBlackjack():
                 elif total == dealerTotal and total <= 21:
                     print("Player 2 pushes.")
                 
-                elif player2Total == []:
-                    print("Player 2 surrenders.")
                 
                 elif total > 21:
                     print("Player 2 busts.")
@@ -168,7 +163,7 @@ def playBlackjack():
         player3Turn()
         dealerTurn()
         if player1Total == []:
-            print("Player 1 surrenders.")
+            print("Player 1 surrenders or has a Blackjack.")
 
         else:
             for total in player1Total:
@@ -180,15 +175,12 @@ def playBlackjack():
 
                 elif total == dealerTotal and total <= 21:
                     print("Player 1 pushes.")
-                    
-                elif player1Total == []:
-                    print("Player 1 surrenders.")
                 
                 elif total >21:
                     print("Player 1 busts.")
 
         if player2Total == []:
-            print("Player 2 surrenders.")
+            print("Player 2 surrenders or has a Blackjack.")
 
         else:
             for total in player2Total:
@@ -200,15 +192,12 @@ def playBlackjack():
 
                 elif total == dealerTotal and total <= 21:
                     print("Player 2 pushes.")
-
-                elif player2Total == []:
-                    print("Player 2 surrenders.")
                 
                 elif total > 21:
                     print("Player 2 busts.")
 
         if player3Total == []:
-            print("Player 3 surrenders.")
+            print("Player 3 surrenders or has a Blackjack.")
 
         else:
             for total in player3Total:
@@ -220,9 +209,6 @@ def playBlackjack():
 
                 elif total == dealerTotal and total <= 21:
                     print("Player 3 pushes.")
-
-                elif player3Total == []:
-                    print("Player 3 surrenders.")
                 
                 elif total > 21:
                     print("Player 3 busts.")
