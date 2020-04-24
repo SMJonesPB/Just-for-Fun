@@ -1,10 +1,11 @@
 import random
 
 """
-My version of Blackjack includes having up to four hands by splitting your original hand and splitting the 2 new ones and 5-Card Charlies, 
+My version of Blackjack includes having up to four hands by splitting your original one and splitting the 2 new ones and 5-Card Charlies, 
 which are in the game Casino Island to Go. A 5-Card Charlie is having 5 cards in your hand without busting, and you automatically win if you get one.
 """
 
+#Make and shuffle the deck
 row, column = (52, 2)
 deck = [["" for i in range(column)] for j in range(row)]
 deck[0][0], deck[0][1] = "Ace", "Spade"

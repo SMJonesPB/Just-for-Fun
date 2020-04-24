@@ -8,7 +8,7 @@ cardNumbers = []
 letters = ["B", "I", "N", "G", "O"]
 bingo = False
 
-#ways to get bingo
+#Ways to get bingo
 row1 = [False, False, False, False, False]
 row2 = [False, False, False, False, False]
 row3 = [False, False, False, False, False]
@@ -22,7 +22,7 @@ column5 = [False, False, False, False, False]
 topLeftBottomRight = [False, False, False, False, False]
 bottomLeftTopRight = [False, False, False, False, False]
 
-#make the card
+#Make the card
 for c in range(column):
     if c == 0:
         for r in range(row):
@@ -95,7 +95,7 @@ print("   ".join(str(i) for i in letters))
 print("\n".join(str(i) for i in card))
 print("\n")
 
-#play the game
+#Play the game
 while bingo == False:
     calledNumber = random.randint(1, 75)
     if calledNumber >= 1 and calledNumber <= 15:
@@ -334,7 +334,7 @@ while bingo == False:
 
             else:
                 continue
-                
+  #End the game if you have bingo              
     if row1 == [True, True, True, True, True]:
         print("Bingo! Row 1")
         bingo = True

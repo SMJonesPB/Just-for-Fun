@@ -1,4 +1,4 @@
-#In mu version of Yahtzee, there is not a Yahtzee bonus and your turn ends if you write points on the card.
+#In my version of Yahtzee, there is not a Yahtzee bonus and your turn ends if you write points on the card.
 
 import random
 

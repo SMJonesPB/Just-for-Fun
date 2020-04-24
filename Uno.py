@@ -9,6 +9,7 @@ Wild, Wild Draw 4: 4
 
 import random
 
+#Make and shuffle the deck
 row, column = 108, 2
 deck = [["" for i in range(column)] for j in range(row)]
 deck[0][0], deck[0][1] = "0", "Red"
@@ -158,6 +159,10 @@ def player1Turn():
         elif card == "draw":
             player1Hand.append(deck.pop(0))
             continue
+
+        else:
+            print("You must type a number from 1 to the number of cards in your or hand or 'draw.'")
+            continue
         
         if actualCard[0] == "Wild":
             newColor = input("To what color do you want to change it? ")
@@ -237,7 +242,7 @@ def player1Turn():
                 turn = False
 
         else:
-            print("You must pick a number from 1 to the size of your hand or type 'draw' if you can't play a card.")
+            print("You must type a number from 1 to the number of cards in your or hand or 'draw.'")
             continue
 
 def player2Turn():
@@ -262,6 +267,10 @@ def player2Turn():
         elif card == "draw":
             player2Hand.append(deck.pop(0))
             continue
+
+        else:
+            print("You must type a number from 1 to the number of cards in your or hand or 'draw.'")
+            continue
         
         if actualCard[0] == "Wild":
             newColor = input("To what color do you want to change it? ")
@@ -341,7 +350,7 @@ def player2Turn():
                 turn = False
 
         else:
-            print("You must pick a number from 1 to the size of your hand type 'draw' if you can't play a card.")
+            print("You must type a number from 1 to the number of cards in your or hand or 'draw.'")
             continue
 
 playUno()
