@@ -3520,7 +3520,11 @@ def dealerTurn():
             else:
                 continue
 
-        else:
+        elif choice == "stand":
             turn = False    
+
+        else:
+            print("You must tyoe 'hit' or 'stand'.")
+            continue
 
 playBlackjack()

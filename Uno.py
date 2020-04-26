@@ -1,7 +1,7 @@
 """
 0: 1 of every color
 1-9, Draw 2, Skip, Reverse: 2 of every color
-Wild, Wild Draw 4: 4
+Wild, Wild Draw 4: 4 each
 108 cards
 7 cards in your hand
 2 players
