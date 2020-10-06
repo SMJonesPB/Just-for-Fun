@@ -735,19 +735,19 @@ def player1Turn():
 
                         if choice == "hit":
                             hand12.append(deck.pop(0))
-                            for card in range(0, len(hand12)):
-                                if hand12[card][0] == "Jack" or hand12[card][0] == "Queen" or hand12[card][0] == "King":
-                                    total12 += 10
+                            last = hand12[-1][0]
+                            if last == "Jack" or last == "Queen" or last == "King":
+                                total12 += 10
 
-                                elif hand12[card][0] == "Ace":
-                                    if total12 < 11:
-                                        total12 += 11
-
-                                    else:
-                                        total12 += 1
+                            elif last == "Ace":
+                                if total12 < 11:
+                                    total12 += 11
 
                                 else:
-                                    total12 += int(hand12[card][0])
+                                    total12 += 1
+
+                            else:
+                                total12 += int(last)
 
                             if total12 > 21:
                                 if softNumberCheck == True:
@@ -1803,19 +1803,19 @@ def player2Turn():
 
                         if choice == "hit":
                             hand12.append(deck.pop(0))
-                            for card in range(0, len(hand12)):
-                                if hand12[card][0] == "Jack" or hand12[card][0] == "Queen" or hand12[card][0] == "King":
-                                    total12 += 10
+                            last = hand12[-1][0]
+                            if last == "Jack" or last == "Queen" or last == "King":
+                                total12 += 10
 
-                                elif hand12[card][0] == "Ace":
-                                    if total12 < 11:
-                                        total12 += 11
-
-                                    else:
-                                        total12 += 1
+                            elif last == "Ace":
+                                if total12 < 11:
+                                    total12 += 11
 
                                 else:
-                                    total12 += int(hand12[card][0])
+                                    total12 += 1
+
+                            else:
+                                total12 += int(last)
 
                             if total12 > 21:
                                 if softNumberCheck == True:
@@ -2871,19 +2871,19 @@ def player3Turn():
 
                         if choice == "hit":
                             hand12.append(deck.pop(0))
-                            for card in range(0, len(hand12)):
-                                if hand12[card][0] == "Jack" or hand12[card][0] == "Queen" or hand12[card][0] == "King":
-                                    total12 += 10
+                            last = hand12[-1][0]
+                            if last == "Jack" or last == "Queen" or last == "King":
+                                total12 += 10
 
-                                elif hand12[card][0] == "Ace":
-                                    if total12 < 11:
-                                        total12 += 11
-
-                                    else:
-                                        total12 += 1
+                            elif last == "Ace":
+                                if total12 < 11:
+                                    total12 += 11
 
                                 else:
-                                    total12 += int(hand12[card][0])
+                                    total12 += 1
+
+                            else:
+                                total12 += int(last)
 
                             if total12 > 21:
                                 if softNumberCheck == True:
