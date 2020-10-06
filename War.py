@@ -1,8 +1,11 @@
 """In War, the deck is divided equally between or among the players. Every player shows the top card of his/her deck. The player with the highest value takes all of the cards. 
 Aces are high, and they beat Kings. Kings beat Queens. Queens beat Jacks. Jacks beat Tens. 
-In a tie, every player with the highest value places the top 3 cards of his/her deck face down, then shows the next one. This is called a "war" Again, the player with the higher or highest value wins.
+In a tie, every player with the highest value places the top 3 cards of his/her deck face down, then shows the next one. This is called a "war" 
+Again, the player with the higher or highest value wins.
 If there's another tie, every player places the top 3 cards face down and shows the next one again. The game continues until every player except 1 has lost his/her deck.
-In my version, if you run out of cards in a war and lose it, you lose the game. If you win, you get all of the cards normally and stay in the game.
+In my version, if you run out of cards in a war and lose, you lose the game. If you win, you get all of the cards normally and stay in the game.
+Also, if you get into a war with an empty deck, you lose the game.
+You play the card that just started the war if you have 1, 2, or 3 cards left in your deck.
 """
 
 import random
@@ -63,20 +66,18 @@ deck[49][0], deck[49][1] = "King", "Club"
 deck[50][0], deck[50][1] = "King", "Heart"
 deck[51][0], deck[51][1] = "King", "Diamond"
 random.shuffle(deck)
-player1Deck = []
-player2Deck = []
-player1Card = []
-player2Card = []
 player1Deck = deck[0:26]
 player2Deck = deck[26:52]
+player1Card = []
+player2Card = []
 
 def playWar():
     global player1Card
     global player2Card
     finished = False
     while finished == False:
-        player1Turn()
-        player2Turn()
+        player1Card = player1Deck.pop(0)
+        player2Card = player2Deck.pop(0)
         print("\nPlayer 1's card:", player1Card)
         print("Player 2's card:", player2Card)
         print("Player 1 has", len(player1Deck), "card(s) left.")
@@ -86,6 +87,8 @@ def playWar():
             
         #War
         if player1Card[0][0] == player2Card[0][0]:
+            player1War.append(player1Card)
+            player2War.append(player2Card)
             war = True
             now = input("\nIt's a war! Tyoe 'now' when you're ready to continue. ")
             if now == "now":
@@ -95,54 +98,57 @@ def playWar():
                         war = False
 
                     elif len(player1Deck) == 1:
-                        player1War.append(player1Deck.pop())
+                        player1Card = player1Deck.pop(0)
 
                     elif len(player1Deck) == 2:
-                        player1War.append(player1Deck.pop())
-                        player1War.append(player1Deck.pop())
+                        player1War.append(player1Deck.pop(0))
+                        player1Card = player1Deck.pop(0)
 
                     elif len(player1Deck) == 3:
-                        player1War.append(player1Deck.pop())
-                        player1War.append(player1Deck.pop())
-                        player1War.append(player1Deck.pop())
+                        player1War.append(player1Deck.pop(0))
+                        player1War.append(player1Deck.pop(0))
+                        player1Card = player1Deck.pop(0)
 
-                    elif len(player1Deck) > 3:
-                        player1War.append(player1Deck.pop())
-                        player1War.append(player1Deck.pop())
-                        player1War.append(player1Deck.pop())
-                        player1Card = player1Deck.pop()
+                    else:
+                        player1War.append(player1Deck.pop(0))
+                        player1War.append(player1Deck.pop(0))
+                        player1War.append(player1Deck.pop(0))
+                        player1Card = player1Deck.pop(0)
 
                     if len(player2Deck) == 0:
                         player1Deck.append(player1Card)
                         war = False
 
                     elif len(player2Deck) == 1:
-                        player2War.append(player2Deck.pop())
+                        player2Card = player2Deck.pop(0)
 
                     elif len(player2Deck) == 2:
-                        player2War.append(player2Deck.pop())
-                        player2War.append(player2Deck.pop())
+                        player2War.append(player2Deck.pop(0))
+                        player2Card = player2Deck.pop(0)
 
                     elif len(player2Deck) == 3:
-                        player2War.append(player2Deck.pop())
-                        player2War.append(player2Deck.pop())
-                        player2War.append(player2Deck.pop())
+                        player2War.append(player2Deck.pop(0))
+                        player2War.append(player2Deck.pop(0))
+                        player2Card = player2Deck.pop(0)
 
-                    elif len(player2Deck) > 3:
-                        player2War.append(player2Deck.pop())
-                        player2War.append(player2Deck.pop())
-                        player2War.append(player2Deck.pop())
-                        player2Card = player2Deck.pop()
+                    else:
+                        player2War.append(player2Deck.pop(0))
+                        player2War.append(player2Deck.pop(0))
+                        player2War.append(player2Deck.pop(0))
+                        player2Card = player2Deck.pop(0)
 
                     print("\nPlayer 1's card:", player1Card)
                     print("Player 2's card:", player2Card)
                     print("Player 1 has", len(player1Deck), "card(s) left.")
                     print("Player 2 has", len(player2Deck), "card(s) left.")
+                    
+                    #Another war
                     if player1Card[0] == player2Card[0]:
                         player1War.append(player1Card)
                         player2War.append(player2Card)
                         war = True
 
+                    #End the war
                     else:
                         player1War.append(player1Card)
                         player2War.append(player2Card)
@@ -186,7 +192,8 @@ def playWar():
                             for card in range(0, len(player2War)):
                                 player1Deck.append(player2War[card])
                                 
-                            print("Player 1 has", len(player1Deck), "card(s) left.")
+                            print("\nPlayer 1 has", len(player1Deck), "card(s) left.")
+                            print("Player 2 has", len(player2Deck), "card(s) left.")
                             war = False
 
                         else:
@@ -196,7 +203,8 @@ def playWar():
                                 
                             for card in range(0, len(player1War)):
                                 player2Deck.append(player1War[card])
-                                
+
+                            print("\nPlayer 1 has", len(player1Deck), "card(s) left.")    
                             print("Player 2 has", len(player2Deck), "card(s) left.")
                             war = False
 
@@ -204,9 +212,57 @@ def playWar():
                 print("\nYou must type 'now' to continue the game.")
                 break
 
+        #No war
+        else:
+            if player1Card[0] == "Jack":
+                player1Value = 11
+
+            elif player1Card[0] == "Queen":
+                player1Value = 12
+
+            elif player1Card[0] == "King":
+                player1Value = 13
+
+            elif player1Card[0] == "Ace":
+                player1Value = 14
+
+            else:
+                player1Value = int(player1Card[0])
+
+            if player2Card[0] == "Jack":
+                player2Value = 11
+
+            elif player2Card[0] == "Queen":
+                player2Value = 12
+
+            elif player2Card[0] == "King":
+                player2Value = 13
+
+            elif player2Card[0] == "Ace":
+                player2Value = 14
+
+            else:
+                player2Value = int(player2Card[0])
+
+            if player1Value > player2Value:
+                player1Deck.append(player1Card)
+                player1Deck.append(player2Card)
+                print("\nPlayer 1 has", len(player1Deck), "card(s) left.")    
+                print("Player 2 has", len(player2Deck), "card(s) left.")
+
+            else:
+                player2Deck.append(player1Card)
+                player2Deck.append(player2Card)
+                print("\nPlayer 1 has", len(player1Deck), "card(s) left.")    
+                print("Player 2 has", len(player2Deck), "card(s) left.")
+
         now = input("\nType 'now' when you're ready to continue. ")
         if now == "now":
-            if player2Deck == []:
+            if player1Deck == [] and player2Deck == []:
+                print("\nIt's a tie.")
+                finished = True
+
+            elif player2Deck == []:
                 print("\nPlayer 1 wins!")
                 finished = True
 
@@ -220,13 +276,5 @@ def playWar():
         else:
             print("\nYou must type 'now' to continue the game.")
             break
-
-def player1Turn():
-    global player1Card
-    player1Card = player1Deck.pop()
-
-def player2Turn():
-    global player2Card
-    player2Card = player2Deck.pop()
 
 playWar()
