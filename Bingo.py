@@ -8,7 +8,7 @@ cardNumbers = []
 letters = ["B", "I", "N", "G", "O"]
 bingo = False
 
-#Ways to get bingo
+#Ways to get bingos
 row1 = [False, False, False, False, False]
 row2 = [False, False, False, False, False]
 row3 = [False, False, False, False, False]
@@ -334,7 +334,7 @@ while bingo == False:
 
             else:
                 continue
-  #End the game if you have bingo              
+  #End the game if you have a bingo              
     if row1 == [True, True, True, True, True]:
         print("Bingo! Row 1")
         bingo = True
