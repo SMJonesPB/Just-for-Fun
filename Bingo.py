@@ -1,7 +1,8 @@
 import random
 
-row, column = (5, 5)
-card = [[random.randint for i in range(column)] for j in range(row)]
+row = 5
+column = 5
+card = [[0 for i in range(column)] for j in range(row)]
 markedCard = [[False for i in range(column)] for j in range(row)]
 calledNumbers = []
 cardNumbers = []
