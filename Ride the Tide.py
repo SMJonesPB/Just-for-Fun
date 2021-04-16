@@ -7,7 +7,8 @@ You can stand at anytime, and if you get more correct guesses in a row than the 
 """
 
 #Make and shuffle the deck
-row, column = (52, 2)
+row = 52
+column = 2
 deck = [["" for i in range(column)] for j in range(row)]
 deck[0][0], deck[0][1] = "Ace", "Spade"
 deck[1][0], deck[1][1] = "Ace", "Club"
@@ -489,13 +490,13 @@ def player1Turn():
     global player1Hand
     player1Hand.append(deck.pop(0))
     print("Player 1's turn")
-    finished = False
-    while finished == False:
+    turn = True
+    while turn == True:
         print("\nPlayer 1's hand: ", player1Hand)
         print("Last card: ", player1Hand[-1])
-        choice = input("Do you want to stand guess higher, or guess lower? ")
+        choice = input("Do you want to stand, guess higher, or guess lower? ")
         if choice == "stand" or choice == "s":
-            finished = True
+            turn = False
 
         elif choice == "higher" or choice == "h":
             player1Hand.append(deck.pop(0))
@@ -537,7 +538,7 @@ def player1Turn():
                 print("Correct!")
                 if len(player1Hand) == 6:
                     print("You ride the tide!")
-                    finished = True
+                    turn = False
 
                 else:
                     continue
@@ -545,7 +546,7 @@ def player1Turn():
             else:
                 print("Wrong")
                 player1Hand.clear()
-                finished = True
+                turn = False
 
         elif choice == "lower" or choice == "l":
             player1Hand.append(deck.pop(0))
@@ -587,7 +588,7 @@ def player1Turn():
                 print("Correct!")
                 if len(player1Hand) == 6:
                     print("You ride the tide!")
-                    finished = True
+                    turn = False
 
                 else:
                     continue
@@ -595,11 +596,11 @@ def player1Turn():
             else:
                 print("Wrong")
                 player1Hand.clear()
-                finished = True
+                turn = False
 
 
         else:
-            print("You must type 'stand', 'higher', or 'lower'.")
+            print("You must type 'stand', 's', 'higher', 'h', 'lower', or 'l'.")
             break
 
 def player2Turn():
@@ -607,13 +608,13 @@ def player2Turn():
     player2Hand.append(deck.pop(0))
     print("_____________________________________________________________________")
     print("Player 2's turn")
-    finished = False
-    while finished == False:
+    turn = True
+    while turn == True:
         print("\nPlayer 2's hand: ", player2Hand)
         print("Last card: ", player2Hand[-1])
-        choice = input("Do you want to stand guess higher, or guess lower? ")
+        choice = input("Do you want to stand, guess higher, or guess lower? ")
         if choice == "stand" or choice == "s":
-            finished = True
+            turn = False
 
         elif choice == "higher" or choice == "h":
             player2Hand.append(deck.pop(0))
@@ -655,7 +656,7 @@ def player2Turn():
                 print("Correct!")
                 if len(player2Hand) == 6:
                     print("You ride the tide!")
-                    finished = True
+                    turn = False
 
                 else:
                     continue
@@ -705,7 +706,7 @@ def player2Turn():
                 print("Correct!")
                 if len(player2Hand) == 6:
                     print("You ride the tide!")
-                    finished = True
+                    turn = False
 
                 else:
                     continue
@@ -713,11 +714,11 @@ def player2Turn():
             else:
                 print("Wrong")
                 player2Hand.clear()
-                finished = True
+                turn = False
 
 
         else:
-            print("You must type 'stand', 'higher', or 'lower'.")
+            print("You must type 'stand', 's', 'higher', 'h', 'lower', or 'l'.")
             break
 
 def player3Turn():
@@ -725,13 +726,13 @@ def player3Turn():
     player3Hand.append(deck.pop(0))
     print("_____________________________________________________________________")
     print("Player 3's turn")
-    finished = False
-    while finished == False:
+    turn = True
+    while turn == True:
         print("\nPlayer 3's hand: ", player3Hand)
         print("Last card: ", player3Hand[-1])
-        choice = input("Do you want to stand guess higher, or guess lower? ")
+        choice = input("Do you want to stand, guess higher, or guess lower? ")
         if choice == "stand" or choice == "s":
-            finished = True
+            turn = False
 
         elif choice == "higher" or choice == "h":
             player3Hand.append(deck.pop(0))
@@ -773,7 +774,7 @@ def player3Turn():
                 print("Correct!")
                 if len(player3Hand) == 6:
                     print("You ride the tide!")
-                    finished = True
+                    turn = False
 
                 else:
                     continue
@@ -781,7 +782,7 @@ def player3Turn():
             else:
                 print("Wrong")
                 player3Hand.clear()
-                finished = True
+                turn = False
 
         elif choice == "lower" or choice == "l":
             player3Hand.append(deck.pop(0))
@@ -823,7 +824,7 @@ def player3Turn():
                 print("Correct!")
                 if len(player3Hand) == 6:
                     print("You ride the tide!")
-                    finished = True
+                    turn = False
 
                 else:
                     continue
@@ -831,11 +832,11 @@ def player3Turn():
             else:
                 print("Wrong")
                 player3Hand.clear()
-                finished = True
+                turn = False
 
 
         else:
-            print("You must type 'stand', 'higher', or 'lower'.")
+            print("You must type 'stand', 's', 'higher', 'h' 'lower', or 'l'.")
             break
 
 def dealerTurn():
@@ -843,13 +844,13 @@ def dealerTurn():
     dealerHand.append(deck.pop(0))
     print("_____________________________________________________________________")
     print("\nThe dealer's turn")
-    finished = False
-    while finished == False:
+    turn = True
+    while turn == True:
         print("\nThe dealer's hand: ", dealerHand)
         print("Last card: ", dealerHand[-1])
-        choice = input("Do you want to stand guess higher, or guess lower? ")
+        choice = input("Do you want to stand, guess higher, or guess lower? ")
         if choice == "stand" or choice == "s":
-            finished = True
+            turn = False
 
         elif choice == "higher" or choice == "h":
             dealerHand.append(deck.pop(0))
@@ -890,7 +891,7 @@ def dealerTurn():
             if newValue >= oldValue:
                 print("Correct!")
                 if len(dealerHand) == 6:
-                    finished = True
+                    turn = False
 
                 else:
                     continue
@@ -898,7 +899,7 @@ def dealerTurn():
             else:
                 print("Wrong")
                 dealerHand.clear()
-                finished = True
+                turn = False
 
         elif choice == "lower" or choice == "l":
             dealerHand.append(deck.pop(0))
@@ -939,7 +940,7 @@ def dealerTurn():
             if newValue <= oldValue:
                 print("Correct!")
                 if len(dealerHand) == 6:
-                    finished = True
+                    turn = False
 
                 else:
                     continue
@@ -947,11 +948,11 @@ def dealerTurn():
             else:
                 print("Wrong")
                 dealerHand.clear()
-                finished = True
+                turn = False
 
 
         else:
-            print("You must type 'stand', 'higher', or 'lower'.")
+            print("You must type 'stand', 's', 'higher', 'h', 'lower', or 'l'.")
             break
 
 playRideTheTide()
