@@ -1,17 +1,18 @@
-"""In War, the deck is divided equally between or among the players. Every player shows the top card of his/her deck. The player with the highest value takes all of the cards. 
+"""In War, the deck is divided equally between or among the players. Every player shows the top card of his/her deck. The player with the higher or highest value takes all of the cards. 
 Aces are high, and they beat Kings. Kings beat Queens. Queens beat Jacks. Jacks beat Tens. 
-In a tie, every player with the highest value places the top 3 cards of his/her deck face down, then shows the next one. This is called a "war" 
+In a tie, every player with the higher or highest value places the top 3 cards of his/her deck face down, then shows the next one. This is called a "war." 
 Again, the player with the higher or highest value wins.
 If there's another tie, every player places the top 3 cards face down and shows the next one again. The game continues until every player except 1 has lost his/her deck.
-In my version, if you run out of cards in a war and lose, you lose the game. If you win, you get all of the cards normally and stay in the game.
-Also, if you get into a war with an empty deck, you lose the game.
+If you run out of cards in a war and lose, you lose the game. If you win, you get all of the cards normally and stay in the game.
+Also, if you get into a war with an empty deck, everyone else in the war plays his/her cards normally.
 You play the card that just started the war if you have 1, 2, or 3 cards left in your deck.
 """
 
 import random
 
 #Make and shuffle the deck
-row, column = (52, 2)
+row = 52
+column = 2
 deck = [["" for i in range(column)] for j in range(row)]
 deck[0][0], deck[0][1] = "Ace", "Spade"
 deck[1][0], deck[1][1] = "Ace", "Club"
@@ -74,8 +75,8 @@ player2Card = []
 def playWar():
     global player1Card
     global player2Card
-    finished = False
-    while finished == False:
+    game = True
+    while game == True:
         player1Card = player1Deck.pop(0)
         player2Card = player2Deck.pop(0)
         print("\nPlayer 1's card:", player1Card)
@@ -146,7 +147,6 @@ def playWar():
                     if player1Card[0] == player2Card[0]:
                         player1War.append(player1Card)
                         player2War.append(player2Card)
-                        war = True
 
                     #End the war
                     else:
@@ -245,12 +245,14 @@ def playWar():
                 player2Value = int(player2Card[0])
 
             if player1Value > player2Value:
+                print("Player 1 wins this turn!")
                 player1Deck.append(player1Card)
                 player1Deck.append(player2Card)
                 print("\nPlayer 1 has", len(player1Deck), "card(s) left.")    
                 print("Player 2 has", len(player2Deck), "card(s) left.")
 
             else:
+                print("Player 2 wins this turn!")
                 player2Deck.append(player1Card)
                 player2Deck.append(player2Card)
                 print("\nPlayer 1 has", len(player1Deck), "card(s) left.")    
@@ -260,15 +262,15 @@ def playWar():
         if now == "now":
             if player1Deck == [] and player2Deck == []:
                 print("\nIt's a tie.")
-                finished = True
+                game = False
 
             elif player2Deck == []:
                 print("\nPlayer 1 wins!")
-                finished = True
+                game = False
 
             elif player1Deck == []:
                 print("\nPlayer 2 wins!")
-                finished = True
+                game = False
 
             else:
                 continue
