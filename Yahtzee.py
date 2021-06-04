@@ -6,7 +6,7 @@ waysToScore = ["Count and add only Ones", "Count and add only Twos", "Count and 
 "Yahtzee Bonus  100", "Total of Lower Section", "Total of Upper Section", "Grand Total"]
 rowPoints = [25, 30, 40, 50, 100] #Full House, Small Straight, Large Straight, Yahtzee, Yahtzee Bounus
 card = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-for round in range(1, 13):
+for round in range(1, 15):
     print("Round ", round)
     keptDice = [0, 0, 0, 0, 0]
     for roll in range(1, 4):
