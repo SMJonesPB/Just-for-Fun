@@ -72,192 +72,186 @@ player3Total = []
 dealerTotal = 0
 numberOfPlayers = input("How many players are there from 1 to 3 except the dealer? ")
 if numberOfPlayers == "1":
-    player1Hand.append(deck.pop(0))
-    dealerHand.append(deck.pop(0))
-    player1Hand.append(deck.pop(0))
-    dealerHand.append(deck.pop(0))
+    player1Hand.append(deck.pop())
+    dealerHand.append(deck.pop())
+    player1Hand.append(deck.pop())
+    dealerHand.append(deck.pop())
     
 elif numberOfPlayers == "2":
-    player1Hand.append(deck.pop(0))
-    player2Hand.append(deck.pop(0))
-    dealerHand.append(deck.pop(0))
-    player1Hand.append(deck.pop(0))
-    player2Hand.append(deck.pop(0))
-    dealerHand.append(deck.pop(0))
+    player1Hand.append(deck.pop())
+    player2Hand.append(deck.pop())
+    dealerHand.append(deck.pop())
+    player1Hand.append(deck.pop())
+    player2Hand.append(deck.pop())
+    dealerHand.append(deck.pop())
 
 elif numberOfPlayers == "3":
-    player1Hand.append(deck.pop(0))
-    player2Hand.append(deck.pop(0))
-    player3Hand.append(deck.pop(0))
-    dealerHand.append(deck.pop(0))
-    player1Hand.append(deck.pop(0))
-    player2Hand.append(deck.pop(0))
-    player3Hand.append(deck.pop(0))
-    dealerHand.append(deck.pop(0))
+    player1Hand.append(deck.pop())
+    player2Hand.append(deck.pop())
+    player3Hand.append(deck.pop())
+    dealerHand.append(deck.pop())
+    player1Hand.append(deck.pop())
+    player2Hand.append(deck.pop())
+    player3Hand.append(deck.pop())
+    dealerHand.append(deck.pop())
 
 else:
     print("You must enter a number from 1 to 3.")
 
 def playBlackjack():
     if numberOfPlayers == "1":
-        player1Turn()
+        generalPlayer(player1Hand, 1, player1Total)
         dealerTurn()
-        if player1Total == ["Surrender"]:
-            print("Player 1 surrenders")
+        for total in player1Total:
+            if total == 0:
+                print("Player 1 surrenders.")
+            
+            elif total == "Blackjack":
+                print("Player 1 has a Blackjack!")
 
-        else:
-            for total in player1Total:
-                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                    print("Player 1 wins!")
+            elif total == "5-Card Charlie":
+                print("Player 1 has a 5-Card Charlie!")
+
+            elif (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                print("Player 1 wins!")
  
-                elif total < dealerTotal and dealerTotal <= 21:
-                    print("Player 1 loses.")
+            elif total < dealerTotal and dealerTotal <= 21:
+                print("Player 1 loses.")
 
-                elif total == dealerTotal and total <= 21:
-                    print("Player 1 pushes.")
+            elif total == dealerTotal and total <= 21:
+                print("Player 1 pushes.")
 
-                elif total > 21:
-                    print("Player 1 busts.")
-
-                elif total == "Blackjack":
-                    print("Player 1 has a Blackjack!")
-
-                elif total == "5-Card Charlie":
-                    print("Player 1 has a 5-Card Charlie!")
+            elif total > 21:
+                print("Player 1 busts.")
 
     elif numberOfPlayers == "2":
-        player1Turn()
-        player2Turn()
+        generalPlayer(player1Hand, 1, player1Total)
+        generalPlayer(player2Hand, 2, player2Total)
         dealerTurn()
-        if player1Total == ["Surrender"]:
-            print("Player 1 surrenders")
-
-        else:
-            for total in player1Total:
-                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                    print("Player 1 wins!")
-
-                elif total < dealerTotal and dealerTotal <= 21:
-                    print("Player 1 loses.")
-
-                elif total == dealerTotal and total <= 21:
-                    print("Player 1 pushes.")
-                          
-                elif total > 21:
-                    print("Player 1 busts.")
-
-                elif total == "Blackjack":
-                    print("Player 1 has a Blackjack!")
-
-                elif total == "5-Card Charlie":
-                    print("Player 1 has a 5-Card Charlie!")
-
-        if player2Total == ["Surrender"]:
-            print("Player 2 surrenders")
-
-        else:
-            for total in player2Total:
-                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                    print("Player 2 wins!")
-
-                elif total < dealerTotal and dealerTotal <= 21:
-                    print("Player 2 loses.")
-
-                elif total == dealerTotal and total <= 21:
-                    print("Player 2 pushes.")
-                
-                elif total > 21:
-                    print("Player 2 busts.")
+        for total in player1Total:
+            if total == 0:
+                print("Player 1 surrenders.")
             
-                elif total == "Blackjack":
-                    print("Player 2 has a blackjack!")
+            elif total == "Blackjack":
+                print("Player 1 has a Blackjack!")
 
-                elif total == "5-Card Charlie":
-                    print("Player 2 has a 5-Card Charlie!")
+            elif total == "5-Card Charlie":
+                print("Player 1 has a 5-Card Charlie!")
+
+            elif (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                print("Player 1 wins!")
+
+            elif total < dealerTotal and dealerTotal <= 21:
+                print("Player 1 loses.")
+
+            elif total == dealerTotal and total <= 21:
+                print("Player 1 pushes.")
+                          
+            elif total > 21:
+                print("Player 1 busts.")
+
+        for total in player2Total:
+            if total == 0:
+                print("Player 2 surrenders.")
+            
+            elif total == "Blackjack":
+                print("Player 2 has a blackjack!")
+
+            elif total == "5-Card Charlie":
+                print("Player 2 has a 5-Card Charlie!")
+
+            elif (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                print("Player 2 wins!")
+
+            elif total < dealerTotal and dealerTotal <= 21:
+                print("Player 2 loses.")
+
+            elif total == dealerTotal and total <= 21:
+                print("Player 2 pushes.")
+                
+            elif total > 21:
+                print("Player 2 busts.")
 
     elif numberOfPlayers == "3":
-        player1Turn()
-        player2Turn()
-        player3Turn()
+        generalPlayer(player1Hand, 1, player1Total)
+        generalPlayer(player2Hand, 2, player2Total)
+        generalPlayer(player3Hand, 3, player3Total)
         dealerTurn()
-        if player1Total == ["Surrender"]:
-            print("Player 1 surrenders")
-
-        else:
-            for total in player1Total:
-                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                    print("Player 1 wins!")
-
-                elif total < dealerTotal and dealerTotal <= 21:
-                    print("Player 1 loses.")
-
-                elif total == dealerTotal and total <= 21:
-                    print("Player 1 pushes.")
+        for total in player1Total:
+            if total == 0:
+                print("Player 1 surrenders.")
                 
-                elif total >21:
-                    print("Player 1 busts.")
+            elif total == "Blackjack":
+                print("Player 1 has a Blackjack!")
 
-                elif total == "Blackjack":
-                    print("Player 1 has a Blackjack!")
+            elif total == "5-Card Charlie":
+                print("Player 1 has a 5-Card Charlie!")
 
-                elif total == "5-Card Charlie":
-                    print("Player 1 has a 5-Card Charlie!")
+            elif (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                print("Player 1 wins!")
 
-        if player2Total == ["Surrender"]:
-            print("Player 2 surrenders")
+            elif total < dealerTotal and dealerTotal <= 21:
+                print("Player 1 loses.")
 
-        else:
-            for total in player2Total:
-                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                    print("Player 2 wins!")
-
-                elif total < dealerTotal and dealerTotal <= 21:
-                    print("Player 2 loses.")
-
-                elif total == dealerTotal and total <= 21:
-                    print("Player 2 pushes.")
+            elif total == dealerTotal and total <= 21:
+                print("Player 1 pushes.")
                 
-                elif total > 21:
-                    print("Player 2 busts.")
+            elif total >21:
+                print("Player 1 busts.")
 
-                elif total == "Blackjack":
-                    print("Player 2 has a Blackjack!")
+        for total in player2Total:
+            if total == 0:
+                print("Player 2 surrenders.")
+            
+            elif total == "Blackjack":
+                print("Player 2 has a Blackjack!")
 
-                elif total == "5-Card Charlie":
-                    print("Player 2 has a 5-Card Charlie!")
-
-        if player3Total == ["Surrender"]:
-            print("Player 3 surrenders")
-
-        else:
-            for total in player3Total:
-                if (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
-                    print("Player 3 wins!")
-
-                elif total < dealerTotal and dealerTotal <= 21:
-                    print("Player 3 loses.")
-
-                elif total == dealerTotal and total <= 21:
-                    print("Player 3 pushes.")
+            elif total == "5-Card Charlie":
+                print("Player 2 has a 5-Card Charlie!")
                 
-                elif total > 21:
-                    print("Player 3 busts.")
+            elif (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                print("Player 2 wins!")
 
-                elif total == "Blackjack":
-                    print("Player 3 has a Blackjack!")
+            elif total < dealerTotal and dealerTotal <= 21:
+                print("Player 2 loses.")
 
-                elif total == "5-Card Charlie":
-                    print("Player 3 has a 5-Card Charlie!")
+            elif total == dealerTotal and total <= 21:
+                print("Player 2 pushes.")
+                
+            elif total > 21:
+                print("Player 2 busts.")
 
-def player1Turn():
+        for total in player3Total:
+            if total == 0:
+                print("Player 3 surrenders.")
+            
+            elif total == "Blackjack":
+                print("Player 3 has a Blackjack!")
+
+            elif total == "5-Card Charlie":
+                print("Player 3 has a 5-Card Charlie!")
+                
+            elif (total > dealerTotal and total <= 21) or (total <= 21 and dealerTotal > 21):
+                print("Player 3 wins!")
+
+            elif total < dealerTotal and dealerTotal <= 21:
+                print("Player 3 loses.")
+
+            elif total == dealerTotal and total <= 21:
+                print("Player 3 pushes.")
+
+            elif total > 21:
+                print("Player 3 busts.")
+
+def generalPlayer(playerHand, playerNumber, playerTotal):
     total = 0
     softNumberCheck = False
     softNumberValue = 0
-    for card in range(0, len(player1Hand)):
-        if player1Hand[card][0] == "Jack" or player1Hand[card][0] == "Queen" or player1Hand[card][0] == "King":
+    for card in range(0, len(playerHand)):
+        if playerHand[card][0] == "Jack" or playerHand[card][0] == "Queen" or playerHand[card][0] == "King":
             total += 10
 
-        elif player1Hand[card][0] == "Ace":
+        elif playerHand[card][0] == "Ace":
             softNumberCheck = True
             if total < 11:
                 total += 11
@@ -266,14 +260,14 @@ def player1Turn():
                 total += 1
 
         else:
-            total += int(player1Hand[card][0])
+            total += int(playerHand[card][0])
 
     turn = True
     while turn == True:
         softNumberValue = total - 10
         if softNumberCheck == True:
-            print("Player 1's hand")
-            print("\n".join(str(i) for i in player1Hand))
+            print("Player " + str(playerNumber) + "'s hand")
+            print("\n".join(str(i) for i in playerHand))
             print("\n")
             print("Total: ", softNumberValue, "/", total)
             print("\n")
@@ -282,8 +276,8 @@ def player1Turn():
             print("\n")
 
         else:
-            print("Player 1's hand")
-            print("\n".join(str(i) for i in player1Hand))
+            print("Player " + str(playerNumber) + "'s hand")
+            print("\n".join(str(i) for i in playerHand))
             print("\n")
             print("Total: ", total)
             print("\n")
@@ -291,14 +285,14 @@ def player1Turn():
             print(dealerHand[0])
             print("\n")
         
-        if len(player1Hand) == 2 and total == 21:
-            player1Total.append("Blackjack")
+        if len(playerHand) == 2 and total == 21:
+            playerTotal.append("Blackjack")
             turn = False
             break
 
-        if len(player1Hand) == 2:
-            if player1Hand[0][0] == player1Hand[1][0]:
-                choice = input("Do you want to hit, stand, surrender, or split your hand? ")
+        if len(playerHand) == 2:
+            if playerHand[0][0] == playerHand[1][0]:
+                choice = input("Do you want to hit, stand, surrender, or split? ")
 
             else:
                 choice = input("Do you want to hit, stand, or surrender? ")
@@ -307,8 +301,8 @@ def player1Turn():
             choice = input("Do you want to hit or stand? " )
         
         if choice == "hit":
-            player1Hand.append(deck.pop(0))
-            last = player1Hand[-1][0]
+            playerHand.append(deck.pop())
+            last = playerHand[-1][0]
             if last == "Jack" or last == "Queen" or last == "King":
                 total += 10
 
@@ -336,61 +330,62 @@ def player1Turn():
                         continue
 
                 else:
-                    print("Player 1's hand")
-                    print("\n".join(str(i) for i in player1Hand))
+                    print("Player " + str(playerNumber) + "'s hand")
+                    print("\n".join(str(i) for i in playerHand))
                     print("\n")
                     print("Total: ", total)
                     print("Bust")
-                    player1Total.append(total)
+                    playerTotal.append(total)
                     turn = False
 
-            elif total <= 21 and len(player1Hand) == 5:
+            elif total <= 21 and len(playerHand) == 5:
                 if softNumberCheck == True:
                     softNumberValue = total - 10
-                    print("Player 1's hand")
-                    print("\n".join(str(i) for i in player1Hand))
+                    print("Player " + str(playerNumber) + "'s hand")
+                    print("\n".join(str(i) for i in playerHand))
                     print("\n")
                     print("Total: ", softNumberValue, "/", total)
                     print("\n")
-                    player1Total.append("5-Card Charlie")
+                    playerTotal.append("5-Card Charlie")
                     turn = False
 
                 else:
-                    print("Player 1's hand")
-                    print("\n".join(str(i) for i in player1Hand))
+                    print("Player " + str(playerNumber) + "'s hand")
+                    print("\n".join(str(i) for i in playerHand))
                     print("\n")
                     print("Total: ", total)
                     print("\n")
-                    player1Total.append("5-Card Charlie")
+                    playerTotal.append("5-Card Charlie")
                     turn = False
 
             elif total == 21:
                 if softNumberCheck == True:
                     softNumberValue = total - 10
-                    print("Player 1's hand")
-                    print("\n".join(str(i) for i in player1Hand))
+                    print("Player " + str(playerNumber) + "'s hand")
+                    print("\n".join(str(i) for i in playerHand))
                     print("\n")
                     print("Total: ", softNumberValue, "/", total)
-                    player1Total.append(total)
+                    playerTotal.append(total)
+
                     turn = False
                 
                 else:
-                    print("Player 1's hand")
-                    print("\n".join(str(i) for i in player1Hand))
+                    print("Player " + str(playerNumber) + "'s hand")
+                    print("\n".join(str(i) for i in playerHand))
                     print("\n")
                     print("Total: ", total)
-                    player1Total.append(total)
+                    playerTotal.append(total)
                     turn = False
             
             else:
                 continue
 
         elif choice == "stand":
-            player1Total.append(total)
+            playerTotal.append(total)
             turn = False
 
         elif choice == "surrender":
-            player1Total.append("Surrender")
+            playerTotal.append(0)
             turn = False
 
         elif choice == "split":
@@ -398,7 +393,7 @@ def player1Turn():
             hand2 = [player1Hand[1]]
             
             #The first half of the split
-            hand1.append(deck.pop(0))
+            hand1.append(deck.pop())
             total1 = 0
             softNumberCheck = False
             softNumberValue = 0 
@@ -420,7 +415,7 @@ def player1Turn():
             while turnHand1 == True:
                 softNumberValue = total1 - 10
                 if softNumberCheck == True:
-                    print("Player 1's hand 1-0")
+                    print("Player " + str(playerNumber) + "'s hand 1")
                     print("\n".join(str(i) for i in hand1))
                     print("\n")
                     print("Total: ", softNumberValue, "/", total1)
@@ -430,7 +425,7 @@ def player1Turn():
                     print("\n")
 
                 else:
-                    print("Player 1's hand 1-0")
+                    print("Player " + str(playerNumber) + "'s hand 1")
                     print("\n".join(str(i) for i in hand1))
                     print("\n")
                     print("Total: ", total1)
@@ -440,16 +435,16 @@ def player1Turn():
                     print("\n")
 
                 if len(hand1) == 2 and total1 == 21:
-                    player1Total.append("Blackjack")
+                    playerTotal.append(total1)
                     turnHand1 = False
 
                 if len(hand1) == 2:
                     if hand1[0][0] == hand1[1][0]:
                         if hand1[0][0] != "Ace":
-                            choice = input("Do you want to hit, stand, or split your hand? ")
+                            choice = input("Do you want to hit, stand, or split? ")
                         
                         else:
-                            choice = input("Do you want to split your hand or stand? ")
+                            choice = input("Do you want to stand or split? ")
 
 
                     else:
@@ -457,14 +452,14 @@ def player1Turn():
                             choice = input("Do you want to hit or stand? ")
 
                         else:
-                            player1Total.append(total1)
+                            playerTotal.append(total1)
                             turnHand1 = False
 
                 else:
                     choice = input("Do you want to hit or stand? ")
                 
                 if choice == "hit":
-                    hand1.append(deck.pop(0))
+                    hand1.append(deck.pop())
                     last = hand1[-1][0]
                     if last == "Jack" or last == "Queen" or last == "King":
                         total1 += 10
@@ -493,50 +488,50 @@ def player1Turn():
                                 continue
 
                         else:
-                            print("Player 1's hand 1-0")
+                            print("Player " + str(playerNumber) + "'s hand 1")
                             print("\n".join(str(i) for i in hand1))
                             print("\n")
                             print("Total: ", total1)
                             print("Bust")
-                            player1Total.append(total1)
+                            playerTotal.append(total1)
                             turnHand1 = False
 
                     elif total1 <= 21 and len(hand1) == 5:
                         if softNumberCheck == True:
                             softNumberValue = total1 - 10
-                            print("Player 1's hand 1-0")
+                            print("Player " + str(playerNumber) + "'s hand 1")
                             print("\n".join(str(i) for i in hand1))
                             print("\n")
                             print("Total: ", softNumberValue, "/", total1)
                             print("\n")
-                            player1Total.append("5-Card Charlie")
+                            playerTotal.append("5-Card Charlie")
                             turnHand1 = False
                         
                         else:
-                            print("Player 1's hand 1-0")
+                            print("Player " + str(playerNumber) + "'s hand 1")
                             print("\n".join(str(i) for i in hand1))
                             print("\n")
                             print("Total: ", total1)
                             print("\n")
-                            player1Total.append("5-Card Charlie")
+                            playerTotal.append("5-Card Charlie")
                             turnHand1 = False
 
                     elif total1 == 21:
                         if softNumberCheck == True:
                             softNumberValue = total1 - 10
-                            print("Player 1's hand 1-0")
+                            print("Player " + str(playerNumber) + "'s hand 1")
                             print("\n".join(str(i) for i in hand1))
                             print("\n")
                             print("Total: ", softNumberValue, "/", total1)
-                            player1Total.append(total1)
+                            playerTotal.append(total1)
                             turn = False
                             
                         else:
-                            print("Player 1's hand 1-0")
+                            print("Player " + str(playerNumber) + "'s hand 1")
                             print("\n".join(str(i) for i in hand1))
                             print("\n")
                             print("Total: ", total1)
-                            player1Total.append(total1)
+                            playerTotal.append(total1)
                             turn = False
                     
                     else:
@@ -544,7 +539,7 @@ def player1Turn():
 
 
                 elif choice == "stand":
-                    player1Total.append(total1)
+                    playerTotal.append(total1)
                     turnHand1 = False
 
                 elif choice == "split":
@@ -552,7 +547,7 @@ def player1Turn():
                     hand12 = [hand1[1]]
 
                     #The first half of the first half of the split
-                    hand11.append(deck.pop(0))
+                    hand11.append(deck.pop())
                     total11 = 0
                     for card in range(0, len(hand11)):
                         if hand11[card][0] == "Jack" or hand11[card][0] == "Queen" or hand11[card][0] == "King":
@@ -574,7 +569,7 @@ def player1Turn():
                         softNumberValue = total11 - 10
                         if softNumberCheck == True:
                             print("\n")
-                            print("Player 1's hand 1-1")
+                            print("Player " + str(playerNumber) + "'s hand 1-1")
                             print("\n".join(str(i) for i in hand11))
                             print("\n")
                             print("Total: ", softNumberValue, "/", total11)
@@ -586,7 +581,7 @@ def player1Turn():
 
                         else:
                             print("\n")
-                            print("Player 1's hand 1-1")
+                            print("Player " + str(playerNumber) + "'s hand 1-1")
                             print("\n".join(str(i) for i in hand11))
                             print("\n")
                             print("Total: ", total11)
@@ -597,7 +592,7 @@ def player1Turn():
                             print("\n")
 
                         if len(hand11) == 2 and total11 == 21:
-                            player1Total.append("Blackjack")
+                            playerTotal.append("Blackjack")
                             turnHand11 = False
 
                         if len(hand11) == 2:
@@ -605,14 +600,14 @@ def player1Turn():
                                 choice = input("Do you want to hit or stand? ")
                                 
                             else:
-                                player1Total.append(total11)
+                                playerTotal.append(total11)
                                 turnHand11 = False
 
                         else:
                             choice = input("Do you want to hit or stand? ")
                         
                         if choice == "hit":
-                            hand11.append(deck.pop(0))
+                            hand11.append(deck.pop())
                             last = hand11[-1][0]
                             if last == "Jack" or last == "Queen" or last == "King":
                                 total11 += 10
@@ -639,61 +634,69 @@ def player1Turn():
                                         continue
                                     
                                 else:
-                                    player1Total.append(total11)
-                                    print("Player 1's hand 1-1")
+                                    print("Player " + str(playerNumber) + "'s hand 1-1")
                                     print("\n".join(str(i) for i in hand11))
                                     print("\n")
                                     print("Total: ", total11)
                                     print("Bust")
+                                    if playerNumber == 1:
+                                        player1Total.append(total11)
+                                            
+                                    elif playerNumber == 2:
+                                        player2Total.append(total11)
+
+                                    else:
+                                        player3Total.append(total11)
+
                                     turnHand11 = False
 
                             elif total11 <= 21 and len(hand11) == 5:
                                 if softNumberCheck == True:
                                     softNumberValue = total11 - 10
-                                    print("Player 1's hand 1-1")
+                                    print("Player " + str(playerNumber) + "'s hand 1-1")
                                     print("\n".join(str(i) for i in hand11))
                                     print("\n")
                                     print("Total: ", softNumberValue, "/", total11)
                                     print("\n")
-                                    player1Total.append("5-Card Charlie")
+                                    playerTotal.append("5-Card Charlie")
                                     turnHand11 = False
 
                                 else:
-                                    print("Player 1's hand 1-1")
+                                    print("Player " + str(playerNumber) + "'s hand 1-1")
                                     print("\n".join(str(i) for i in hand11))
                                     print("\n")
                                     print("Total: ", total11)
                                     print("\n")
-                                    player1Total.append("5-Card Charlie")
+                                    playerTotal.append("5-Card Charlie")
                                     turnHand11 = False
                                     
                             elif total11 == 21:
                                 if softNumberCheck == True:
                                     softNumberValue = total11 - 10
-                                    print("Player 1's hand 1-1")
+                                    print("Player " + str(playerNumber) + "'s hand 1-1")
                                     print("\n".join(str(i) for i in hand11))
                                     print("\n")
                                     print("Total: ", softNumberValue, "/", total11)
-                                    player1Total.append(total11)
+                                    playerTotal.append(total11)
                                     turn = False
                                 
                                 else:
-                                    print("Player 1's hand 1-1")
+                                    print("Player " + str(playerNumber) + "'s hand 1-1")
                                     print("\n".join(str(i) for i in hand1))
                                     print("\n")
                                     print("Total: ", total11)
-                                    player1Total.append(total11)
+                                    playerTotal.append(total11)
                                     turn = False
                             
                             else:
                                 continue
 
                         else:
-                            player1Total.append(total11)
+                            playerTotal.append(total11)
                             turnHand11 = False
 
                     #The second half of the first half of the split
-                    hand12.append(deck.pop(0))
+                    hand12.append(deck.pop())
                     total12 = 0
                     softNumberCheck = False
                     softNumberValue = 0
@@ -717,7 +720,7 @@ def player1Turn():
                         softNumberValue = total12 - 10
                         if softNumberCheck == True:
                             print("\n")
-                            print("Player 1's hand 1-2")
+                            print("Player " + str(playerNumber) + "'s hand 1-2")
                             print("\n".join(str(i) for i in hand12))
                             print("\n")
                             print("Total: ", softNumberValue, "/", total12)
@@ -729,7 +732,7 @@ def player1Turn():
                         
                         else:
                             print("\n")
-                            print("Player 1's hand 1-2")
+                            print("Player " + str(playerNumber) + "'s hand 1-2")
                             print("\n".join(str(i) for i in hand12))
                             print("\n")
                             print("Total: ", total12)
@@ -740,14 +743,14 @@ def player1Turn():
                             print("\n")
 
                         if len(hand12) == 2 and total12 == 21:
-                            player1Total.append("Blackjack")
+                            playerTotal.append("Blackjack")
 
                         if len(hand1) == 2:
                             if hand12[0][0] != "Ace":
                                 choice = input("Do you want to hit or stand? ")
                                 
-                            else:
-                                player1Total.append(total12)
+                            else:   
+                                playerTotal.append(total12)
                                 turnHand12 = False
                                 turnHand1 = False
 
@@ -755,7 +758,7 @@ def player1Turn():
                             choice = input("Do you want to hit or stand? ")
 
                         if choice == "hit":
-                            hand12.append(deck.pop(0))
+                            hand12.append(deck.pop())
                             last = hand12[-1][0]
                             if last == "Jack" or last == "Queen" or last == "King":
                                 total12 += 10
@@ -782,54 +785,54 @@ def player1Turn():
                                         continue
 
                                 else:
-                                    player1Total.append(total12)
-                                    print("Player 1's hand 1-2")
+                                    print("Player " + str(playerNumber) + "'s hand 1-2")
                                     print("\n".join(str(i) for i in hand12))
                                     print("\n")
                                     print("Total: ", total12)
                                     print("Bust")
+                                    playerTotal.append(total12)
                                     turnHand12 = False
                                     turnHand1 = False
 
                             elif total12 <= 21 and len(hand12) == 5:
                                 if softNumberCheck == True:
                                     softNumberValue = total12 - 10
-                                    print("Player 1's hand 1-2")
+                                    print("Player " + str(playerNumber) + "'s hand 1-2")
                                     print("\n".join(str(i) for i in hand12))
                                     print("\n")
                                     print("Total: ", softNumberValue, "/", total12)
                                     print("\n")
-                                    player1Total.append("5-Card Charlie")
+                                    playerTotal.append("5-Card Charlie")
                                     turnHand12 = False
                                     turnHand1 = False
 
                                 else:
-                                    print("Player 1's hand 1-2")
+                                    print("Player " + str(playerNumber) + "'s hand 1-2")
                                     print("\n".join(str(i) for i in hand12))
                                     print("\n")
                                     print("Total: ", total12)
                                     print("\n")
-                                    player1Total.append("5-Card Charlie")
+                                    playerTotal.append("5-Card Charlie")
                                     turnHand12 = False
                                     turnHand1 = False
                             
                             elif total12 == 21:
                                 if softNumberCheck == True:
                                     softNumberValue = total12 - 10
-                                    print("Player 1's hand 1-2")
+                                    print("Player " + str(playerNumber) + "'s hand 1-2")
                                     print("\n".join(str(i) for i in hand12))
                                     print("\n")
                                     print("Total: ", softNumberValue, "/", total12)
-                                    player1Total.append(total12)
+                                    playerTotal.append(total12)
                                     turnHand12 = False
                                     turnHand1 = False
                                 
                                 else:
-                                    print("Player 1's hand 1-2")
+                                    print("Player " + str(playerNumber) + "'s hand 1-2")
                                     print("\n".join(str(i) for i in hand12))
                                     print("\n")
                                     print("Total: ", total12)
-                                    player1Total.append(total12)
+                                    playerTotal.append(total12)
                                     turnHand12 = False
                                     turnHand1 = False
                             
@@ -837,13 +840,13 @@ def player1Turn():
                                 continue
                             
                         else:
-                            player1Total.append(total12)
+                            playerTotal.append(total12)
                             turnHand12 = False
                             turnHand1 = False
 
             #The second half of the split
             else:
-                hand2.append(deck.pop(0))
+                hand2.append(deck.pop())
                 total2 = 0
                 softNumberCheck = False
                 softNumberValue = 0
@@ -867,7 +870,7 @@ def player1Turn():
                     softNumberValue = total2 - 10
                     if softNumberCheck == True:
                         print("\n")
-                        print("Player 1's hand 2-0")
+                        print("Player " + str(playerNumber) + "'s hand 2")
                         print("\n".join(str(i) for i in hand2))
                         print("\n")
                         print("Total: ", softNumberValue, "/", total2)
@@ -879,7 +882,7 @@ def player1Turn():
                     
                     else:
                         print("\n")
-                        print("Player 1's hand 2-0")
+                        print("Player " + str(playerNumber) + "'s hand 2")
                         print("\n".join(str(i) for i in hand2))
                         print("\n")
                         print("Total: ", total2)
@@ -890,17 +893,17 @@ def player1Turn():
                         print("\n")
 
                     if len(hand2) == 2 and total2 == 21:
-                        player1Total.append("Blackjack")
+                        playerTotal.append("Blackjack")
                         turnHand2 = False
                         turn = False
 
                     if len(hand2) == 2:
                         if hand2[0][0] == hand2[1][0]:
                             if hand2[0][0] != "Ace":
-                                choice = input("Do you want to hit, stand, or split your hand? ")
+                                choice = input("Do you want to hit, stand, or split? ")
                             
                             else:
-                                choice = input("Do you want to split your hand or stand? ")
+                                choice = input("Do you want to stand or split? ")
 
 
                         else:
@@ -908,7 +911,7 @@ def player1Turn():
                                 choice = input("Do you want to hit or stand? ")
 
                             else:
-                                player1Total.append(total2)
+                                playerTotal.append(total2)
                                 turnHand2 = False
                                 turn = False
 
@@ -916,7 +919,7 @@ def player1Turn():
                         choice = input("Do you want to hit or stand? ")
 
                     if choice == "hit":
-                        hand2.append(deck.pop(0))
+                        hand2.append(deck.pop())
                         last = hand2[-1][0]
                         if last == "Jack" or last == "Queen" or last == "King":
                             total2 += 10
@@ -945,53 +948,54 @@ def player1Turn():
                                     continue
 
                             else:
-                                player1Total.append(total2)
-                                print("Player 1's Hand 2-0")
+                                print("Player " + str(playerNumber) + "'s hand 2")
                                 print("\n".join(str(i) for i in hand2))
                                 print("\n")
                                 print("Total: ", total2)
                                 print("Bust")
+                                playerTotal.append(total2)
                                 turnHand2 = False
                                 turn = False
 
                         elif total2 <= 21 and len(hand2) == 5:
                             if softNumberCheck == True:
                                 softNumberValue = total2 - 10
-                                print("Player 1's hand 2-0")
+                                print("Player " + str(playerNumber) + "'s hand 2")
                                 print("\n".join(str(i) for i in hand2))
                                 print("\n")
                                 print("Total: ", softNumberValue, "/", total2)
-                                player1Total.append(total2)
+                                playerTotal.append("5-Card Charlie")
+
                                 turnHand2 = False
                                 turn = False
                             
                             else:
-                                print("Player 1's hand 2-0")
+                                print("Player " + str(playerNumber) + "'s hand 2")
                                 print("\n".join(str(i) for i in hand2))
                                 print("\n")
                                 print("Total: ", total2)
                                 print("\n")
-                                player1Total.append("5-Card Charlie")
+                                playerTotal.append("5-Card Charlie")
                                 turnHand2 = False
                                 turn = False
 
                         elif total2 == 21:
                             if softNumberCheck == True:
                                 softNumberValue = total2 - 10
-                                print("Player 1's hand 2-0")
+                                print("Player " + str(playerNumber) + "'s hand 2")
                                 print("\n".join(str(i) for i in hand2))
                                 print("\n")
                                 print("Total: ", softNumberValue, "/", total2)
-                                player1Total.append(total2)
+                                playerTotal.append(total2)
                                 turnHand2 = False
                                 turn = False
                                 
                             else:
-                                print("Player 1's hand 2-0")
+                                print("Player " + str(playerNumber) + "'s hand 2")
                                 print("\n".join(str(i) for i in hand2))
                                 print("\n")
                                 print("Total: ", total2)
-                                player1Total.append(total2)
+                                playerTotal.append(total2)
                                 turnHand2 = False
                                 turn = False
                         
@@ -999,7 +1003,7 @@ def player1Turn():
                             continue
                     
                     elif choice == "stand":
-                        player1Total.append(total2)
+                        playerTotal.append(total2)
                         turnHand2 = False
                         turn = False
                     
@@ -1008,7 +1012,7 @@ def player1Turn():
                         hand22 = [hand2[1]]
 
                         #The first half of the second half of the split
-                        hand21.append(deck.pop(0))
+                        hand21.append(deck.pop())
                         total21 = 0
                         softNumberCheck = False
                         softNumberValue = 0
@@ -1032,7 +1036,7 @@ def player1Turn():
                             softNumberValue = total21 - 10
                             if softNumberCheck == True:
                                 print("\n")
-                                print("Player 1's hand 2-1")
+                                print("Player " + str(playerNumber) + "'s hand 2-1")
                                 print("\n".join(str(i) for i in hand21))
                                 print("\n")
                                 print("Total: ", softNumberValue, "/", total21)
@@ -1044,7 +1048,7 @@ def player1Turn():
 
                             else:
                                 print("\n")
-                                print("Player 1's hand 2-1")
+                                print("Player " + str(playerNumber) + "'s hand 2-1")
                                 print("\n".join(str(i) for i in hand21))
                                 print("\n")
                                 print("Total: ", total21)
@@ -1055,7 +1059,7 @@ def player1Turn():
                                 print("\n")
 
                             if len(hand21) == 2 and total21 == 21:
-                                player1Total.append("Blackjack")
+                                playerTotal.append("Blackjack")
                                 turnHand21 = False
 
                             if len(hand21) == 2:
@@ -1063,14 +1067,14 @@ def player1Turn():
                                     choice = input("Do you want to hit or stand? ")
                                     
                                 else:
-                                    player1Total.append(total21)
+                                    playerTotal.append("Blackjack")
                                     turnHand21 = False
 
                             else:
                                 choice = input("Do you want to hit or stand? ")
 
                             if choice == "hit":
-                                hand21.append(deck.pop(0))
+                                hand21.append(deck.pop())
                                 last = hand21[-1][0]
                                 if last == "Jack" or last == "Queen" or last == "King":
                                     total21 += 10
@@ -1098,62 +1102,62 @@ def player1Turn():
                                             continue
                                     
                                     else:
-                                        player1Total.append(total21)
-                                        print("Player 1's hand 2-1")
+                                        print("Player " + str(playerNumber) + "'s hand 2-1")
                                         print("\n".join(str(i) for i in hand21))
                                         print("\n")
                                         print("Total: ", total21)
                                         print("Bust")
+                                        playerTotal.append(total21)
                                         turnHand21 = False
 
                                 elif total21 <= 21 and len(hand21) == 5:
                                     if softNumberCheck == True:
                                         softNumberValue = total21 - 10
-                                        print("Player 1's hand 2-1")
+                                        print("Player " + str(playerNumber) + "'s hand 2-1")
                                         print("\n".join(str(i) for i in hand21))
                                         print("\n")
                                         print("Total: ", softNumberValue, "/", total21)
                                         print("\n")
-                                        player1Total.append("5-Card Charlie")
+                                        playerTotal.append("5-Card Charlie")
                                         turnHand21 = False
 
                                     else:
-                                        print("Player 1's hand 2-1")
+                                        print("Player " + str(playerNumber) + "'s hand 2-1")
                                         print("\n".join(str(i) for i in hand21))
                                         print("\n")
                                         print("Total: ", total21)
                                         print("\n")
-                                        player1Total.append("5-Card Charlie")
+                                        playerTotal.append("5-Card Charlie")
                                         turnHand21 = False
                                 
                                 elif total21 == 21:
                                     if softNumberCheck == True:
                                         softNumberValue = total21 - 10
-                                        print("Player 1's hand 2-1")
+                                        print("Player " + str(playerNumber) + "'s hand 2-1")
                                         print("\n".join(str(i) for i in hand21))
                                         print("\n")
                                         print("Total: ", softNumberValue, "/", total21)
-                                        player1Total.append(total21)
+                                        playerTotal.append(total21)
                                         turnHand21 = False
                                         
                                     else:
-                                        print("Player 1's hand 2-1")
+                                        print("Player " + str(playerNumber) + "'s hand 2-1")
                                         print("\n".join(str(i) for i in hand21))
                                         print("\n")
                                         print("Total: ", total21)
-                                        player1Total.append(total21)
+                                        playerTotal.append(total21)
                                         turnHand21 = False
                                 
                                 else:
                                     continue
 
                             else:
-                                player1Total.append(total21)
+                                playerTotal.append(total21)
                                 turnHand21 = False
 
                         #The second half of the second half of the split
                         else:
-                            hand22.append(deck.pop(0))
+                            hand22.append(deck.pop())
                             total22 = 0
                             softNumberCheck = False
                             softNumberValue = 0
@@ -1177,7 +1181,7 @@ def player1Turn():
                                 softNumberValue = total22 - 10
                                 if softNumberCheck == True:
                                     print("\n")
-                                    print("Player 1's hand 2-2")
+                                    print("Player " + str(playerNumber) + "'s hand 2-2")
                                     print("\n".join(str(i) for i in hand22))
                                     print("\n")
                                     print("Total: ", softNumberValue, "/", total22)
@@ -1189,7 +1193,7 @@ def player1Turn():
 
                                 else:
                                     print("\n")
-                                    print("Player 1's hand 2-2")
+                                    print("Player " + str(playerNumber) + "'s hand 2-2")
                                     print("\n".join(str(i) for i in hand22))
                                     print("\n")
                                     print("Total: ", total22)
@@ -1200,7 +1204,7 @@ def player1Turn():
                                     print("\n")
 
                                 if len(hand22) == 2 and total22 == 21:
-                                    player1Total.append("Blackjack")
+                                    playerTotal.append("Blackjack")
                                     turnHand22 = False
                                     turnHand2 = False
                                     turn = False
@@ -1210,7 +1214,7 @@ def player1Turn():
                                         choice = input("Do you want to hit or stand? ")
                                         
                                     else:
-                                        player1Total.append(total22)
+                                        playerTotal.append(total22)
                                         turnHand22 = False
                                         turnHand2 = False
                                         turn = False
@@ -1219,7 +1223,7 @@ def player1Turn():
                                     choice = input("Do you want to hit or stand? ")
 
                                 if choice == "hit":
-                                    hand22.append(deck.pop(0))
+                                    hand22.append(deck.pop())
                                     last = hand22[-1][0]
                                     if last == "Jack" or last == "Queen" or last == "King":
                                         total22 += 10
@@ -1248,12 +1252,12 @@ def player1Turn():
                                                 continue
                                         
                                         else:
-                                            player1Total.append(total22)
-                                            print("Player 1's hand 2-2")
+                                            print("Player " + str(playerNumber) + "'s hand 2-2")
                                             print("\n".join(str(i) for i in hand22))
                                             print("\n")
                                             print("Total: ", total22)
                                             print("Bust")
+                                            playerTotal.append(total22)
                                             turnHand22 = False
                                             turnHand2 = False
                                             turn = False
@@ -1261,23 +1265,23 @@ def player1Turn():
                                     elif total22 <= 21 and len(hand22) == 5:
                                         if softNumberCheck == True:
                                             softNumberValue = total22 - 10
-                                            print("Player 1's hand 2-2")
+                                            print("Player " + str(playerNumber) + "'s hand 2-2")
                                             print("\n".join(str(i) for i in hand22))
                                             print("\n")
                                             print("Total: ", softNumberValue, "/", total22)
                                             print("\n")
-                                            player1Total.append("5-Card Charlie")
+                                            playerTotal.append("5-Card Charlie")
                                             turnHand22 = False
                                             turnHand2 = False
                                             turn = False
 
                                         else:
-                                            print("Player 1's hand 2-2")
+                                            print("Player " + str(playerNumber) + "'s hand 2-2")
                                             print("\n".join(str(i) for i in hand22))
                                             print("\n")
                                             print("Total: ", total22)
                                             print("\n")
-                                            player1Total.append("5-Card Charlie")
+                                            playerTotal.append("5-Card Charlie")
                                             turnHand22 = False
                                             turnHand2 = False
                                             turn = False
@@ -1285,21 +1289,21 @@ def player1Turn():
                                     elif total22 == 21:
                                         if softNumberCheck == True:
                                             softNumberValue = total22 - 10
-                                            print("Player 1's hand 2-2")
+                                            print("Player " + str(playerNumber) + "'s hand 2-2")
                                             print("\n".join(str(i) for i in hand22))
                                             print("\n")
                                             print("Total: ", softNumberValue, "/", total22)
-                                            player1Total.append(total22)
+                                            playerTotal.append(total22)
                                             turnHand22 = False
                                             turnHand2 = False
                                             turn = False
                                             
                                         else:
-                                            print("Player 1's hand 2-2")
+                                            print("Player " + str(playerNumber) + "'s hand 2-2")
                                             print("\n".join(str(i) for i in hand22))
                                             print("\n")
                                             print("Total: ", total22)
-                                            player1Total.append(total22)
+                                            playerTotal.append(total22)
                                             turnHand22 = False
                                             turnHand2 = False
                                             turn = False
@@ -1308,2107 +1312,7 @@ def player1Turn():
                                         continue
 
                                 else:
-                                    player1Total.append(total22)
-                                    turnHand22 = False
-                                    turnHand2 = False
-                                    turn = False
-
-def player2Turn():
-    total = 0
-    softNumberCheck = False
-    softNumberValue = 0
-    for card in range(0, len(player2Hand)):
-        if player2Hand[card][0] == "Jack" or player2Hand[card][0] == "Queen" or player2Hand[card][0] == "King":
-            total += 10
-
-        elif player2Hand[card][0] == "Ace":
-            softNumberCheck = True
-            if total < 11:
-                total += 11
-
-            else:
-                total += 1
-
-        else:
-            total += int(player2Hand[card][0])
-
-    turn = True
-    while turn == True:
-        softNumberValue = total - 10
-        if softNumberCheck == True:
-            print("Player 2's hand")
-            print("\n".join(str(i) for i in player2Hand))
-            print("\n")
-            print("Total: ", softNumberValue, "/", total)
-            print("\n")
-            print("The dealer's hand")
-            print(dealerHand[0])
-            print("\n")
-
-        else:
-            print("Player 2's hand")
-            print("\n".join(str(i) for i in player2Hand))
-            print("\n")
-            print("Total: ", total)
-            print("\n")
-            print("The dealer's hand")
-            print(dealerHand[0])
-            print("\n")
-        
-        if len(player2Hand) == 2 and total == 21:
-            player2Total.append("Blackjack")
-            turn = False
-            break
-
-        if len(player2Hand) == 2:
-            if player2Hand[0][0] == player2Hand[1][0]:
-                choice = input("Do you want to hit, stand, surrender, or split your hand? ")
-
-            else:
-                choice = input("Do you want to hit, stand, or surrender? ")
-
-        else:
-            choice = input("Do you want to hit or stand?" )
-        
-        if choice == "hit":
-            player2Hand.append(deck.pop(0))
-            last = player2Hand[-1][0]
-            if last == "Jack" or last == "Queen" or last == "King":
-                total += 10
-
-            elif last == "Ace":
-                if total < 11:
-                    softNumberCheck = True
-                    total += 11
-                    softNumberValue = total - 10
-
-                else:
-                    total += 1
-
-            else:
-                total += int(last)
-
-            if total > 21:
-                if softNumberCheck == True:
-                    softNumberCheck = False
-                    if last == "Jack" or last == "Queen" or last == "King":
-                        total = softNumberValue + 10
-                        continue
-
-                    else:
-                        total = softNumberValue + int(last)
-                        continue
-
-                else:
-                    print("Player 2's hand")
-                    print("\n".join(str(i) for i in player2Hand))
-                    print("\n")
-                    print("Total: ", total)
-                    print("Bust")
-                    player2Total.append(total)
-                    turn = False
-
-            elif total <= 21 and len(player2Hand) == 5:
-                if softNumberCheck == True:
-                    print("Player 2's hand")
-                    print("\n".join(str(i) for i in player2Hand))
-                    print("\n")
-                    print("Total: ", softNumberValue, "/", total)
-                    print("\n")
-                    player2Total.append("5-Card Charlie")
-                    turn = False
-
-                else:
-                    print("Player 2's hand")
-                    print("\n".join(str(i) for i in player2Hand))
-                    print("\n")
-                    print("Total: ", total)
-                    print("\n")
-                    player2Total.append("5-Card Charlie")
-                    turn = False
-
-            elif total == 21:
-                if softNumberCheck == True:
-                    print("Player 2's hand")
-                    print("\n".join(str(i) for i in player2Hand))
-                    print("\n")
-                    print("Total: ", softNumberValue, "/", total)
-                    player2Total.append(total)
-                    turn = False
-                
-                else:
-                    print("Player 2's hand")
-                    print("\n".join(str(i) for i in player2Hand))
-                    print("\n")
-                    print("Total: ", total)
-                    player2Total.append(total)
-                    turn = False
-            
-            else:
-                continue
-
-        elif choice == "stand":
-            player2Total.append(total)
-            turn = False
-
-        elif choice == "surrender":
-            player2Total.append("Surrender")
-            turn = False
-
-        elif choice == "split":
-            hand1 = [player2Hand[0]]
-            hand2 = [player2Hand[1]]
-            
-            #The first half of the split
-            hand1.append(deck.pop(0))
-            total1 = 0
-            softNumberCheck = False
-            softNumberValue = 0 
-            for card in range(0, len(hand1)):
-                if hand1[card][0] == "Jack" or hand1[card][0] == "Queen" or hand1[card][0] == "King":
-                    total1 += 10
-
-                elif hand1[card][0] == "Ace":
-                    if total1 < 11:
-                        softNumberCheck = True
-                        total1 += 11
-
-                    else:
-                        total1 += 1
-
-                else:
-                    total1 += int(hand1[card][0])
-            turnHand1 = True
-            while turnHand1 == True:
-                softNumberValue = total1 - 10
-                if softNumberCheck == True:
-                    print("Player 2's hand 1-0")
-                    print("\n".join(str(i) for i in hand1))
-                    print("\n")
-                    print("Total: ", softNumberValue, "/", total1)
-                    print("\n")
-                    print("The dealer's hand")
-                    print(dealerHand[0])
-                    print("\n")
-
-                else:
-                    print("Player 2's hand 1-0")
-                    print("\n".join(str(i) for i in hand1))
-                    print("\n")
-                    print("Total: ", total1)
-                    print("\n")
-                    print("The dealer's hand")
-                    print(dealerHand[0])
-                    print("\n")
-
-                if len(hand1) == 2 and total1 == 21:
-                    player2Total.append("Blackjack")
-                    turnHand1 = False
-
-                if len(hand1) == 2:
-                    if hand1[0][0] == hand1[1][0]:
-                        if hand1[0][0] != "Ace":
-                            choice = input("Do you want to hit, stand, or split your hand? ")
-                        
-                        else:
-                            choice = input("Do you want to split your hand or stand? ")
-
-
-                    else:
-                        if hand1[0][0] != "Ace":
-                            choice = input("Do you want to hit or stand? ")
-
-                        else:
-                            player1Total.append(total1)
-                            turnHand1 = False
-
-                else:
-                    choice = input("Do you want to hit or stand? ")
-                
-                if choice == "hit":
-                    hand1.append(deck.pop(0))
-                    last = hand1[-1][0]
-                    if last == "Jack" or last == "Queen" or last == "King":
-                        total1 += 10
-
-                    elif last == "Ace":
-                        if total1 < 11:
-                            softNumberCheck = True
-                            total1 += 11
-                            softNumberValue = total1 - 10
-
-                        else:
-                            total1 += 1
-
-                    else:
-                        total1 += int(last)
-
-                    if total1 > 21:
-                        if softNumberCheck == True:
-                            softNumberCheck = False
-                            if last == "Jack" or last == "Queen" or last == "King":
-                                total1 = softNumberValue + 10
-                                continue
-
-                            else:
-                                total1 = softNumberValue + int(last)
-                                continue
-
-                        else:
-                            print("Player 2's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", total1)
-                            print("Bust")
-                            player2Total.append(total1)
-                            turnHand1 = False
-
-                    elif total1 <= 21 and len(hand1) == 5:
-                        if softNumberValue == True:
-                            print("Player 2's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", softNumberValue, "/", total1)
-                            print("\n")
-                            player2Total.append("5-Card Charlie")
-                            turnHand1 = False
-                        
-                        else:
-                            print("Player 2's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", total1)
-                            print("\n")
-                            player2Total.append("5-Card Charlie")
-                            turnHand1 = False
-
-                    elif total1 == 21:
-                        if softNumberCheck == True:
-                            print("Player 2's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", softNumberValue, "/", total1)
-                            player2Total.append(total1)
-                            turnHand1 = False
-                            
-                        else:
-                            print("Player 2's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", total1)
-                            player2Total.append(total1)
-                            turnHand1 = False
-                    
-                    else:
-                        continue
-
-
-                elif choice == "stand":
-                    player2Total.append(total1)
-                    turnHand1 = False
-
-                elif choice == "split":
-                    hand11 = [hand1[0]]
-                    hand12 = [hand1[1]]
-
-                    #The first half of the first half of the split
-                    hand11.append(deck.pop(0))
-                    total11 = 0
-                    for card in range(0, len(hand11)):
-                        if hand11[card][0] == "Jack" or hand11[card][0] == "Queen" or hand11[card][0] == "King":
-                            total11 += 10
-
-                        elif hand11[card][0] == "Ace":
-                            softNumberCheck = True
-                            if total11 < 11:
-                                total11 += 11
-
-                            else:
-                                total11 += 1
-
-                        else:
-                            total11 += int(hand11[card][0])
-
-                    turnHand11 = True
-                    while turnHand11 == True:
-                        softNumberValue = total11 - 10
-                        if softNumberCheck == True:
-                            print("\n")
-                            print("Player 2's hand 1-1")
-                            print("\n".join(str(i) for i in hand11))
-                            print("\n")
-                            print("Total: ", softNumberValue, "/", total11)
-                            print("\n")
-                            print("The dealer's hand")
-                            print("\n")
-                            print(dealerHand[0])
-                            print("\n")
-
-                        else:
-                            print("\n")
-                            print("Player 2's hand 1-1")
-                            print("\n".join(str(i) for i in hand11))
-                            print("\n")
-                            print("Total: ", total11)
-                            print("\n")
-                            print("The dealer's hand")
-                            print("\n")
-                            print(dealerHand[0])
-                            print("\n")
-
-                        if len(hand11) == 2 and total11 == 21:
-                            player2Total.append("Blackjack")
-                            turnHand11 = False
-
-                        if len(hand11) == 2:
-                            if hand11[0][0] != "Ace":
-                                choice = input("Do you want to hit or stand? ")
-                                
-                            else:
-                                player2Total.append(total11)
-                                turnHand11 = False
-
-                        else:
-                            choice = input("Do you want to hit or stand? ")
-                        
-                        if choice == "hit":
-                            hand11.append(deck.pop(0))
-                            last = hand11[-1][0]
-                            if last == "Jack" or last == "Queen" or last == "King":
-                                total11 += 10
-
-                            elif last == "Ace":
-                                if total11 < 11:
-                                    softNumberCheck = True
-                                    total11 += 11
-                                    softNumberValue = total11 - 10
-
-                                else:
-                                    total11 += 1
-
-                            else:
-                                total11 += int(last)
-
-                            if total11 > 21:
-                                if softNumberCheck == True:
-                                    softNumberCheck = False
-                                    if last == "Jack" or last == "Queen" or last == "King":
-                                        total11 = softNumberValue + 10
-                                        continue
-                                    
-                                    else:
-                                        total11 = softNumberValue + int(last)
-                                        continue
-                                    
-                                else:
-                                    player2Total.append(total11)
-                                    print("Player 2's hand 1-1")
-                                    print("\n".join(str(i) for i in hand11))
-                                    print("\n")
-                                    print("Total: ", total11)
-                                    print("Bust")
-                                    turnHand11 = False
-
-                            elif total11 <= 21 and len(hand11) == 5:
-                                if softNumberCheck == True:
-                                    print("Player 2's hand 1-1")
-                                    print("\n".join(str(i) for i in hand11))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total11)
-                                    print("\n")
-                                    player2Total.append("5-Card Charlie")
-                                    turnHand11 = False
-
-                                else:
-                                    print("Player 2's hand 1-1")
-                                    print("\n".join(str(i) for i in hand11))
-                                    print("\n")
-                                    print("Total: ", total11)
-                                    print("\n")
-                                    player2Total.append("5-Card Charlie")
-                                    turnHand11 = False
-                                    
-                            elif total11 == 21:
-                                if softNumberCheck == True:
-                                    print("Player 2's hand 1-1")
-                                    print("\n".join(str(i) for i in hand11))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total11)
-                                    player2Total.append(total11)
-                                    turn = False
-                                
-                                else:
-                                    print("Player 2's hand 1-1")
-                                    print("\n".join(str(i) for i in hand1))
-                                    print("\n")
-                                    print("Total: ", total11)
-                                    player2Total.append(total11)
-                                    turn = False
-                            
-                            else:
-                                continue
-
-                        else:
-                            player2Total.append(total11)
-                            turnHand11 = False
-
-                    #The second half of the first half of the first split
-                    hand12.append(deck.pop(0))
-                    total12 = 0
-                    softNumberCheck = False
-                    softNumberValue = 0
-                    for card in range(0, len(hand12)):
-                        if hand12[card][0] == "Jack" or hand12[card][0] == "Queen" or hand12[card][0] == "King":
-                            total12 += 10
-
-                        elif hand12[card][0] == "Ace":
-                            softNumberCheck = True
-                            if total12 < 11:
-                                total12 += 11
-
-                            else:
-                                total12 += 1
-
-                        else:
-                            total12 += int(hand12[card][0])
-
-                    turnHand12 = True
-                    while turnHand12 == True:
-                        softNumberValue = total12 - 10
-                        if softNumberCheck == True:
-                            print("\n")
-                            print("Player 2's hand 1-2")
-                            print("\n".join(str(i) for i in hand12))
-                            print("\n")
-                            print("Total: ", softNumberValue, "/", total12)
-                            print("\n")
-                            print("The dealer's hand")
-                            print("\n")
-                            print(dealerHand[0])
-                            print("\n")
-                        
-                        else:
-                            print("\n")
-                            print("Player 2's hand 1-2")
-                            print("\n".join(str(i) for i in hand12))
-                            print("\n")
-                            print("Total: ", total12)
-                            print("\n")
-                            print("The dealer's hand")
-                            print("\n")
-                            print(dealerHand[0])
-                            print("\n")
-
-                        if len(hand12) == 2 and total12 == 21:
-                            player2Total.append("Blackjack")
-                            turnHand12 = False
-                        
-                        if len(hand12) == 2:
-                            if hand12[0][0] != "Ace":
-                                choice = input("Do you want to hit or stand? ")
-                                
-                            else:
-                                player1Total.append(total12)
-                                turnHand12 = False
-                                turnHand1 = False
-
-                        else:
-                            choice = input("Do you want to hit or stand? ")
-
-                        if choice == "hit":
-                            hand12.append(deck.pop(0))
-                            last = hand12[-1][0]
-                            if last == "Jack" or last == "Queen" or last == "King":
-                                total12 += 10
-
-                            elif last == "Ace":
-                                if total12 < 11:
-                                    softNumberCheck = True
-                                    total12 += 11
-                                    softNumberValue = total12 - 10
-
-                                else:
-                                    total12 += 1
-
-                            else:
-                                total12 += int(last)
-
-                            if total12 > 21:
-                                if softNumberCheck == True:
-                                    softNumberCheck = False
-                                    if last == "Jack" or last == "Queen" or last == "King":
-                                        total12 = softNumberValue + 10
-                                        continue
-
-                                    else:
-                                        total12 = softNumberValue + int(last)
-                                        continue
-
-                                else:
-                                    print("Player 2's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", total12)
-                                    print("Bust")
-                                    player2Total.append(total12)
-                                    turnHand12 = False
-                                    turnHand1 = False
-
-                            elif total12 <= 21 and len(hand12) == 5:
-                                if softNumberCheck == True:
-                                    print("Player 2's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total12)
-                                    print("\n")
-                                    player2Total.append("5-Card Charlie")
-                                    turnHand12 = False
-                                    turnHand1 = False
-
-                                else:
-                                    print("Player 2's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", total12)
-                                    print("\n")
-                                    player2Total.append("5-Card Charlie")
-                                    turnHand12 = False
-                                    turnHand1 = False
-                            
-                            elif total12 == 21:
-                                if softNumberCheck == True:
-                                    print("Player 2's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total12)
-                                    player2Total.append(total12)
-                                    turnHand12 = False
-                                    turnHand1 = False
-                                
-                                else:
-                                    print("Player 2's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", total12)
-                                    player2Total.append(total12)
-                                    turnHand12 = False
-                                    turnHand1 = False
-                            
-                            else:
-                                continue
-                            
-                        else:
-                            player2Total.append(total12)
-                            turnHand12 = False
-                            turnHand1 = False
-
-            #The second half of the first split
-            else:
-                hand2.append(deck.pop(0))
-                total2 = 0
-                softNumberCheck = False
-                softNumberValue = 0
-                for card in range(0, len(hand2)):
-                    if hand2[card][0] == "Jack" or hand2[card][0] == "Queen" or hand2[card][0] == "King":
-                        total2 += 10
-
-                    elif hand2[card][0] == "Ace":
-                        softNumberCheck = True
-                        if total2 < 11:
-                            total2 += 11
-
-                        else:
-                            total2 += 1
-
-                    else:
-                        total2 += int(hand2[card][0])
-
-                turnHand2 = True
-                while turnHand2 == True:
-                    softNumberValue = total2 - 10
-                    if softNumberCheck == True:
-                        print("\n")
-                        print("Player 2's hand 2-0")
-                        print("\n".join(str(i) for i in hand2))
-                        print("\n")
-                        print("Total: ", softNumberValue, "/", total2)
-                        print("\n")
-                        print("The dealer's hand")
-                        print("\n")
-                        print(dealerHand[0])
-                        print("\n")
-                    
-                    else:
-                        print("\n")
-                        print("Player 2's hand 2-0")
-                        print("\n".join(str(i) for i in hand2))
-                        print("\n")
-                        print("Total: ", total2)
-                        print("\n")
-                        print("The dealer's hand")
-                        print("\n")
-                        print(dealerHand[0])
-                        print("\n")
-
-                    if len(hand2) == 2 and total2 == 21:
-                        player2Total.append("Blackjack")
-
-                    if len(hand2) == 2:
-                        if hand2[0][0] == hand2[1][0]:
-                            if hand2[0][0] != "Ace":
-                                choice = input("Do you want to hit, stand or split your hand? ")
-                            
-                            else:
-                                choice = input("Do you want to split your hand or stand? ")
-
-
-                        else:
-                            if hand2[0][0] != "Ace":
-                                choice = input("Do you want to hit or stand? ")
-
-                            else:
-                                player2Total.append(total2)
-                                turnHand2 = False
-                                turn = False
-
-                    else:
-                        choice = input("Do you want to hit or stand? ")
-
-                    if choice == "hit":
-                        hand2.append(deck.pop(0))
-                        last = hand2[-1][0]
-                        if last == "Jack" or last == "Queen" or last == "King":
-                            total2 += 10
-
-                        elif last == "Ace":
-                            if total2 < 11:
-                                softNumberCheck = True
-                                total2 += 11
-                                softNumberValue = total2 - 10
-
-                            else:
-                                total2 += 1
-
-                        else:
-                            total2 += int(last)
-
-                        if total2 > 21:
-                            if softNumberCheck == True:
-                                softNumberCheck = False
-                                if last == "Jack" or last == "Queen" or last == "King":
-                                    total2 = softNumberValue + 10
-                                    continue
-
-                                else:
-                                    total2 = softNumberValue + int(last)
-                                    continue
-
-                            else:
-                                player2Total.append(total2)
-                                print("Player 2's Hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", total2)
-                                print("Bust")
-                                turnHand2 = False
-                                turn = False
-
-                        elif total2 <= 21 and len(hand2) == 5:
-                            if softNumberCheck == True:
-                                print("Player 2's hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", softNumberValue, "/", total2)
-                                print("\n")
-                                player2Total.append("5-Card Charlie")
-                                turnHand2 = False
-                                turn = False
-
-                            else:
-                                print("Player 2's hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", total2)
-                                print("\n")
-                                player2Total.append("5-Card Charlie")
-                                turnHand2 = False
-                                turn = False
-
-                        elif total2 == 21:
-                            if softNumberCheck == True:
-                                print("Player 2's hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", softNumberValue, "/", total2)
-                                player2Total.append(total2)
-                                turnHand2 = False
-                                turn = False
-                                
-                            else:
-                                print("Player 2's hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", total2)
-                                player2Total.append(total2)
-                                turnHand2 = False
-                                turn = False
-                        
-                        else:
-                            continue
-                    
-                    elif choice == "stand":
-                        player2Total.append(total2)
-                        turnHand2 = False
-                        turn = False
-                    
-                    elif choice == "split":
-                        hand21 = [hand2[0]]
-                        hand22 = [hand2[1]]
-
-                        #The first half of the second half of the first split
-                        hand21.append(deck.pop(0))
-                        total21 = 0
-                        softNumberCheck = False
-                        softNumberValue = 0
-                        for card in range(0, len(hand21)):
-                            if hand21[card][0] == "Jack" or hand21[card][0] == "Queen" or hand21[card][0] == "King":
-                                total21 += 10
-
-                            elif hand21[card][0] == "Ace":
-                                softNumberCheck = True
-                                if total21 < 11:
-                                    total21 += 11
-
-                                else:
-                                    total21 += 1
-
-                            else:
-                                total21 += int(hand21[card][0])
-
-                        turnHand21 = True
-                        while turnHand21 == True:
-                            softNumberValue = total21 - 10
-                            if softNumberCheck == True:
-                                print("\n")
-                                print("Player 2's hand 2-1")
-                                print("\n".join(str(i) for i in hand21))
-                                print("\n")
-                                print("Total: ", softNumberValue, "/", total21)
-                                print("\n")
-                                print("The dealer's hand")
-                                print("\n")
-                                print(dealerHand[0])
-                                print("\n")
-
-                            else:
-                                print("\n")
-                                print("Player 2's hand 2-1")
-                                print("\n".join(str(i) for i in hand21))
-                                print("\n")
-                                print("Total: ", total21)
-                                print("\n")
-                                print("The dealer's hand")
-                                print("\n")
-                                print(dealerHand[0])
-                                print("\n")
-
-                            if len(hand21) == 2 and total21 == 21:
-                                player2Total.append("Blackjack")
-                                turnHand21 = False
-
-                            if len(hand21) == 2:
-                                if hand21[0][0] != "Ace":
-                                       choice = input("Do you want to hit or stand? ")
-                                    
-                                else:
-                                    player2Total.append(total21)
-                                    turnHand21 = False
-
-                            else:
-                                choice = input("Do you want to hit or stand? ")
-
-                            if choice == "hit":
-                                hand21.append(deck.pop(0))
-                                last = hand21[-1][0]
-                                if last == "Jack" or last == "Queen" or last == "King":
-                                    total21 += 10
-
-                                elif last == "Ace":
-                                    if total21 < 11:
-                                        softNumberCheck = True
-                                        total21 += 11
-                                        softNumberValue = total21 - 10
-
-                                    else: total21 += 1
-
-                                else:
-                                    total21 += int(last)
-
-                                if total21 > 21:
-                                    if softNumberCheck == True:
-                                        softNumberCheck = False
-                                        if last == "Jack" or last == "Queen" or last == "King":
-                                            total21 = softNumberValue + 10
-                                            continue
-                                        
-                                        else:
-                                            total21 = softNumberValue + int(last)
-                                            continue
-                                    
-                                    else:
-                                        player2Total.append(total21)
-                                        print("Player 2's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", total21)
-                                        print("Bust")
-                                        turnHand21 = False
-
-                                elif total21 <= 21 and len(hand21) == 5:
-                                    if softNumberCheck == True:
-                                        print("Player 2's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", softNumberValue, "/", total21)
-                                        print("\n")
-                                        player2Total.append("5-Card Charlie")
-                                        turnHand21 = False
-
-                                    else:
-                                        print("Player 2's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", total21)
-                                        print("\n")
-                                        player2Total.append("5-Card Charlie")
-                                        turnHand21 = False
-                                
-                                elif total21 == 21:
-                                    if softNumberCheck == True:
-                                        print("Player 2's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", softNumberValue, "/", total21)
-                                        player2Total.append(total21)
-                                        turnHand21 = False
-                                        
-                                    else:
-                                        print("Player 2's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", total21)
-                                        player2Total.append(total21)
-                                        turnHand21 = False
-                                
-                                else:
-                                    continue
-
-                            else:
-                                player2Total.append(total21)
-                                turnHand21 = False
-
-                        #The second half of the second half of the first split
-                        else:
-                            hand22.append(deck.pop(0))
-                            total22 = 0
-                            softNumberCheck = False
-                            softNumberValue = 0
-                            for card in range(0, len(hand22)):
-                                if hand22[card][0] == "Jack" or hand22[card][0] == "Queen" or hand22[card][0] == "King":
-                                    total22 += 10
-
-                                elif hand22[card][0] == "Ace":
-                                    softNumberCheck = True
-                                    if total22 < 11:
-                                        total22 += 11
-
-                                    else:
-                                        total22 += 1
-
-                                else:
-                                    total22 += int(hand22[card][0])
-
-                            turnHand22 = True
-                            while turnHand22 == True:
-                                softNumberValue = total22 - 10
-                                if softNumberCheck == True:
-                                    print("\n")
-                                    print("Player 2's hand 2-2")
-                                    print("\n".join(str(i) for i in hand22))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total22)
-                                    print("\n")
-                                    print("The dealer's hand")
-                                    print("\n")
-                                    print(dealerHand[0])
-                                    print("\n")
-
-                                else:
-                                    print("\n")
-                                    print("Player 2's hand 2-2")
-                                    print("\n".join(str(i) for i in hand22))
-                                    print("\n")
-                                    print("Total: ", total22)
-                                    print("\n")
-                                    print("The dealer's hand")
-                                    print("\n")
-                                    print(dealerHand[0])
-                                    print("\n")
-
-                                if len(hand22) == 2 and total22 == 21:
-                                    player2Total.append("Blackjack")
-                                    turnHand22 = False
-                                    turnHand2 = False
-                                    turn = False
-
-                                if len(hand22) == 2:
-                                    if hand1[0][0] != "Ace":
-                                        choice = input("Do you want to hit or stand? ")
-                                        
-                                    else:
-                                        player2Total.append(total22)
-                                        turnHand22 = False
-                                        turnHand2 = False
-                                        turn = False
-
-                                else:
-                                    choice = input("Do you want to hit or stand? ")
-
-                                if choice == "hit":
-                                    hand22.append(deck.pop(0))
-                                    last = hand22[-1][0]
-                                    if last == "Jack" or last == "Queen" or last == "King":
-                                        total22 += 10
-
-                                    elif last == "Ace":
-                                        if total22 < 11:
-                                            softNumberCheck = True
-                                            total22 += 11
-                                            softNumberValue = total22 - 10
-
-                                        else:
-                                            total22 += 1
-
-                                    else:
-                                        total22 += int(last)
-
-                                    if total22 > 21:
-                                        if softNumberCheck == True:
-                                            softNumberCheck = False
-                                            if last == "Jack" or last == "Queen" or last == "King":
-                                                total22 = softNumberValue + 10
-                                                continue
-
-                                            else:
-                                                total22 = softNumberValue + int(last)
-                                                continue
-                                        
-                                        else:
-                                            player2Total.append(total22)
-                                            print("Player 2's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", total22)
-                                            print("Bust")
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-
-                                    elif total22 <= 21 and len(hand22) == 5:
-                                        if softNumberCheck == True:
-                                            print("Player 2's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", softNumberValue, "/", total22)
-                                            print("\n")
-                                            player2Total.append("5-Card Charlie")
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-
-                                        else:
-                                            print("Player 2's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", total22)
-                                            print("\n")
-                                            player2Total.append("5-Card Charlie")
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-                                    
-                                    elif total22 == 21:
-                                        if softNumberCheck == True:
-                                            print("Player 2's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", softNumberValue, "/", total22)
-                                            player2Total.append(total22)
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-                                            
-                                        else:
-                                            print("Player 2's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", total22)
-                                            player1Total.append(total22)
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-                                    
-                                    else:
-                                        continue
-
-                                else:
-                                    player2Total.append(total22)
-                                    turnHand22 = False
-                                    turnHand2 = False
-                                    turn = False
-
-def player3Turn():
-    total = 0
-    softNumberCheck = False
-    softNumberValue = 0
-    for card in range(0, len(player3Hand)):
-        if player3Hand[card][0] == "Jack" or player3Hand[card][0] == "Queen" or player3Hand[card][0] == "King":
-            total += 10
-
-        elif player3Hand[card][0] == "Ace":
-            softNumberCheck = True
-            if total < 11:
-                total += 11
-
-            else:
-                total += 1
-
-        else:
-            total += int(player3Hand[card][0])
-
-    turn = True
-    while turn == True:
-        softNumberValue = total - 10
-        if softNumberCheck == True:
-            print("Player 3's hand")
-            print("\n".join(str(i) for i in player3Hand))
-            print("\n")
-            print("Total: ", softNumberValue, "/", total)
-            print("\n")
-            print("The dealer's hand")
-            print(dealerHand[0])
-            print("\n")
-
-        else:
-            print("Player 3's hand")
-            print("\n".join(str(i) for i in player3Hand))
-            print("\n")
-            print("Total: ", total)
-            print("\n")
-            print("The dealer's hand")
-            print(dealerHand[0])
-            print("\n")
-        
-        if len(player3Hand) == 2 and total == 21:
-            player3Hand.append("Blackjack")
-            turn = False
-            break
-
-        if len(player3Hand) == 2:
-            if player3Hand[0][0] == player3Hand[1][0]:
-                choice = input("Do you want to hit, stand, surrender, or split your hand? ")
-
-            else:
-                choice = input("Do you want to hit, stand, or surrender? ")
-
-        else:
-            choice = input("Do you want to hit or stand?" )
-        
-        if choice == "hit":
-            player3Hand.append(deck.pop(0))
-            last = player3Hand[-1][0]
-            if last == "Jack" or last == "Queen" or last == "King":
-                total += 10
-
-            elif last == "Ace":
-                if total < 11:
-                    softNumberCheck = True
-                    total += 11
-                    softNumberValue = total - 10
-
-                else:
-                    total += 1
-
-            else:
-                total += int(last)
-
-            if total > 21:
-                if softNumberCheck == True:
-                    softNumberCheck = False
-                    if last == "Jack" or last == "Queen" or last == "King":
-                        total = softNumberValue + 10
-                        continue
-
-                    else:
-                        total = softNumberValue + int(last)
-                        continue
-
-                else:
-                    print("Player 3's hand")
-                    print("\n".join(str(i) for i in player3Hand))
-                    print("\n")
-                    print("Total: ", total)
-                    print("Bust")
-                    player3Total.append(total)
-                    turn = False
-
-            elif total <= 21 and len(player3Hand) == 5:
-                if softNumberCheck == True:
-                    print("Player 3's hand")
-                    print("\n".join(str(i) for i in player3Hand))
-                    print("\n")
-                    print("Total: ", softNumberValue, "/", total)
-                    print("\n")
-                    player3Total.append("5-Card Charlie")
-                    turn = False
-
-                else:
-                    print("Player 3's hand")
-                    print("\n".join(str(i) for i in player3Hand))
-                    print("\n")
-                    print("Total: ", total)
-                    print("\n")
-                    player3Total.append("5-Card Charlie")
-                    turn = False
-                    
-            elif total == 21:
-                if softNumberCheck == True:
-                    print("Player 3's hand")
-                    print("\n".join(str(i) for i in player3Hand))
-                    print("\n")
-                    print("Total: ", softNumberValue, "/", total)
-                    player3Total.append(total)
-                    turn = False
-                
-                else:
-                    print("Player 3's hand")
-                    print("\n".join(str(i) for i in player3Hand))
-                    print("\n")
-                    print("Total: ", total)
-                    player3Total.append(total)
-                    turn = False
-            
-            else:
-                continue
-
-        elif choice == "stand":
-            player3Total.append(total)
-            turn = False
-
-        elif choice == "surrender":
-            player3Total.append("Surrender")
-            turn = False
-
-        elif choice == "split":
-            hand1 = [player3Hand[0]]
-            hand2 = [player3Hand[1]]
-            
-            #The first half of the split
-            hand1.append(deck.pop(0))
-            total1 = 0
-            softNumberCheck = False
-            softNumberValue = 0 
-            for card in range(0, len(hand1)):
-                if hand1[card][0] == "Jack" or hand1[card][0] == "Queen" or hand1[card][0] == "King":
-                    total1 += 10
-
-                elif hand1[card][0] == "Ace":
-                    if total1 < 11:
-                        softNumberCheck = True
-                        total1 += 11
-
-                    else:
-                        total1 += 1
-
-                else:
-                    total1 += int(hand1[card][0])
-            turnHand1 = True
-            while turnHand1 == True:
-                softNumberValue = total1 - 10
-                if softNumberCheck == True:
-                    print("Player 3's hand 1-0")
-                    print("\n".join(str(i) for i in hand1))
-                    print("\n")
-                    print("Total: ", softNumberValue, "/", total1)
-                    print("\n")
-                    print("The dealer's hand")
-                    print(dealerHand[0])
-                    print("\n")
-
-                else:
-                    print("Player 3's hand 1-0")
-                    print("\n".join(str(i) for i in hand1))
-                    print("\n")
-                    print("Total: ", total1)
-                    print("\n")
-                    print("The dealer's hand")
-                    print(dealerHand[0])
-                    print("\n")
-
-                if len(hand1) == 2 and total1 == 21:
-                    player3Total.append("Blackjack")
-                    turnHand1 = False
-
-                if len(hand1) == 2:
-                    if hand1[0][0] == hand1[1][0]:
-                        if hand1[0][0] != "Ace":
-                            choice = input("Do you want to hit, stand, or split your hand? ")
-                        
-                        else:
-                            choice = input("Do you want to split your hand or stand? ")
-
-
-                    else:
-                        if hand1[0][0] != "Ace":
-                            choice = input("Do you want to hit or stand? ")
-
-                        else:
-                            player3Total.append(total1)
-                            turnHand1 = False
-
-                else:
-                    choice = input("Do you want to hit or stand? ")
-                
-                if choice == "hit":
-                    hand1.append(deck.pop(0))
-                    last = hand1[-1][0]
-                    if last == "Jack" or last == "Queen" or last == "King":
-                        total1 += 10
-
-                    elif last == "Ace":
-                        if total1 < 11:
-                            softNumberCheck = True
-                            total1 += 11
-                            softNumberValue = total1 - 10
-
-                        else:
-                            total1 += 1
-
-                    else:
-                        total1 += int(last)
-
-                    if total1 > 21:
-                        if softNumberCheck == True:
-                            softNumberCheck = False
-                            if last == "Jack" or last == "Queen" or last == "King":
-                                total1 = softNumberValue + 10
-                                continue
-
-                            else:
-                                total1 = softNumberValue + int(last)
-                                continue
-
-                        else:
-                            print("Player 3's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", total1)
-                            print("Bust")
-                            player3Total.append(total1)
-                            turnHand1 = False
-
-                    elif total1 <= 21 and len(hand1) == 5:
-                        if softNumberValue == True:
-                            print("Player 3's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", softNumberValue, "/", total1)
-                            print("\n")
-                            player3Total.append("5-Card Charlie")
-                            turnHand1 = False
-                        
-                        else:
-                            print("Player 3's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", total1)
-                            print("\n")
-                            player3Total.append("5-Card Charlie")
-                            turnHand1 = False
-
-                    elif total1 == 21:
-                        if softNumberCheck == True:
-                            print("Player 3's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", softNumberValue, "/", total1)
-                            player3Total.append(total1)
-                            turnHand1 = False
-                            
-                        else:
-                            print("Player 3's hand 1-0")
-                            print("\n".join(str(i) for i in hand1))
-                            print("\n")
-                            print("Total: ", total1)
-                            player3Total.append(total1)
-                            turnHand1 = False
-                    
-                    else:
-                        continue
-
-
-                elif choice == "stand":
-                    player3Total.append(total1)
-                    turnHand1 = False
-
-                elif choice == "split":
-                    hand11 = [hand1[0]]
-                    hand12 = [hand1[1]]
-
-                    #The first half of the first half of the split
-                    hand11.append(deck.pop(0))
-                    total11 = 0
-                    for card in range(0, len(hand11)):
-                        if hand11[card][0] == "Jack" or hand11[card][0] == "Queen" or hand11[card][0] == "King":
-                            total11 += 10
-
-                        elif hand11[card][0] == "Ace":
-                            softNumberCheck = True
-                            if total11 < 11:
-                                total11 += 11
-
-                            else:
-                                total11 += 1
-
-                        else:
-                            total11 += int(hand11[card][0])
-
-                    turnHand11 = True
-                    while turnHand11 == True:
-                        softNumberValue = total11 - 10
-                        if softNumberCheck == True:
-                            print("\n")
-                            print("Player 3's hand 1-1")
-                            print("\n".join(str(i) for i in hand11))
-                            print("\n")
-                            print("Total: ", softNumberValue, "/", total11)
-                            print("\n")
-                            print("The dealer's hand")
-                            print("\n")
-                            print(dealerHand[0])
-                            print("\n")
-
-                        else:
-                            print("\n")
-                            print("Player 3's hand 1-1")
-                            print("\n".join(str(i) for i in hand11))
-                            print("\n")
-                            print("Total: ", total11)
-                            print("\n")
-                            print("The dealer's hand")
-                            print("\n")
-                            print(dealerHand[0])
-                            print("\n")
-
-                        if len(hand11) == 2 and total11 == 21:
-                            player3Total.append("Blackjack")
-                            turnHand11 = False
-
-                        if len(hand11) == 2:
-                            if hand11[0][0] != "Ace":
-                                choice = input("Do you want to hit or stand? ")
-                                
-                            else:
-                                player3Total.append(total11)
-                                turnHand11 = False
-
-                        else:
-                            choice = input("Do you want to hit or stand? ")
-                        
-                        if choice == "hit":
-                            hand11.append(deck.pop(0))
-                            last = hand11[-1][0]
-                            if last == "Jack" or last == "Queen" or last == "King":
-                                total11 += 10
-
-                            elif last == "Ace":
-                                if total11 < 11:
-                                    softNumberCheck = True
-                                    total11 += 11
-                                    softNumberValue = total11 - 10
-
-                                else:
-                                    total11 += 1
-
-                            else:
-                                total11 += int(last)
-
-                            if total11 > 21:
-                                if softNumberCheck == True:
-                                    softNumberCheck = False
-                                    if last == "Jack" or last == "Queen" or last == "King":
-                                        total11 = softNumberValue + 10
-                                        continue
-                                    
-                                    else:
-                                        total11 = softNumberValue + int(last)
-                                        continue
-                                    
-                                else:
-                                    player3Total.append(total11)
-                                    print("Player 3's hand 1-1")
-                                    print("\n".join(str(i) for i in hand11))
-                                    print("\n")
-                                    print("Total: ", total11)
-                                    print("Bust")
-                                    turnHand11 = False
-
-                            elif total11 <= 21 and len(hand11) == 5:
-                                if softNumberCheck == True:
-                                    print("Player 3's hand 1-1")
-                                    print("\n".join(str(i) for i in hand11))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total11)
-                                    print("\n")
-                                    player3Total.append("5-Card Charlie")
-                                    turnHand11 = False
-
-                                else:
-                                    print("Player 3's hand 1-1")
-                                    print("\n".join(str(i) for i in hand11))
-                                    print("\n")
-                                    print("Total: ", total11)
-                                    print("\n")
-                                    player3Total.append("5-Card Charlie")
-                                    turnHand11 = False
-                                    
-                            elif total11 == 21:
-                                if softNumberCheck == True:
-                                    print("Player 3's hand 1-1")
-                                    print("\n".join(str(i) for i in hand11))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total11)
-                                    player3Total.append(total11)
-                                    turn = False
-                                
-                                else:
-                                    print("Player 3's hand 1-1")
-                                    print("\n".join(str(i) for i in hand1))
-                                    print("\n")
-                                    print("Total: ", total11)
-                                    player3Total.append(total11)
-                                    turn = False
-                            
-                            else:
-                                continue
-
-                        else:
-                            player3Total.append(total11)
-                            turnHand11 = False
-
-                    #The second half of the first half of the split
-                    hand12.append(deck.pop(0))
-                    total12 = 0
-                    softNumberCheck = False
-                    softNumberValue = 0
-                    for card in range(0, len(hand12)):
-                        if hand12[card][0] == "Jack" or hand12[card][0] == "Queen" or hand12[card][0] == "King":
-                            total12 += 10
-
-                        elif hand12[card][0] == "Ace":
-                            softNumberCheck = True
-                            if total12 < 11:
-                                total12 += 11
-
-                            else:
-                                total12 += 1
-
-                        else:
-                            total12 += int(hand12[card][0])
-
-                    turnHand12 = True
-                    while turnHand12 == True:
-                        softNumberValue = total12 - 10
-                        if softNumberCheck == True:
-                            print("\n")
-                            print("Player 3's hand 1-2")
-                            print("\n".join(str(i) for i in hand12))
-                            print("\n")
-                            print("Total: ", softNumberValue, "/", total12)
-                            print("\n")
-                            print("The dealer's hand")
-                            print("\n")
-                            print(dealerHand[0])
-                            print("\n")
-                        
-                        else:
-                            print("\n")
-                            print("Player 3's hand 1-2")
-                            print("\n".join(str(i) for i in hand12))
-                            print("\n")
-                            print("Total: ", total12)
-                            print("\n")
-                            print("The dealer's hand")
-                            print("\n")
-                            print(dealerHand[0])
-                            print("\n")
-
-                        if len(hand12) == 2 and total12 == 21:
-                            player3Total.append("Blackjack")
-                        
-                        if len(hand1) == 2:
-                            if hand12[0][0] != "Ace":
-                                choice = input("Do you want to hit or stand? ")
-                                
-                            else:
-                                player3Total.append(total12)
-                                turnHand12 = False
-                                turnHand1 = False
-
-                        else:
-                            choice = input("Do you want to hit or stand? ")
-
-                        if choice == "hit":
-                            hand12.append(deck.pop(0))
-                            last = hand12[-1][0]
-                            if last == "Jack" or last == "Queen" or last == "King":
-                                total12 += 10
-
-                            elif last == "Ace":
-                                if total12 < 11:
-                                    softNumberCheck = True
-                                    total12 += 11
-                                    softNumberValue = total12 - 10
-
-                                else:
-                                    total12 += 1
-
-                            else:
-                                total12 += int(last)
-
-                            if total12 > 21:
-                                if softNumberCheck == True:
-                                    softNumberCheck = False
-                                    if last == "Jack" or last == "Queen" or last == "King":
-                                        total12 = softNumberValue + 10
-                                        continue
-
-                                    else:
-                                        total12 = softNumberValue + int(last)
-                                        continue
-
-                                else:
-                                    player3Total.append(total12)
-                                    print("Player 3's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", total12)
-                                    print("Bust")
-                                    turnHand12 = False
-                                    turnHand1 = False
-
-                            elif total12 <= 21 and len(hand12) == 5:
-                                if softNumberCheck == True:
-                                    print("Player 3's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total12)
-                                    print("\n")
-                                    player3Total.append("5-Card Charlie")
-                                    turnHand12 = False
-                                    turnHand1 = False
-
-                                else:
-                                    print("Player 3's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", total12)
-                                    print("\n")
-                                    player3Total.append("5-Card Charlie")
-                                    turnHand12 = False
-                                    turnHand1 = False
-                            
-                            elif total12 == 21:
-                                if softNumberCheck == True:
-                                    print("Player 3's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total12)
-                                    player3Total.append(total12)
-                                    turnHand12 = False
-                                
-                                else:
-                                    print("Player 3's hand 1-2")
-                                    print("\n".join(str(i) for i in hand12))
-                                    print("\n")
-                                    print("Total: ", total12)
-                                    player3Total.append(total12)
-                                    turnHand12 = False
-                            
-                            else:
-                                continue
-                            
-                        else:
-                            player3Total.append(total12)
-                            turnHand12 = False
-                            turnHand1 = False
-
-            #The second half of the split
-            else:
-                hand2.append(deck.pop(0))
-                total2 = 0
-                softNumberCheck = False
-                softNumberValue = 0
-                for card in range(0, len(hand2)):
-                    if hand2[card][0] == "Jack" or hand2[card][0] == "Queen" or hand2[card][0] == "King":
-                        total2 += 10
-
-                    elif hand2[card][0] == "Ace":
-                        softNumberCheck = True
-                        if total2 < 11:
-                            total2 += 11
-
-                        else:
-                            total2 += 1
-
-                    else:
-                        total2 += int(hand2[card][0])
-
-                turnHand2 = True
-                while turnHand2 == True:
-                    softNumberValue = total2 - 10
-                    if softNumberCheck == True:
-                        print("\n")
-                        print("Player 3's hand 2-0")
-                        print("\n".join(str(i) for i in hand2))
-                        print("\n")
-                        print("Total: ", softNumberValue, "/", total2)
-                        print("\n")
-                        print("The dealer's hand")
-                        print("\n")
-                        print(dealerHand[0])
-                        print("\n")
-                    
-                    else:
-                        print("\n")
-                        print("Player 3's hand 2-0")
-                        print("\n".join(str(i) for i in hand2))
-                        print("\n")
-                        print("Total: ", total2)
-                        print("\n")
-                        print("The dealer's hand")
-                        print("\n")
-                        print(dealerHand[0])
-                        print("\n")
-
-                    if len(hand2) == 2 and total2 == 21:
-                        player3Total.append("Blackjack")
-
-                    if len(hand2) == 2:
-                        if hand2[0][0] == hand2[1][0]:
-                            if hand2[0][0] != "Ace":
-                                choice = input("Do you want to hit, stand, or split your hand? ")
-                            
-                            else:
-                                choice = input("Do you want to split your hand or stand? ")
-
-
-                        else:
-                            if hand2[0][0] != "Ace":
-                                choice = input("Do you want to hit or stand? ")
-
-                            else:
-                                player3Total.append(total2)
-                                turnHand2 = False
-                                turn = False
-
-                    else:
-                        choice = input("Do you want to hit or stand? ")
-
-                    if choice == "hit":
-                        hand2.append(deck.pop(0))
-                        last = hand2[-1][0]
-                        if last == "Jack" or last == "Queen" or last == "King":
-                            total2 += 10
-
-                        elif last == "Ace":
-                            if total2 < 11:
-                                softNumberCheck = True
-                                total2 += 11
-                                softNumberValue = total2 - 10
-
-                            else:
-                                total2 += 1
-
-                        else:
-                            total2 += int(last)
-
-                        if total2 > 21:
-                            if softNumberCheck == True:
-                                softNumberCheck = False
-                                if last == "Jack" or last == "Queen" or last == "King":
-                                    total2 = softNumberValue + 10
-                                    continue
-
-                                else:
-                                    total2 = softNumberValue + int(last)
-                                    continue
-
-                            else:
-                                player3Total.append(total2)
-                                print("Player 3's Hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", total2)
-                                print("Bust")
-                                turnHand2 = False
-                                turn = False
-
-                        elif total2 <= 21 and len(hand2) == 5:
-                            if softNumberCheck == True:
-                                print("Player 3's hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", softNumberValue, "/", total2)
-                                player3Total.append("5-Card Charlie")
-                                turnHand2 = False
-                                turn = False
-                            
-                            else:
-                                print("Player 3's hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", total2)
-                                print("\n")
-                                player3Total.append("5-Card Charlie")
-                                turnHand2 = False
-                                turn = False
-
-                        elif total2 == 21:
-                            if softNumberCheck == True:
-                                print("Player 3's hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", softNumberValue, "/", total2)
-                                player3Total.append(total2)
-                                turnHand2 = False
-                                turn = False
-                                
-                            else:
-                                print("Player 3's hand 2-0")
-                                print("\n".join(str(i) for i in hand2))
-                                print("\n")
-                                print("Total: ", total2)
-                                player3Total.append(total2)
-                                turnHand2 = False
-                                turn = False
-                        
-                        else:
-                            continue
-                    
-                    elif choice == "stand":
-                        player3Total.append(total2)
-                        turnHand2 = False
-                        turn = False
-                    
-                    elif choice == "split":
-                        hand21 = [hand2[0]]
-                        hand22 = [hand2[1]]
-
-                        #The first half of the second half of the split
-                        hand21.append(deck.pop(0))
-                        total21 = 0
-                        softNumberCheck = False
-                        softNumberValue = 0
-                        for card in range(0, len(hand21)):
-                            if hand21[card][0] == "Jack" or hand21[card][0] == "Queen" or hand21[card][0] == "King":
-                                total21 += 10
-
-                            elif hand21[card][0] == "Ace":
-                                softNumberCheck = True
-                                if total21 < 11:
-                                    total21 += 11
-
-                                else:
-                                    total21 += 1
-
-                            else:
-                                total21 += int(hand21[card][0])
-
-                        turnHand21 = True
-                        while turnHand21 == True:
-                            softNumberValue = total21 - 10
-                            if softNumberCheck == True:
-                                print("\n")
-                                print("Player 3's hand 2-1")
-                                print("\n".join(str(i) for i in hand21))
-                                print("\n")
-                                print("Total: ", softNumberValue, "/", total21)
-                                print("\n")
-                                print("The dealer's hand")
-                                print("\n")
-                                print(dealerHand[0])
-                                print("\n")
-
-                            else:
-                                print("\n")
-                                print("Player 3's hand 2-1")
-                                print("\n".join(str(i) for i in hand21))
-                                print("\n")
-                                print("Total: ", total21)
-                                print("\n")
-                                print("The dealer's hand")
-                                print("\n")
-                                print(dealerHand[0])
-                                print("\n")
-
-                            if len(hand21) == 2 and total21 == 21:
-                                player3Total.append("Blackjack")
-
-                            if len(hand21) == 2:
-                                if hand21[0][0] != "Ace":
-                                    choice = input("Do you want to hit or stand? ")
-                                    
-                                else:
-                                    player3Total.append(total21)
-                                    turnHand21 = False
-
-                            else:
-                                choice = input("Do you want to hit or stand? ")
-
-                            if choice == "hit":
-                                hand21.append(deck.pop(0))
-                                last = hand21[-1][0]
-                                if last == "Jack" or last == "Queen" or last == "King":
-                                    total21 += 10
-
-                                elif last == "Ace":
-                                    if total21 < 11:
-                                        softNumberCheck = True
-                                        total21 += 11
-                                        softNumberValue = total21 - 10
-
-                                    else: total21 += 1
-
-                                else:
-                                    total21 += int(last)
-
-                                if total21 > 21:
-                                    if softNumberCheck == True:
-                                        softNumberCheck = False
-                                        if last == "Jack" or last == "Queen" or last == "King":
-                                            total21 = softNumberValue + 10
-                                            continue
-                                        
-                                        else:
-                                            total21 = softNumberValue + int(last)
-                                            continue
-                                    
-                                    else:
-                                        player3Total.append(total21)
-                                        print("Player 3's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", total21)
-                                        print("Bust")
-                                        turnHand21 = False
-
-                                elif total21 <= 21 and len(hand21) == 5:
-                                    if softNumberCheck == True:
-                                        print("Player 3's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", softNumberValue, "/", total21)
-                                        print("\n")
-                                        player3Total.append("5-Card Charlie")
-                                        turnHand21 = False
-
-                                    else:
-                                        print("Player 3's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", total21)
-                                        print("\n")
-                                        player3Total.append("5-Card Charlie")
-                                        turnHand21 = False
-                                
-                                elif total21 == 21:
-                                    if softNumberCheck == True:
-                                        print("Player 3's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", softNumberValue, "/", total21)
-                                        player3Total.append(total21)
-                                        turnHand21 = False
-                                        
-                                    else:
-                                        print("Player 3's hand 2-1")
-                                        print("\n".join(str(i) for i in hand21))
-                                        print("\n")
-                                        print("Total: ", total21)
-                                        player3Total.append(total21)
-                                        turnHand21 = False
-                                
-                                else:
-                                    continue
-
-                            else:
-                                player3Total.append(total21)
-                                turnHand21 = False
-
-                        #The second half of the second half of the split
-                        else:
-                            hand22.append(deck.pop(0))
-                            total22 = 0
-                            softNumberCheck = False
-                            softNumberValue = 0
-                            for card in range(0, len(hand22)):
-                                if hand22[card][0] == "Jack" or hand22[card][0] == "Queen" or hand22[card][0] == "King":
-                                    total22 += 10
-
-                                elif hand22[card][0] == "Ace":
-                                    softNumberCheck = True
-                                    if total22 < 11:
-                                        total22 += 11
-
-                                    else:
-                                        total22 += 1
-
-                                else:
-                                    total22 += int(hand22[card][0])
-
-                            turnHand22 = True
-                            while turnHand22 == True:
-                                softNumberValue = total22 - 10
-                                if softNumberCheck == True:
-                                    print("\n")
-                                    print("Player 3's hand 2-2")
-                                    print("\n".join(str(i) for i in hand22))
-                                    print("\n")
-                                    print("Total: ", softNumberValue, "/", total22)
-                                    print("\n")
-                                    print("The dealer's hand")
-                                    print("\n")
-                                    print(dealerHand[0])
-                                    print("\n")
-
-                                else:
-                                    print("\n")
-                                    print("Player 3's hand 2-2")
-                                    print("\n".join(str(i) for i in hand22))
-                                    print("\n")
-                                    print("Total: ", total22)
-                                    print("\n")
-                                    print("The dealer's hand")
-                                    print("\n")
-                                    print(dealerHand[0])
-                                    print("\n")
-
-                                if len(hand22) == 2 and total22 == 21:
-                                    player3Total.append("Blackjack")
-
-                                if len(hand22) == 2:
-                                    if hand1[0][0] != "Ace":
-                                        choice = input("Do you want to hit or stand? ")
-                                        
-                                    else:
-                                        player3Total.append(total22)
-                                        turnHand22 = False
-                                        turnHand2 = False
-                                        turn = False
-
-                                else:
-                                    choice = input("Do you want to hit or stand? ")
-
-                                if choice == "hit":
-                                    hand22.append(deck.pop(0))
-                                    last = hand22[-1][0]
-                                    if last == "Jack" or last == "Queen" or last == "King":
-                                        total22 += 10
-
-                                    elif last == "Ace":
-                                        if total22 < 11:
-                                            softNumberCheck = True
-                                            total22 += 11
-                                            softNumberValue = total22 - 10
-
-                                        else:
-                                            total22 += 1
-
-                                    else:
-                                        total22 += int(last)
-
-                                    if total22 > 21:
-                                        if softNumberCheck == True:
-                                            softNumberCheck = False
-                                            if last == "Jack" or last == "Queen" or last == "King":
-                                                total22 = softNumberValue + 10
-                                                continue
-
-                                            else:
-                                                total22 = softNumberValue + int(last)
-                                                continue
-                                        
-                                        else:
-                                            player3Total.append(total22)
-                                            print("Player 3's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", total22)
-                                            print("Bust")
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-
-                                    elif total22 <= 21 and len(hand22) == 5:
-                                        if softNumberCheck == True:
-                                            print("Player 3's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", softNumberValue, "/", total22)
-                                            print("\n")
-                                            player3Total.append("5-Card Charlie")
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-
-                                        else:
-                                            print("Player 3's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", total22)
-                                            print("\n")
-                                            player3Total.append("5-Card Charlie")
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-                                    
-                                    elif total22 == 21:
-                                        if softNumberCheck == True:
-                                            print("Player 3's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", softNumberValue, "/", total22)
-                                            player3Total.append(total22)
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-                                            
-                                        else:
-                                            print("Player 3's hand 2-2")
-                                            print("\n".join(str(i) for i in hand22))
-                                            print("\n")
-                                            print("Total: ", total22)
-                                            player3Total.append(total22)
-                                            turnHand22 = False
-                                            turnHand2 = False
-                                            turn = False
-                                    
-                                    else:
-                                        continue
-
-                                else:
-                                    player3Total.append(total22)
+                                    playerTotal.append(total22)
                                     turnHand22 = False
                                     turnHand2 = False
                                     turn = False
@@ -3458,7 +1362,7 @@ def dealerTurn():
 
         choice = input("Do you want to hit or stand? ")
         if choice == "hit":
-            dealerHand.append(deck.pop(0))
+            dealerHand.append(deck.pop())
             last = dealerHand[-1][0]
             if last == "Jack" or last == "Queen" or last == "King":
                 dealerTotal += 10

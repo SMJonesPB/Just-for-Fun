@@ -77,8 +77,8 @@ def playWar():
     global player2Card
     game = True
     while game == True:
-        player1Card = player1Deck.pop(0)
-        player2Card = player2Deck.pop(0)
+        player1Card = player1Deck.pop()
+        player2Card = player2Deck.pop()
         print("\nPlayer 1's card:", player1Card)
         print("Player 2's card:", player2Card)
         print("Player 1 has", len(player1Deck), "card(s) left.")
@@ -99,43 +99,43 @@ def playWar():
                         war = False
 
                     elif len(player1Deck) == 1:
-                        player1Card = player1Deck.pop(0)
+                        player1Card = player1Deck.pop()
 
                     elif len(player1Deck) == 2:
-                        player1War.append(player1Deck.pop(0))
-                        player1Card = player1Deck.pop(0)
+                        player1War.append(player1Deck.pop())
+                        player1Card = player1Deck.pop()
 
                     elif len(player1Deck) == 3:
-                        player1War.append(player1Deck.pop(0))
-                        player1War.append(player1Deck.pop(0))
+                        player1War.append(player1Deck.pop())
+                        player1War.append(player1Deck.pop())
                         player1Card = player1Deck.pop(0)
 
                     else:
-                        player1War.append(player1Deck.pop(0))
-                        player1War.append(player1Deck.pop(0))
-                        player1War.append(player1Deck.pop(0))
-                        player1Card = player1Deck.pop(0)
+                        player1War.append(player1Deck.pop())
+                        player1War.append(player1Deck.pop())
+                        player1War.append(player1Deck.pop())
+                        player1Card = player1Deck.pop()
 
                     if len(player2Deck) == 0:
                         player1Deck.append(player1Card)
                         war = False
 
                     elif len(player2Deck) == 1:
-                        player2Card = player2Deck.pop(0)
+                        player2Card = player2Deck.pop()
 
                     elif len(player2Deck) == 2:
-                        player2War.append(player2Deck.pop(0))
-                        player2Card = player2Deck.pop(0)
+                        player2War.append(player2Deck.pop())
+                        player2Card = player2Deck.pop()
 
                     elif len(player2Deck) == 3:
-                        player2War.append(player2Deck.pop(0))
-                        player2War.append(player2Deck.pop(0))
+                        player2War.append(player2Deck.pop())
+                        player2War.append(player2Deck.pop())
                         player2Card = player2Deck.pop(0)
 
                     else:
-                        player2War.append(player2Deck.pop(0))
-                        player2War.append(player2Deck.pop(0))
-                        player2War.append(player2Deck.pop(0))
+                        player2War.append(player2Deck.pop())
+                        player2War.append(player2Deck.pop())
+                        player2War.append(player2Deck.pop())
                         player2Card = player2Deck.pop(0)
 
                     print("\nPlayer 1's card:", player1Card)

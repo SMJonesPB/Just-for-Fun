@@ -70,438 +70,246 @@ dealerHand = []
 def playRideTheTide():
     numberOfPlayers = input("How many players are there from 1 to 3 except the dealer? ")
     if numberOfPlayers == "1":
-        player1Turn()
+        generalPlayer(player1Hand, 1)
         dealerTurn()
+        player1Guesses = len(player1Hand)
+        dealerGuesses = len(dealerHand)
         print("\n")
-        if player1Hand == [] and dealerHand == []:
+        if player1Guesses == 0 and dealerGuesses == 0:
             print("\nPlayer 1 and the dealer guessed wrong.")
         
         else:
-            if len(player1Hand) == 6:
+            if player1Guesses == 6:
                 print("Player 1 rides the tide!")
             
-            elif player1Hand == []:
+            elif player1Guesses == 0:
                 print("\nPlayer 1 guessed wrong.")
                 print("The dealer wins.")
 
-            elif dealerHand == []:
+            elif dealerGuesses == 0:
                 print("The dealer guessed wrong.")
                 print("Player 1 wins!")
 
             else:
-                print("\nPlayer 1's correct guesses: ", len(player1Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player1Hand) > len(dealerHand):
+                print("\nPlayer 1's correct guesses: ", player1Guesses)
+                print("The dealer's correct guesses: ", dealerGuesses)
+                if player1Guesses > dealerGuesses:
                     print("Player 1 wins!")
 
-                elif len(player1Hand) == len(dealerHand):
+                elif player1Guesses == dealerGuesses:
                     print("Player 1 ties.")
 
                 else:
                     print("Player 1 loses.")
 
     elif numberOfPlayers == "2":
-        player1Turn()
-        player2Turn()
+        generalPlayer(player1Hand, 1)
+        generalPlayer(player2Hand, 2)
         dealerTurn()
+        player1Guesses = len(player1Hand)
+        player2Guesses = len(player2Hand)
+        dealerGuesses = len(dealerHand)
         print("\n")
-        if player1Hand == [] and player2Hand == [] and dealerHand == []:
-            print("\nPlayer 1, player 2, and the dealer guessed wrong.")
+        if player1Guesses == 0 and player2Guesses == 0 and dealerGuesses == 0:
+            print("Player 1, player 2, and the dealer guessed wrong.")
         
         else:
-            if len(player1Hand) == 6:
-                if len(player2Hand) == 6:
-                    print("Player 1 and player 2 ride the tide!")
-                    return
+            if player1Guesses == 6:
+                if player2Guesses == 6:
+                    print("Players 1 and 2 ride the tide!")
 
                 else:
                     print("Player 1 rides the tide!")
 
-            elif player2Hand == 6:
+            elif player2Guesses == 6:
                 print("Player 2 rides the tide!")
 
-            else:
-                print("Neither player 1 nor player 2 rides the tide.")
-
-            if player1Hand == [] and player2Hand != [] and dealerHand != []:
-                print("\nPlayer 1 guessed wrong.")
-                print("Player 2's correct guesses: ", len(player2Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player2Hand) > len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 wins!")
-
-                elif len(player2Hand == len(dealerHand)):
-                    if len(player2Hand) != 6:
-                        print("Player 2 ties.")
+            if player1Guesses == 0:
+                if player2Guesses == 0:
+                    print("Players 1 and 2 guessed wrong.")
 
                 else:
-                    print("Player 2 loses.")
+                    if dealerGuesses == 0:
+                        print("Player 1 and the dealer guessed wrong.")
 
-            elif player1Hand != [] and player2Hand == [] and dealerHand != []:
-                print("\nPlayer 2 guessed wrong.")
-                print("\nPlayer 1's correct guesses: ", len(player1Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player1Hand) > len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 wins!")
-
-                elif len(player1Hand == len(dealerHand)):
-                    if len(player1Hand) != 6:
-                        print("Player 1 ties.")
+            elif player2Guesses == 0:
+                if dealerGuesses == 0:
+                    print("Player 2 and the dealer guessed wrong")
 
                 else:
-                    print("Player 1 loses.")
-            
-            elif player1Hand != [] and player2Hand != [] and  dealerHand == []:
+                    print("Player 2 guessed wrong.")
+
+            elif dealerGuesses == 0:
                 print("The dealer guessed wrong.")
-                if len(player1Hand) != 6:
-                    if len(player2Hand) != 6:
-                        print("Player 1 and player 2 win!")
 
-                    else:
-                        print("Player 1 wins!")
+            print("Player 1's correct guesses: ", player1Guesses)
+            print("Player 2's correct guesses: ", player2Guesses)
+            print("The dealer's correct guesses: ", dealerGuesses)
+            if player1Guesses > dealerGuesses and player1Guesses < 6:
+                print("Player 1 wins!")
 
-            elif player1Hand == [] and player2Hand == [] and dealerHand != []:
-                print("Player 1 and player 2 guessed wrong.")
-                print("The dealer wins.")
-
-            elif player1Hand == [] and player2Hand != [] and dealerHand == []:
-                print("Player 1 and the dealer guessed wrong.")
-                if len(player2Hand) != 6:
-                    print("Player 2 wins!")
-
-            elif player1Hand != [] and player2Hand == [] and dealerHand == []:
-                print("Player 2 and the dealer guessed wrong.")
-                if len(player1Hand) != 6:
-                    print("Player 1 wins!")
+            elif player1Guesses == dealerGuesses and player1Guesses < 6:
+                print("Player 1 ties.")
 
             else:
-                print("Player 1's correct guesses: ", len(player1Hand))
-                print("Player 2's correct guesses: ", len(player2Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player1Hand) > len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 wins!")
+                if player1Guesses > 0:
+                    print("Player 1 loses.")
 
-                elif len(player1Hand) == len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 ties.")
+            if player2Guesses > dealerGuesses and player2Guesses < 6:
+                print("Player 2 wins!")
 
-                else:
-                        print("Player 1 loses.")
+            elif player2Guesses == dealerGuesses and player2Guesses < 6:
+                print("Player 2 ties.")
 
-                if len(player2Hand) > len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 wins!")
-
-                elif len(player2Hand) == len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 ties.")
-
-                else:
+            else:
+                if player2Guesses > 0:
                     print("Player 2 loses.")
 
     elif numberOfPlayers == "3":
-        player1Turn()
-        player2Turn()
-        player3Turn()
+        generalPlayer(player1Hand, 1)
+        generalPlayer(player2Hand, 2)
+        generalPlayer(player3Hand, 3)
         dealerTurn()
+        player1Guesses = len(player1Hand)
+        player2Guesses = len(player2Hand)
+        player3Guesses = len(player3Hand)
+        dealerGuesses = len(dealerHand)
         print("\n")
-        if player1Hand == [] and player2Hand == [] and player3Hand == [] and dealerHand == []:
-            print("\nPlayer 1, player 2, player 3, and the dealer guessed wrong.")
+        if player1Guesses == 0 and player2Guesses == 0 and player3Guesses == 0 and dealerGuesses == 0:
+            print("Player 1, player 2, player 3, and the dealer guessed wrong.")
         
         else:
-            if len(player1Hand) == 6:
-                if len(player2Hand) == 6:
-                    if len(player3Hand) == 6:
-                        print("Player 1, player 2, and player 3 ride the tide!")
-                        return
+            if player1Guesses == 6:
+                if player2Guesses == 6:
+                    if player3Guesses == 6:
+                        print("Players 1, 2, and 3 ride the tide!")
 
                     else:
-                        print("Player 1 and player 2 ride the tide!")
+                        print("Players 1 and 2 ride the tide!")
 
-                elif len(player3Hand) == 6:
-                    print("Player 1 and player 3 ride the tide!")
+                elif player3Guesses == 6:
+                    print("Players 1 and 3 ride the tide!")
 
                 else:
                     print("Player 1 rides the tide!")
 
-            elif len(player2Hand) == 6:
-                if len(player3Hand) == 6:
-                    print("Player 2 and player 3 ride the tide!")
+            elif player2Guesses == 6:
+                if player3Guesses == 6:
+                    print("Players 2 and 3 ride the tide!")
 
                 else:
                     print("Player 2 rides the tide!")
 
-            elif len(player3Hand) == 6:
+            elif player3Guesses == 6:
                 print("Player 3 rides the tide!")
 
             else:
                 print("Neither player 1, player 2, nor player 3 rides the tide.")
-            
-            if player1Hand == [] and player2Hand != [] and player3Hand != [] and dealerHand != []:
-                print("\nPlayer 1 guessed wrong.")
-                print("Player 2's correct guesses: ", len(player2Hand))
-                print("Player 3's correct guesses: ", len(player3Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player2Hand) > len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 wins!")
 
-                elif len(player2Hand) == len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 ties.")
+            if player1Guesses == 0:
+                if player2Guesses == 0:
+                    if player3Guesses == 0:
+                        print("Players 1, 2, and 3 guessed wrong")
 
-                else:
-                    print("Player 2 loses.")
-
-                if len(player3Hand) > len(dealerHand):
-                    if len(player3Hand) != 6:
-                        print("Player 3 wins!")
-
-                elif len(player3Hand) == len(dealerHand):
-                    if len(player3Hand) != 6:
-                        print("Player 3 ties.")
-
-                else:
-                    print("Player 3 loses.")
-
-            elif player1Hand != [] and player2Hand == [] and player3Hand != [] and dealerHand != []:
-                print("\nPlayer 2 guessed wrong.")
-                print("Player 1's correct guesses: ", len(player1Hand))
-                print("Player 3's correct guesses: ", len(player3Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player1Hand) > len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 wins!")
-
-                elif len(player1Hand) == len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 ties.")
-
-                else:
-                    print("Player 1 loses.")
-
-                if len(player3Hand) > len(dealerHand):
-                    if len(player3Hand) != 6:
-                        print("Player 3 wins!")
-
-                elif len(player3Hand) == len(dealerHand):
-                    if len(player3Hand) != 6:
-                        print("Player 3 ties.")
-
-                else:
-                    print("Player 3 loses.")
-
-            elif player1Hand != [] and player2Hand != [] and player3Hand == [] and dealerHand != []:
-                print("\nPlayer 3 guessed wrong.")
-                print("\nPlayer 1's correct guesses: ", len(player1Hand))
-                print("Player 2's correct guesses: ", len(player2Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player1Hand) > len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 wins!")
-
-                elif len(player1Hand) == len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 ties.")
-
-                else:
-                    print("Player 1 loses.")
-
-                if len(player2Hand) > len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 wins!")
-
-                elif len(player2Hand) == len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 ties.")
-
-                else:
-                    print("Player 2 loses.")
-            
-            elif player1Hand != [] and player2Hand != [] and player3Hand != [] and  dealerHand == []:
-                print("The dealer guessed wrong.")
-                if len(player1Hand) != 6:
-                    if len(player2Hand) != 6:
-                        if len(player3Hand) != 6:
-                            print("Player 1, player 2, and player 3 win!")
+                    else:
+                        if dealerGuesses == 0:
+                            print("Player 1, player 2, and the dealer guessed wrong.")
 
                         else:
-                            print("Player 1 and player 2 win!")
+                            print("Players 1 and 2 guessed wrong.")
+
+                else:
+                    if player3Guesses == 0:
+                        if dealerGuesses == 0:
+                            print("Player 1, player 3, and the dealer guessed wrong.")
+
+                        else:
+                            print("Players 1 and 3 guessed wrong.")
 
                     else:
-                        print("Player 1 wins!")
+                        print("Player 1 guessed wrong.")
 
-                elif len(player2Hand) != 6:
-                    if len(player3Hand) != 6:
-                        print("Player 2 and plyer 3 win!")
-
-                    else:
-                        print("Player 2 wins!")
-
-                elif len(player3Hand) != 6:
-                    print("Player 3 wins!")
-
-
-            elif player1Hand == [] and player2Hand == [] and player3Hand == [] and dealerHand != []:
-                print("Player 1, player 2, and player 3 guessed wrong.")
-                print("The dealer wins.")
-
-            elif player1Hand == [] and player2Hand != [] and player3Hand != [] and dealerHand == []:
-                print("Player 1 and the dealer guessed wrong.")
-                if len(player2Hand) != 6:
-                    if len(player3Hand) != 6:
-                        print("Player 2 and player 3 win!")
+            elif player2Guesses == 0:
+                if player3Guesses == 0:
+                    if dealerGuesses == 0:
+                        print("Player 2, player 3, and the dealer guessed wrong.")
 
                     else:
-                        print("Player 2 wins!")
+                        print("Players 2 and 3 guessed wrong.")
 
-                elif len(player3Hand) != 6:
-                    print("Player 3 wins!")
-
-            elif player1Hand != [] and player2Hand == [] and player3Hand != [] and dealerHand == []:
-                print("Player 2 and the dealer guessed wrong.")
-                if len(player1Hand) != 6:
-                    if len(player3Hand) != 6:
-                        print("Player 1 and player 3 win!")
+                else:
+                    if dealerGuesses == 0:
+                        print("Player 2 and the dealer guessed wrong.")
 
                     else:
-                        print("Player 1 wins!")
+                        print("Player 2 guessed wrong.")
 
-                elif len(player3Hand) != 6:
-                    print("Player 3 wins!")
+            elif player3Guesses == 0:
+                if dealerGuesses == 0:
+                    print("Player 3 and the dealer guessed wrong.")
 
-            elif player1Hand != [] and player2Hand != [] and player3Hand == [] and dealerHand == []:
-                print("Player 3 and the dealer guessed wrong.")
-                if len(player1Hand) != 6:
-                    if len(player2Hand) != 6:
-                        print("Player 1 and player 2 win!")
+                else:
+                    print("Player 3 guessed wrong.")
 
-                    else:
-                        print("Player 1 wins!")
-
-                elif len(player2Hand) != 6:
-                    print("Player 2 wins!")
-
-            elif player1Hand != [] and player2Hand == [] and player3Hand == [] and dealerHand == []:
-                print("Player 2, player 3, and the dealer guessed wrong.")
-                if len(player1Hand) != 6:
+            elif dealerGuesses == 0:
+                print("The dealer guessed wrong.")
+            
+            print("Player 1's correct guesses: ", player1Guesses)
+            print("Player 2's correct guesses: ", player2Guesses)
+            print("Player 3's correct guesses: ", player3Guesses)
+            print("The dealer's correct guesses: ", dealerGuesses)
+            if player1Guesses > dealerGuesses:
+                if player1Guesses < 6:
                     print("Player 1 wins!")
-                
-            elif player1Hand == [] and player2Hand != [] and player3Hand == [] and dealerHand == []:
-                print("Player 1, player 3, and the dealer guessed wrong.")
-                if len(player2Hand) != 6:
-                    print("Player 2 wins!")
 
-            elif player1Hand == [] and player2Hand == [] and player3Hand != [] and dealerHand == []:
-                print("Player 1, player 2, and the dealer guessed wrong.")
-                if len(player3Hand) != 6:
-                    print("Player 3 wins!")
-
-            elif player1Hand != [] and player2Hand == [] and player3Hand == [] and dealerHand != []:
-                print("Player 2 and player 3 guessed wrong.")
-                print("Player 1's correct guesses: ", len(player1Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player1Hand) > len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 wins!")
-
-                elif len(player1Hand) == len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 ties.")
-
-                else:
-                    print("Player 1 loses.")
-
-            elif player1Hand == [] and player2Hand != [] and player3Hand == [] and dealerHand != []:
-                print("Player 1 and player 3 guessed wrong.")
-                print("Player 2's correct guesses: ", len(player2Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player2Hand) > len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 wins!")
-
-                elif len(player2Hand) == len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 ties.")
-
-                else:
-                    print("Player 2 loses.")
-
-            elif player1Hand == [] and player2Hand == [] and player3Hand != [] and dealerHand != []:
-                print("Player 1 and player 2 guessed wrong.")
-                print("Player 3's correct guesses: ", len(player3Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player3Hand) > len(dealerHand):
-                    if len(player3Hand) != 6:
-                        print("Player 3 wins!")
-
-                elif len(player3Hand) == len(dealerHand):
-                    if len(player3Hand) != 6:
-                        print("Player 3 ties.")
-
-                else:
-                    print("Player 3 loses.")
+            elif player1Guesses == dealerGuesses:
+                if player1Guesses < 6:
+                    print("Player 1 ties.")
 
             else:
-                print("\nPlayer 1's correct guesses: ", len(player1Hand))
-                print("Player 2's correct guesses: ", len(player2Hand))
-                print("Player 3's correct guesses: ", len(player3Hand))
-                print("The dealer's correct guesses: ", len(dealerHand))
-                if len(player1Hand) > len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 wins!")
+                print("Player 1 loses.")
 
-                elif len(player1Hand) == len(dealerHand):
-                    if len(player1Hand) != 6:
-                        print("Player 1 ties.")
+            if player2Guesses > dealerGuesses:
+                if player2Guesses < 6:
+                    print("Player 2 wins!")
 
-                else:
-                    print("Player 1 loses.")
+            elif player2Guesses == dealerGuesses:
+                if player2Guesses < 6:
+                    print("Player 2 ties.")
 
-                if len(player2Hand) > len(dealerHand):
-                    if len(player2Hand) != 6:
-                        print("Player 2 wins!")
+            else:
+                print("Player 2 loses.")
 
-                elif len(player2Hand == len(dealerHand)):
-                    if len(player2Hand) != 6:
-                        print("Player 2 ties.")
+            if player3Guesses > dealerGuesses:
+                if player3Guesses < 6:
+                    print("Player 3 wins!")
 
-                else:
-                    print("Player 2 loses.")
+            elif player3Guesses == dealerGuesses:
+                if player3Guesses < 6:
+                    print("Player 3 ties.")
 
-                if len(player3Hand) > len(dealerHand):
-                    if len(player3Hand) != 6:
-                        print("Player 3 wins!")
-
-                elif len(player3Hand == len(dealerHand)):
-                    if len(player3Hand) != 6:
-                        print("Player 3 ties.")
-
-                else:
-                    print("Player 3 loses.")
+            else:
+                print("Player 3 loses.")
 
     else:
         print("You must type a number from 1 to 3.")
 
-def player1Turn():
-    global player1Hand
-    player1Hand.append(deck.pop(0))
-    print("Player 1's turn")
+def generalPlayer(playerHand, playerNumber):
+    playerHand.append(deck.pop())
+    print("_____________________________________________________________________")
+    print("Player ", playerNumber, "'s turn")
     turn = True
     while turn == True:
-        print("\nPlayer 1's hand: ", player1Hand)
-        print("Last card: ", player1Hand[-1])
+        print("\nPlayer ", playerNumber, "'s hand: ", playerHand)
+        print("Last card: ", playerHand[-1])
         choice = input("Do you want to stand, guess higher, or guess lower? ")
         if choice == "stand" or choice == "s":
             turn = False
 
         elif choice == "higher" or choice == "h":
-            player1Hand.append(deck.pop(0))
-            oldCard = player1Hand[-2]
-            newCard = player1Hand[-1]
+            playerHand.append(deck.pop())
+            oldCard = playerHand[-2]
+            newCard = playerHand[-1]
             print("New card: ", newCard)
             oldValue = 0
             if oldCard[0] == "Jack":
@@ -536,7 +344,7 @@ def player1Turn():
 
             if newValue >= oldValue:
                 print("Correct!")
-                if len(player1Hand) == 6:
+                if len(playerHand) == 6:
                     print("You ride the tide!")
                     turn = False
 
@@ -549,9 +357,9 @@ def player1Turn():
                 turn = False
 
         elif choice == "lower" or choice == "l":
-            player1Hand.append(deck.pop(0))
-            oldCard = player1Hand[-2]
-            newCard = player1Hand[-1]
+            playerHand.append(deck.pop())
+            oldCard = playerHand[-2]
+            newCard = playerHand[-1]
             print("New card: ", newCard)
             oldValue = 0
             if oldCard[0] == "Jack":
@@ -586,7 +394,7 @@ def player1Turn():
 
             if newValue <= oldValue:
                 print("Correct!")
-                if len(player1Hand) == 6:
+                if len(playerHand) == 6:
                     print("You ride the tide!")
                     turn = False
 
@@ -595,7 +403,7 @@ def player1Turn():
 
             else:
                 print("Wrong")
-                player1Hand.clear()
+                playerHand.clear()
                 turn = False
 
 
@@ -603,245 +411,11 @@ def player1Turn():
             print("You must type 'stand', 's', 'higher', 'h', 'lower', or 'l'.")
             break
 
-def player2Turn():
-    global player2Hand
-    player2Hand.append(deck.pop(0))
-    print("_____________________________________________________________________")
-    print("Player 2's turn")
-    turn = True
-    while turn == True:
-        print("\nPlayer 2's hand: ", player2Hand)
-        print("Last card: ", player2Hand[-1])
-        choice = input("Do you want to stand, guess higher, or guess lower? ")
-        if choice == "stand" or choice == "s":
-            turn = False
 
-        elif choice == "higher" or choice == "h":
-            player2Hand.append(deck.pop(0))
-            oldCard = player2Hand[-2]
-            newCard = player2Hand[-1]
-            print("New card: ", newCard)
-            oldValue = 0
-            if oldCard[0] == "Jack":
-                oldValue = 11
-
-            elif oldCard[0] == "Queen":
-                oldValue = 12
-
-            elif oldCard[0] == "King":
-                oldValue = 13
-
-            elif oldCard[0] == "Ace":
-                oldValue = 14
-
-            else:
-                oldValue = int(oldCard[0])
-
-            if newCard[0] == "Jack":
-                newValue = 11
-
-            elif newCard[0] == "Queen":
-                newValue = 12
-
-            elif newCard[0] == "King":
-                newValue = 13
-
-            elif newCard[0] == "Ace":
-                newValue = 14
-
-            else:
-                newValue = int(newCard[0])
-
-            if newValue >= oldValue:
-                print("Correct!")
-                if len(player2Hand) == 6:
-                    print("You ride the tide!")
-                    turn = False
-
-                else:
-                    continue
-
-            else:
-                print("Wrong")
-                player2Hand.clear()
-                finished = True
-
-        elif choice == "lower" or choice == "l":
-            player2Hand.append(deck.pop(0))
-            oldCard = player2Hand[-2]
-            newCard = player2Hand[-1]
-            print("New card: ", newCard)
-            oldValue = 0
-            if oldCard[0] == "Jack":
-                oldValue = 11
-
-            elif oldCard[0] == "Queen":
-                oldValue = 12
-
-            elif oldCard[0] == "King":
-                oldValue = 13
-
-            elif oldCard[0] == "Ace":
-                oldValue = 14
-
-            else:
-                oldValue = int(oldCard[0])
-
-            if newCard[0] == "Jack":
-                newValue = 11
-
-            elif newCard[0] == "Queen":
-                newValue = 12
-
-            elif newCard[0] == "King":
-                newValue = 13
-
-            elif newCard[0] == "Ace":
-                newValue = 14
-
-            else:
-                newValue = int(newCard[0])
-
-            if newValue <= oldValue:
-                print("Correct!")
-                if len(player2Hand) == 6:
-                    print("You ride the tide!")
-                    turn = False
-
-                else:
-                    continue
-
-            else:
-                print("Wrong")
-                player2Hand.clear()
-                turn = False
-
-
-        else:
-            print("You must type 'stand', 's', 'higher', 'h', 'lower', or 'l'.")
-            break
-
-def player3Turn():
-    global player3Hand
-    player3Hand.append(deck.pop(0))
-    print("_____________________________________________________________________")
-    print("Player 3's turn")
-    turn = True
-    while turn == True:
-        print("\nPlayer 3's hand: ", player3Hand)
-        print("Last card: ", player3Hand[-1])
-        choice = input("Do you want to stand, guess higher, or guess lower? ")
-        if choice == "stand" or choice == "s":
-            turn = False
-
-        elif choice == "higher" or choice == "h":
-            player3Hand.append(deck.pop(0))
-            oldCard = player3Hand[-2]
-            newCard = player3Hand[-1]
-            print("New card: ", newCard)
-            oldValue = 0
-            if oldCard[0] == "Jack":
-                oldValue = 11
-
-            elif oldCard[0] == "Queen":
-                oldValue = 12
-
-            elif oldCard[0] == "King":
-                oldValue = 13
-
-            elif oldCard[0] == "Ace":
-                oldValue = 14
-
-            else:
-                oldValue = int(oldCard[0])
-
-            if newCard[0] == "Jack":
-                newValue = 11
-
-            elif newCard[0] == "Queen":
-                newValue = 12
-
-            elif newCard[0] == "King":
-                newValue = 13
-
-            elif newCard[0] == "Ace":
-                newValue = 14
-
-            else:
-                newValue = int(newCard[0])
-
-            if newValue >= oldValue:
-                print("Correct!")
-                if len(player3Hand) == 6:
-                    print("You ride the tide!")
-                    turn = False
-
-                else:
-                    continue
-
-            else:
-                print("Wrong")
-                player3Hand.clear()
-                turn = False
-
-        elif choice == "lower" or choice == "l":
-            player3Hand.append(deck.pop(0))
-            oldCard = player3Hand[-2]
-            newCard = player3Hand[-1]
-            print("New card: ", newCard)
-            oldValue = 0
-            if oldCard[0] == "Jack":
-                oldValue = 11
-
-            elif oldCard[0] == "Queen":
-                oldValue = 12
-
-            elif oldCard[0] == "King":
-                oldValue = 13
-
-            elif oldCard[0] == "Ace":
-                oldValue = 14
-
-            else:
-                oldValue = int(oldCard[0])
-
-            if newCard[0] == "Jack":
-                newValue = 11
-
-            elif newCard[0] == "Queen":
-                newValue = 12
-
-            elif newCard[0] == "King":
-                newValue = 13
-
-            elif newCard[0] == "Ace":
-                newValue = 14
-
-            else:
-                newValue = int(newCard[0])
-
-            if newValue <= oldValue:
-                print("Correct!")
-                if len(player3Hand) == 6:
-                    print("You ride the tide!")
-                    turn = False
-
-                else:
-                    continue
-
-            else:
-                print("Wrong")
-                player3Hand.clear()
-                turn = False
-
-
-        else:
-            print("You must type 'stand', 's', 'higher', 'h' 'lower', or 'l'.")
-            break
 
 def dealerTurn():
     global dealerHand
-    dealerHand.append(deck.pop(0))
+    dealerHand.append(deck.pop())
     print("_____________________________________________________________________")
     print("\nThe dealer's turn")
     turn = True
@@ -853,7 +427,7 @@ def dealerTurn():
             turn = False
 
         elif choice == "higher" or choice == "h":
-            dealerHand.append(deck.pop(0))
+            dealerHand.append(deck.pop())
             oldCard = dealerHand[-2]
             newCard = dealerHand[-1]
             print("New card: ", newCard)
@@ -902,7 +476,7 @@ def dealerTurn():
                 turn = False
 
         elif choice == "lower" or choice == "l":
-            dealerHand.append(deck.pop(0))
+            dealerHand.append(deck.pop())
             oldCard = dealerHand[-2]
             newCard = dealerHand[-1]
             print("New card: ", newCard)
