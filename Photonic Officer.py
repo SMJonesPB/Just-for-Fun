@@ -10,12 +10,12 @@ percents = [.02, .03, .04]
 percent = percents[level - 1]
 y = x / (percent * x + 1) #such that x <= 20, the cd if PO is active for the whole time
 z = percent * x + 1 #the cd you lose every second
-w = 20 * z #total amount of cd you lose while PO is active, the ability keeps cooling down and activating\
+w = 20 * z #total amount of cd you lose while PO is active, the ability keeps cooling down and activating
 print("y = ", y)
 print("z = ", z)
 print("w = ", w)
 
-if (x / y) == z: #always equal, the same line on a graph
+if (x / y) == z: #always equal
     print("If the cooldown is ", x, "s, you lose ", z, "s/ real second while PO is active.")
 
 if x <= 20.0:
@@ -40,9 +40,9 @@ else:
             remainingCD -= 30.0
             newCD += 30
 
-        else:
+        else: #not enough time for PO to cool down
             newCD += remainingCD
-            remainingCD -= remainingCD #not enough time for PO to cool down
+            remainingCD -= remainingCD
 
     print("PO activates ", count, "time(s).")
     print("The new cd is ", newCD, "s.")
