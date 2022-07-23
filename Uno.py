@@ -122,10 +122,10 @@ deck[105][0], deck[105][1] = "Wild Draw 4", ""
 deck[106][0], deck[106][1] = "Wild Draw 4", ""
 deck[107][0], deck[107][1] = "Wild Draw 4", ""
 random.shuffle(deck)
-player1Hand = [deck.pop(), deck.pop(), deck.pop(), deck.pop(), deck.pop(), deck.pop(), deck.pop()]
-player2Hand = [deck.pop(), deck.pop(), deck.pop(), deck.pop(), deck.pop(), deck.pop(), deck.pop()]
+player1Hand = [deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1)]
+player2Hand = [deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1)]
 discard = []
-discard.append(deck.pop())
+discard.append(deck.pop(-1))
 if discard[0][0] == "Wild" or discard[0][0] == "Wild Draw 4":
     newColor = input("To what color do you want to change it? ")
     if newColor == "Red" or newColor == "red" or newColor == "r":
@@ -173,12 +173,12 @@ def generalPlayer(playerHand, playerNumber):
             print("You play ", actualCard)
 
         elif card == "draw" or card == "d":
-            playerHand.append(deck.pop())
+            playerHand.append(deck.pop(-1))
 
             if len(deck) == 0:
                 deck = [random.shuffle(discard)]
                 discard.clear()
-                discard.append(deck.pop())
+                discard.append(deck.pop(-1))
 
             continue
 
@@ -214,48 +214,48 @@ def generalPlayer(playerHand, playerNumber):
                 actualCard[1] = "Red"
                 discard.append(playerHand.pop(int(card) - 1))
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop(0))
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
 
                 continue
 
@@ -263,48 +263,48 @@ def generalPlayer(playerHand, playerNumber):
                 actualCard[1] = "Blue"
                 discard.append(playerHand.pop(int(card) - 1))
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 continue
 
@@ -312,48 +312,48 @@ def generalPlayer(playerHand, playerNumber):
                 actualCard[1] = "Yellow"
                 discard.append(playerHand.pop(int(card) - 1))
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
 
                 continue
 
@@ -361,48 +361,48 @@ def generalPlayer(playerHand, playerNumber):
                 actualCard[1] = "Green"
                 discard.append(playerHand.pop(int(card) - 1))
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
 
                 continue
 
@@ -419,26 +419,26 @@ def generalPlayer(playerHand, playerNumber):
             if actualCard[0] == discard[-1][0] or actualCard[1] == discard[-1][1]:
                 discard.append(playerHand.pop(int(card) - 1))
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
 
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 if playerNumber == 1:
-                    player2Hand.append(deck.pop())
+                    player2Hand.append(deck.pop(-1))
 
                 else:
-                    player1Hand.append(deck.pop())
+                    player1Hand.append(deck.pop(-1))
                     
                 if len(deck) == 0:
                     deck = [random.shuffle(discard)]
                     discard.clear()
-                    discard.append(deck.pop())
+                    discard.append(deck.pop(-1))
                 
                 continue
 

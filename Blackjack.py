@@ -72,28 +72,28 @@ player3Total = []
 dealerTotal = 0
 numberOfPlayers = input("How many players are there from 1 to 3 except the dealer? ")
 if numberOfPlayers == "1":
-    player1Hand.append(deck.pop())
-    dealerHand.append(deck.pop())
-    player1Hand.append(deck.pop())
-    dealerHand.append(deck.pop())
+    player1Hand.append(deck.pop(-1))
+    dealerHand.append(deck.pop(-1))
+    player1Hand.append(deck.pop(-1))
+    dealerHand.append(deck.pop(-1))
     
 elif numberOfPlayers == "2":
-    player1Hand.append(deck.pop())
-    player2Hand.append(deck.pop())
-    dealerHand.append(deck.pop())
-    player1Hand.append(deck.pop())
-    player2Hand.append(deck.pop())
-    dealerHand.append(deck.pop())
+    player1Hand.append(deck.pop(-1))
+    player2Hand.append(deck.pop(-1))
+    dealerHand.append(deck.pop(-1))
+    player1Hand.append(deck.pop(-1))
+    player2Hand.append(deck.pop(-1))
+    dealerHand.append(deck.pop(-1))
 
 elif numberOfPlayers == "3":
-    player1Hand.append(deck.pop())
-    player2Hand.append(deck.pop())
-    player3Hand.append(deck.pop())
-    dealerHand.append(deck.pop())
-    player1Hand.append(deck.pop())
-    player2Hand.append(deck.pop())
-    player3Hand.append(deck.pop())
-    dealerHand.append(deck.pop())
+    player1Hand.append(deck.pop(-1))
+    player2Hand.append(deck.pop(-1))
+    player3Hand.append(deck.pop(-1))
+    dealerHand.append(deck.pop(-1))
+    player1Hand.append(deck.pop(-1))
+    player2Hand.append(deck.pop(-1))
+    player3Hand.append(deck.pop(-1))
+    dealerHand.append(deck.pop(-1))
 
 else:
     print("You must enter a number from 1 to 3.")
@@ -301,7 +301,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
             choice = input("Do you want to hit or stand? " )
         
         if choice == "hit":
-            playerHand.append(deck.pop())
+            playerHand.append(deck.pop(-1))
             last = playerHand[-1][0]
             if last == "Jack" or last == "Queen" or last == "King":
                 total += 10
@@ -393,7 +393,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
             hand2 = [player1Hand[1]]
             
             #The first half of the split
-            hand1.append(deck.pop())
+            hand1.append(deck.pop(-1))
             total1 = 0
             softNumberCheck = False
             softNumberValue = 0 
@@ -459,7 +459,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
                     choice = input("Do you want to hit or stand? ")
                 
                 if choice == "hit":
-                    hand1.append(deck.pop())
+                    hand1.append(deck.pop(-1))
                     last = hand1[-1][0]
                     if last == "Jack" or last == "Queen" or last == "King":
                         total1 += 10
@@ -547,7 +547,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
                     hand12 = [hand1[1]]
 
                     #The first half of the first half of the split
-                    hand11.append(deck.pop())
+                    hand11.append(deck.pop(-1))
                     total11 = 0
                     for card in range(0, len(hand11)):
                         if hand11[card][0] == "Jack" or hand11[card][0] == "Queen" or hand11[card][0] == "King":
@@ -607,7 +607,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
                             choice = input("Do you want to hit or stand? ")
                         
                         if choice == "hit":
-                            hand11.append(deck.pop())
+                            hand11.append(deck.pop(-1))
                             last = hand11[-1][0]
                             if last == "Jack" or last == "Queen" or last == "King":
                                 total11 += 10
@@ -696,7 +696,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
                             turnHand11 = False
 
                     #The second half of the first half of the split
-                    hand12.append(deck.pop())
+                    hand12.append(deck.pop(-1))
                     total12 = 0
                     softNumberCheck = False
                     softNumberValue = 0
@@ -758,7 +758,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
                             choice = input("Do you want to hit or stand? ")
 
                         if choice == "hit":
-                            hand12.append(deck.pop())
+                            hand12.append(deck.pop(-1))
                             last = hand12[-1][0]
                             if last == "Jack" or last == "Queen" or last == "King":
                                 total12 += 10
@@ -846,7 +846,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
 
             #The second half of the split
             else:
-                hand2.append(deck.pop())
+                hand2.append(deck.pop(-1))
                 total2 = 0
                 softNumberCheck = False
                 softNumberValue = 0
@@ -919,7 +919,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
                         choice = input("Do you want to hit or stand? ")
 
                     if choice == "hit":
-                        hand2.append(deck.pop())
+                        hand2.append(deck.pop(-1))
                         last = hand2[-1][0]
                         if last == "Jack" or last == "Queen" or last == "King":
                             total2 += 10
@@ -1012,7 +1012,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
                         hand22 = [hand2[1]]
 
                         #The first half of the second half of the split
-                        hand21.append(deck.pop())
+                        hand21.append(deck.pop(-1))
                         total21 = 0
                         softNumberCheck = False
                         softNumberValue = 0
@@ -1074,7 +1074,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
                                 choice = input("Do you want to hit or stand? ")
 
                             if choice == "hit":
-                                hand21.append(deck.pop())
+                                hand21.append(deck.pop(-1))
                                 last = hand21[-1][0]
                                 if last == "Jack" or last == "Queen" or last == "King":
                                     total21 += 10
@@ -1157,7 +1157,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
 
                         #The second half of the second half of the split
                         else:
-                            hand22.append(deck.pop())
+                            hand22.append(deck.pop(-1))
                             total22 = 0
                             softNumberCheck = False
                             softNumberValue = 0
@@ -1223,7 +1223,7 @@ def generalPlayer(playerHand, playerNumber, playerTotal):
                                     choice = input("Do you want to hit or stand? ")
 
                                 if choice == "hit":
-                                    hand22.append(deck.pop())
+                                    hand22.append(deck.pop(-1))
                                     last = hand22[-1][0]
                                     if last == "Jack" or last == "Queen" or last == "King":
                                         total22 += 10
@@ -1362,7 +1362,7 @@ def dealerTurn():
 
         choice = input("Do you want to hit or stand? ")
         if choice == "hit":
-            dealerHand.append(deck.pop())
+            dealerHand.append(deck.pop(-1))
             last = dealerHand[-1][0]
             if last == "Jack" or last == "Queen" or last == "King":
                 dealerTotal += 10

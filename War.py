@@ -10,6 +10,8 @@ You play the card that just started the war if you have 1, 2, or 3 cards left in
 
 import random
 
+from sqlalchemy import false
+
 #Make and shuffle the deck
 row = 52
 column = 2
@@ -69,6 +71,7 @@ deck[51][0], deck[51][1] = "King", "Diamond"
 random.shuffle(deck)
 player1Deck = deck[0:26]
 player2Deck = deck[26:52]
+deck.clear()
 player1Card = []
 player2Card = []
 
@@ -77,8 +80,8 @@ def playWar():
     global player2Card
     game = True
     while game == True:
-        player1Card = player1Deck.pop()
-        player2Card = player2Deck.pop()
+        player1Card = player1Deck.pop(-1)
+        player2Card = player2Deck.pop(-1)
         print("\nPlayer 1's card:", player1Card)
         print("Player 2's card:", player2Card)
         print("Player 1 has", len(player1Deck), "card(s) left.")
@@ -99,44 +102,44 @@ def playWar():
                         war = False
 
                     elif len(player1Deck) == 1:
-                        player1Card = player1Deck.pop()
+                        player1Card = player1Deck.pop(-1)
 
                     elif len(player1Deck) == 2:
-                        player1War.append(player1Deck.pop())
-                        player1Card = player1Deck.pop()
+                        player1War.append(player1Deck.pop(-1))
+                        player1Card = player1Deck.pop(-1)
 
                     elif len(player1Deck) == 3:
-                        player1War.append(player1Deck.pop())
-                        player1War.append(player1Deck.pop())
-                        player1Card = player1Deck.pop(0)
+                        player1War.append(player1Deck.pop(-1))
+                        player1War.append(player1Deck.pop(-1))
+                        player1Card = player1Deck.pop(-1)
 
                     else:
-                        player1War.append(player1Deck.pop())
-                        player1War.append(player1Deck.pop())
-                        player1War.append(player1Deck.pop())
-                        player1Card = player1Deck.pop()
+                        player1War.append(player1Deck.pop(-1))
+                        player1War.append(player1Deck.pop(-1))
+                        player1War.append(player1Deck.pop(-1))
+                        player1Card = player1Deck.pop(-1)
 
                     if len(player2Deck) == 0:
                         player1Deck.append(player1Card)
                         war = False
 
                     elif len(player2Deck) == 1:
-                        player2Card = player2Deck.pop()
+                        player2Card = player2Deck.pop(-1)
 
                     elif len(player2Deck) == 2:
-                        player2War.append(player2Deck.pop())
-                        player2Card = player2Deck.pop()
+                        player2War.append(player2Deck.pop(-1))
+                        player2Card = player2Deck.pop(-1)
 
                     elif len(player2Deck) == 3:
-                        player2War.append(player2Deck.pop())
-                        player2War.append(player2Deck.pop())
+                        player2War.append(player2Deck.pop(-1))
+                        player2War.append(player2Deck.pop(-1))
                         player2Card = player2Deck.pop(0)
 
                     else:
-                        player2War.append(player2Deck.pop())
-                        player2War.append(player2Deck.pop())
-                        player2War.append(player2Deck.pop())
-                        player2Card = player2Deck.pop(0)
+                        player2War.append(player2Deck.pop(-1))
+                        player2War.append(player2Deck.pop(-1))
+                        player2War.append(player2Deck.pop(-1))
+                        player2Card = player2Deck.pop(-1)
 
                     print("\nPlayer 1's card:", player1Card)
                     print("Player 2's card:", player2Card)
@@ -150,6 +153,7 @@ def playWar():
 
                     #End the war
                     else:
+                        war = False
                         player1War.append(player1Card)
                         player2War.append(player2Card)
                         player1Value = 0
@@ -194,7 +198,6 @@ def playWar():
                                 
                             print("\nPlayer 1 has", len(player1Deck), "card(s) left.")
                             print("Player 2 has", len(player2Deck), "card(s) left.")
-                            war = False
 
                         else:
                             print("Player 2 wins the war!")
@@ -206,7 +209,6 @@ def playWar():
 
                             print("\nPlayer 1 has", len(player1Deck), "card(s) left.")    
                             print("Player 2 has", len(player2Deck), "card(s) left.")
-                            war = False
 
             else:
                 print("\nYou must type 'now' to continue the game.")

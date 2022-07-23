@@ -295,7 +295,7 @@ def playRideTheTide():
         print("You must type a number from 1 to 3.")
 
 def generalPlayer(playerHand, playerNumber):
-    playerHand.append(deck.pop())
+    playerHand.append(deck.pop(-1))
     print("_____________________________________________________________________")
     print("Player ", playerNumber, "'s turn")
     turn = True
@@ -307,7 +307,7 @@ def generalPlayer(playerHand, playerNumber):
             turn = False
 
         elif choice == "higher" or choice == "h":
-            playerHand.append(deck.pop())
+            playerHand.append(deck.pop(-1))
             oldCard = playerHand[-2]
             newCard = playerHand[-1]
             print("New card: ", newCard)
@@ -357,7 +357,7 @@ def generalPlayer(playerHand, playerNumber):
                 turn = False
 
         elif choice == "lower" or choice == "l":
-            playerHand.append(deck.pop())
+            playerHand.append(deck.pop(-1))
             oldCard = playerHand[-2]
             newCard = playerHand[-1]
             print("New card: ", newCard)
@@ -415,7 +415,7 @@ def generalPlayer(playerHand, playerNumber):
 
 def dealerTurn():
     global dealerHand
-    dealerHand.append(deck.pop())
+    dealerHand.append(deck.pop(-1))
     print("_____________________________________________________________________")
     print("\nThe dealer's turn")
     turn = True
@@ -476,7 +476,7 @@ def dealerTurn():
                 turn = False
 
         elif choice == "lower" or choice == "l":
-            dealerHand.append(deck.pop())
+            dealerHand.append(deck.pop(-1))
             oldCard = dealerHand[-2]
             newCard = dealerHand[-1]
             print("New card: ", newCard)

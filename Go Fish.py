@@ -56,20 +56,20 @@ deck[51][0], deck[51][1] = "King", "Diamond"
 random.shuffle(deck)
 player1Hand = []
 player2Hand = []
-player1Hand.append(deck.pop())
-player2Hand.append(deck.pop())
-player1Hand.append(deck.pop())
-player2Hand.append(deck.pop())
-player1Hand.append(deck.pop())
-player2Hand.append(deck.pop())
-player1Hand.append(deck.pop())
-player2Hand.append(deck.pop())
-player1Hand.append(deck.pop())
-player2Hand.append(deck.pop())
-player1Hand.append(deck.pop())
-player2Hand.append(deck.pop())
-player1Hand.append(deck.pop())
-player2Hand.append(deck.pop())
+player1Hand.append(deck.pop(-1))
+player2Hand.append(deck.pop(-1))
+player1Hand.append(deck.pop(-1))
+player2Hand.append(deck.pop(-1))
+player1Hand.append(deck.pop(-1))
+player2Hand.append(deck.pop(-1))
+player1Hand.append(deck.pop(-1))
+player2Hand.append(deck.pop(-1))
+player1Hand.append(deck.pop(-1))
+player2Hand.append(deck.pop(-1))
+player1Hand.append(deck.pop(-1))
+player2Hand.append(deck.pop(-1))
+player1Hand.append(deck.pop(-1))
+player2Hand.append(deck.pop(-1))
 player1Fours = []
 player2Fours = []
 
@@ -97,7 +97,7 @@ def generalPlayer(playerHand, playerFours, playerNumber):
 
             else:
                 print("\nPlayer 2: Go fish.")
-                playerHand.append(deck.pop())
+                playerHand.append(deck.pop(-1))
                 if playerHand[-1][0] == request:
                     continue
 
