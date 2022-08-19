@@ -10,12 +10,8 @@ You play the card that just started the war if you have 1, 2, or 3 cards left in
 
 import random
 
-from sqlalchemy import false
-
 #Make and shuffle the deck
-row = 52
-column = 2
-deck = [["" for i in range(column)] for j in range(row)]
+deck = [["" for i in range(2)] for j in range(52)]
 deck[0][0], deck[0][1] = "Ace", "Spade"
 deck[1][0], deck[1][1] = "Ace", "Club"
 deck[2][0], deck[2][1] = "Ace", "Heart"
