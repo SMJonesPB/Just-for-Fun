@@ -10,9 +10,7 @@ Wild, Wild Draw 4: 4 each
 import random
 
 #Make and shuffle the deck
-row = 108
-column = 2
-deck = [["" for i in range(column)] for j in range(row)]
+deck = [["" for i in range(2)] for j in range(108)]
 deck[0][0], deck[0][1] = "0", "Red"
 deck[1][0], deck[1][1] = "0", "Blue"
 deck[2][0], deck[2][1] = "0", "Yellow"
