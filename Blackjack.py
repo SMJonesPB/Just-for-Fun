@@ -6,9 +6,7 @@ which are in the game Casino Island to Go. A 5-Card Charlie is having 5 cards in
 """
 
 #Make and shuffle the deck
-row = 52
-column = 2
-deck = [["" for i in range(column)] for j in range(row)]
+deck = [["" for i in range(2)] for j in range(52)]
 deck[0][0], deck[0][1] = "Ace", "Spade"
 deck[1][0], deck[1][1] = "Ace", "Club"
 deck[2][0], deck[2][1] = "Ace", "Heart"
