@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <script>
+            function Convert(){
+                input = parseFloat(document.getElementById("input").value);
+                inputSalary = input.toFixed(2);
+                inTime = document.getElementById("inTime");
+                outTime = document.getElementById("outTime");
+                fullTime = document.getElementById("ft");
+                output = 0.0;
+                if (inTime.value == outTime.value){
+                    document.getElementById("output").value = inputSalary;
+                }
+
+                else{
+                    if (inTime.value == 0){
+                        if (outTime.value == 1){
+                            if (!fullTime.checked){
+                                output = inputSalary * 40;
+                            }
+
+                            else{
+                                output = inputSalary * 20;
+                            }
+                        }
+
+                        else if (outTime.value == 2){
+                            if (!fullTime.checked){
+                                output = inputSalary * 40 * 4.5;
+                            }
+
+                            else{
+                                output = inputSalary * 20 * 4.5;
+                            }
+                        }
+
+                        else{
+                            if (!fullTime.checked){
+                                output = inputSalary * 40 * 52.14;
+                            }
+
+                            else{
+                                output = inputSalary * 20 * 52.14;
+                            }
+                        }
+                    }
+
+                    else if (inTime.value == 1){
+                        if (outTime.value == 0){
+                            if (!fullTime.checked){
+                                output = inputSalary / 40;
+                            }
+
+                            else{
+                                output = inputSalary / 20;
+                            }
+                        }
+
+                        else if (outTime.value == 2){
+                            output = inputSalary * 4.5;
+                        }
+
+                        else{
+                            output = inputSalary * 52.14;
+                        }
+                    }
+
+                    else if (inTime.value == 2){
+                        if (outTime.value == 0){
+                            if (!fullTime.checked){
+                                output = inputSalary / 4.5 / 40
+                            }
+
+                            else{
+                                output = inputSalary / 4.5 / 20;
+                            }
+                        }
+
+                        else if (outTime.value == 1){
+                            output = inputSalary / 4.5;
+                        }
+
+                        else{
+                            output = inputSalary * 12;
+                        }
+                    }
+
+                    else{
+                        if (outTime.value == 0){
+                            if (!fullTime.checked){
+                                output = inputSalary / 52.14 / 40;
+                            }
+
+                            else{
+                                output = inputSalary / 52.14 / 20;
+                            }
+                        }
+
+                        else if (outTime.value == 1){
+                            output = inputSalary / 52.14;
+                        }
+
+                        else{
+                            output = inputSalary / 12;
+                        }
+                    }
+
+                    outputSalary = output.toFixed(2);
+                    document.getElementById("output").value = outputSalary;
+                }
+            }
+        </script>
+        <style>
+            #input{
+                width: 75px;
+            }
+
+            #output{
+                width: 75px;
+            }
+
+            #intro{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "intro">
+            This is a tool to convert a salary from one set time to another.
+        </div>
+        <br>
+        <label for = "i">Input: $</label>
+        <input type = "text" name = "input" id = "input"/>
+        <label for = "i">per</label>
+        <select name = "inTime" id = "inTime">
+            <option value = 0>hour</option>
+            <option value = 1>week</option>
+            <option value = 2>month</option>
+            <option value = 3>year</option>
+        </select>
+        <input type = "radio" name = "ftOrPT" id = "ft" value = 0>Full Time</input>
+        <input type = "radio" name = "ftOrPT" id = "pt" value = 1>Part Time</input>
+        <br><br>
+        <label for = "o">Output: $</label>
+        <input type = "text" name = "output" id = "output" readonly/>
+        <label for = "o">per</label> 
+        <select name = "outTime" id = "outTime">
+            <option value = 0>hour</option>
+            <option value = 1>week</option>
+            <option value = 2>month</option>
+            <option value = 3>year</option>
+        </select>
+        <br><br>
+        <input type = "button" onclick = "Convert()" value = "Convert"/>
+    </body>
+</html>
