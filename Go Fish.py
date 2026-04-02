@@ -1,214 +1,161 @@
 import random
 
-deck = [["" for a in range(2)] for b in range(52)]
-deck[0][0], deck[0][1] = "Ace", "Spade"
-deck[1][0], deck[1][1] = "Ace", "Club"
-deck[2][0], deck[2][1] = "Ace", "Heart"
-deck[3][0], deck[3][1] = "Ace", "Diamond"
-deck[4][0], deck[4][1] = "2", "Spade"
-deck[5][0], deck[5][1] = "2", "Club"
-deck[6][0], deck[6][1] = "2", "Heart"
-deck[7][0], deck[7][1] = "2", "Diamond"
-deck[8][0], deck[8][1] = "3", "Spade"
-deck[9][0], deck[9][1] = "3", "Club"
-deck[10][0], deck[10][1] = "3", "Heart"
-deck[11][0], deck[11][1] = "3", "Diamond"
-deck[12][0], deck[12][1] = "4", "Spade"
-deck[13][0], deck[13][1] = "4", "Club"
-deck[14][0], deck[14][1] = "4", "Heart"
-deck[15][0], deck[15][1] = "4", "Diamond"
-deck[16][0], deck[16][1] = "5", "Spade"
-deck[17][0], deck[17][1] = "5", "Club"
-deck[18][0], deck[18][1] = "5", "Heart"
-deck[19][0], deck[19][1] = "5", "Diamond"
-deck[20][0], deck[20][1] = "6", "Spade"
-deck[21][0], deck[21][1] = "6", "Club"
-deck[22][0], deck[22][1] = "6", "Heart"
-deck[23][0], deck[23][1] = "6", "Diamond"
-deck[24][0], deck[24][1] = "7", "Spade"
-deck[25][0], deck[25][1] = "7", "Club"
-deck[26][0], deck[26][1] = "7", "Heart"
-deck[27][0], deck[27][1] = "7", "Diamond"
-deck[28][0], deck[28][1] = "8", "Spade"
-deck[29][0], deck[29][1] = "8", "Club"
-deck[30][0], deck[30][1] = "8", "Heart"
-deck[31][0], deck[31][1] = "8", "Diamond"
-deck[32][0], deck[32][1] = "9", "Spade"
-deck[33][0], deck[33][1] = "9", "Club"
-deck[34][0], deck[34][1] = "9", "Heart"
-deck[35][0], deck[35][1] = "9", "Diamond"
-deck[36][0], deck[36][1] = "10", "Spade"
-deck[37][0], deck[37][1] = "10", "Club"
-deck[38][0], deck[38][1] = "10", "Heart"
-deck[39][0], deck[39][1] = "10", "Diamond"
-deck[40][0], deck[40][1] = "Jack", "Spade"
-deck[41][0], deck[41][1] = "Jack", "Club"
-deck[42][0], deck[42][1] = "Jack", "Heart"
-deck[43][0], deck[43][1] = "Jack", "Diamond"
-deck[44][0], deck[44][1] = "Queen", "Spade"
-deck[45][0], deck[45][1] = "Queen", "Club"
-deck[46][0], deck[46][1] = "Queen", "Heart"
-deck[47][0], deck[47][1] = "Queen", "Diamond"
-deck[48][0], deck[48][1] = "King", "Spade"
-deck[49][0], deck[49][1] = "King", "Club"
-deck[50][0], deck[50][1] = "King", "Heart"
-deck[51][0], deck[51][1] = "King", "Diamond"
-random.shuffle(deck)
-player1Hand = []
-player2Hand = []
-player1Hand.append(deck.pop(-1))
-player2Hand.append(deck.pop(-1))
-player1Hand.append(deck.pop(-1))
-player2Hand.append(deck.pop(-1))
-player1Hand.append(deck.pop(-1))
-player2Hand.append(deck.pop(-1))
-player1Hand.append(deck.pop(-1))
-player2Hand.append(deck.pop(-1))
-player1Hand.append(deck.pop(-1))
-player2Hand.append(deck.pop(-1))
-player1Hand.append(deck.pop(-1))
-player2Hand.append(deck.pop(-1))
-player1Hand.append(deck.pop(-1))
-player2Hand.append(deck.pop(-1))
-player1Fours = []
-player2Fours = []
+RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+SUITS = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
 
-def generalPlayer(playerHand, playerFours, playerNumber):
-    turn = True
-    while turn == True:
-        print("\nPlayer " + str(playerNumber) + "'s hand")
-        print("\n".join(str(i) for i in playerHand))
-        request = input("\nWhat cards do you need? ")
-        if sum(card.count(request) for card in playerHand) == 0:
-            print("\nYou need at least one", request, "to ask for more.")
-            continue
 
-        if playerNumber == 1:
-            print("\nPlayer 1: Player 2, do you have any " + request + "s?")
-            if sum(card.count(request) for card in player2Hand) > 0:
-                print("\nPlayer 2: Yes, I have", sum(card.count(request) for card in player2Hand), ".")
-                for card in player2Hand:
-                    if card[0] == request:
-                        playerHand.append(player2Hand.pop(player2Hand.index(card)))
-   
-                now = input("\nType anything when you're ready to contiinue. ")
-                if now == ""  or now != "":
-                    continue
+class Card:
+    def __init__(self, rank, suit):
+        self.rank = rank
+        self.suit = suit
 
-            else:
-                print("\nPlayer 2: Go fish.")
-                playerHand.append(deck.pop(-1))
-                if playerHand[-1][0] == request:
-                    continue
+    def __str__(self):
+        return f"{self.rank} of {self.suit}"
 
-                else:
-                    turn = False
 
-        else:
-            print("\nPlayer 2: Player 1, do you have any " + request + "s?")
-            if sum(card.count(request) for card in player1Hand) > 0:
-                print("\nPlayer 1: Yes, I have ", sum(card.count(request) for card in player1Hand), ".")
-                for card in player1Hand:
-                    if card[0] == request:
-                        playerHand.append(player1Hand.pop(player1Hand.index(card)))
-   
-                now = input("\nType anything when you're ready to contiinue. ")
-                if now == ""  or now != "":
-                    continue
+class Deck:
+    def __init__(self):
+        self.cards = [Card(rank, suit) for rank in RANKS for suit in SUITS]
+        random.shuffle(self.cards)
 
-            else:
-                print("\nPlayer 1: Go fish.")
-                playerHand.append(deck.pop(-1))
-                if playerHand[-1][0] == request:
-                    continue
+    def draw(self):
+        return self.cards.pop() if self.cards else None
 
-                else:
-                    turn = False 
-        
-        if sum(card.count("2") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "2":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
+    def __len__(self):
+        return len(self.cards)
 
-        if sum(card.count("3") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "3":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
 
-        if sum(card.count("4") for card in playerHand) == 4: 
-            for card in playerHand: 
-                if playerHand[card][0] == "4":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.hand = []
+        self.books = []
 
-        if sum(card.count("5") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "5":
-                    playerFours.append(playerHand.pop(playerHand.index(card))) 
+    def draw_card(self, deck):
+        card = deck.draw()
+        if card:
+            self.hand.append(card)
+        return card
 
-        if sum(card.count("6") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "6":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
+    def has_rank(self, rank):
+        return any(card.rank == rank for card in self.hand)
 
-        if sum(card.count("7") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "7":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
+    def give_all_rank(self, rank):
+        matching = [card for card in self.hand if card.rank == rank]
+        self.hand = [card for card in self.hand if card.rank != rank]
+        return matching
 
-        if sum(card.count("8") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "8":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
+    def check_for_books(self):
+        rank_counts = {}
+        for card in self.hand:
+            rank_counts[card.rank] = rank_counts.get(card.rank, 0) + 1
 
-        if sum(card.count("9") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "9":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
+        for rank, count in list(rank_counts.items()):
+            if count == 4:
+                self.books.append(rank)
+                self.hand = [c for c in self.hand if c.rank != rank]
+                print(f"{self.name} completed a book of {rank}s!")
 
-        if sum(card.count("10") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "10":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
+    def __str__(self):
+        return f"{self.name} has {len(self.hand)} cards and {len(self.books)} books."
 
-        if sum(card.count("Jack") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "Jack":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
 
-        if sum(card.count("Queen") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "Queen":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
+class SmartAI(Player):
+    def __init__(self, name):
+        super().__init__(name)
+        self.memory = set()  # remembers ranks seen or heard
 
-        if sum(card.count("King") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "King":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))
+    def remember_rank(self, rank):
+        """Store a rank in memory for future asking."""
+        if rank in RANKS:
+            self.memory.add(rank)
 
-        if sum(card.count("Ace") for card in playerHand) == 4: 
-            for card in playerHand:
-                if playerHand[card][0] == "Ace":
-                    playerFours.append(playerHand.pop(playerHand.index(card)))   
+    def choose_rank(self):
+        """Choose a rank to ask for based on memory and current hand."""
+        # Prefer ranks in hand
+        hand_ranks = {card.rank for card in self.hand}
+        possible = list(hand_ranks & self.memory)
+        if possible:
+            return random.choice(possible)
 
-def playGoFish():
-    finished = False
-    while finished == False:
-        generalPlayer(player1Hand, player1Fours, 1)
-        generalPlayer(player2Hand, player2Fours, 2)
-        if len(deck) == 0 or len(player1Hand) == 0 or len(player2Hand) == 0:
-            if len(player1Fours) > len(player2Fours):
-                print("Player 1 wins!")
-                finished = True
+        # If no memory match, choose from hand
+        if hand_ranks:
+            return random.choice(list(hand_ranks))
 
-            elif len(player2Fours) > len(player1Fours):
-                print("Player 2 wins!")
-                finished = True
+        # If hand is empty, pick random rank
+        return random.choice(RANKS)
 
-            else:
-                print("It's a tie.")
-                finished = True
+
+def go_fish():
+    deck = Deck()
+    player = Player("Player 1")
+    ai = SmartAI("Computer")
+
+    # Deal initial hands
+    for _ in range(7):
+        player.draw_card(deck)
+        ai.draw_card(deck)
+
+    current_player = player
+    opponent = ai
+
+    while len(player.books) + len(ai.books) < len(RANKS):
+        print("\n" + "-" * 40)
+        print(player)
+        print(ai)
+        print(f"Deck has {len(deck)} cards left.")
+
+        if current_player == player:
+            print("Your hand:", ", ".join(f"{c.rank}" for c in player.hand))
+            rank = input("Ask for a rank: ").strip().upper()
+            if rank not in RANKS:
+                print("Invalid rank. Try again.")
+                continue
+
+            ai.remember_rank(rank)  # AI remembers what you asked for
 
         else:
-            continue
+            rank = ai.choose_rank()
+            print(f"Computer asks: Do you have any {rank}s?")
+            player_rank_list = [c.rank for c in player.hand]
+            for r in player_rank_list:
+                ai.remember_rank(r)  # AI learns from seeing your cards later
 
-playGoFish()
+        if rank and opponent.has_rank(rank):
+            print(f"{opponent.name} says: Yes! Here you go.")
+            cards_given = opponent.give_all_rank(rank)
+            current_player.hand.extend(cards_given)
+
+        else:
+            print(f"{opponent.name} says: Go Fish!")
+            drawn = current_player.draw_card(deck)
+            if drawn:
+                print(f"{current_player.name} draws {drawn}")
+                if isinstance(current_player, SmartAI):
+                    current_player.remember_rank(drawn.rank)
+
+            else:
+                print("Deck is empty.")
+
+        current_player.check_for_books()
+
+        # Switch turns if no card was gained
+        if not (rank and opponent.has_rank(rank)):
+            current_player, opponent = opponent, current_player
+
+    # Game over
+    print("\nGame Over!")
+    print(f"You completed {len(player.books)} books: {player.books}")
+    print(f"Computer completed {len(ai.books)} books: {ai.books}")
+    if len(player.books) > len(ai.books):
+        print("You win!")
+
+    elif len(player.books) < len(ai.books):
+        print("Computer wins!")
+
+    else:
+        print("It's a tie!")
+
+
+if __name__ == "__main__":
+    go_fish()
