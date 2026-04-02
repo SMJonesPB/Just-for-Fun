@@ -210,7 +210,7 @@ def playBingo():
                             column3[4] = True
                             markedCard[r][c] = True
                             print("Match!")
-                            print("\m")
+                            print("\n")
                             print("\n".join(str(i) for i in markedCard))
 
                     elif c == 3:
