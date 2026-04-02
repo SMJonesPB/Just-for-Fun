@@ -1,460 +1,264 @@
-"""
-0: 1 of every color
-1-9, Draw 2, Skip, Reverse: 2 of every color
-Wild, Wild Draw 4: 4 each
-108 cards
-7 cards in your hand
-2 players
-"""
-
+import tkinter as tk
+from tkinter import messagebox, simpledialog
 import random
 
-#Make and shuffle the deck
-deck = [["" for i in range(2)] for j in range(108)]
-deck[0][0], deck[0][1] = "0", "Red"
-deck[1][0], deck[1][1] = "0", "Blue"
-deck[2][0], deck[2][1] = "0", "Yellow"
-deck[3][0], deck[3][1] = "0", "Green"
-deck[4][0], deck[4][1] = "1", "Red"
-deck[5][0], deck[5][1] = "1", "Red"
-deck[6][0], deck[6][1] = "1", "Blue"
-deck[7][0], deck[7][1] = "1", "Blue"
-deck[8][0], deck[8][1] = "1", "Yellow"
-deck[9][0], deck[9][1] = "1", "Yellow"
-deck[10][0], deck[10][1] = "1", "Green"
-deck[11][0], deck[11][1] = "1", "Green"
-deck[12][0], deck[12][1] = "2", "Red"
-deck[13][0], deck[13][1] = "2", "Red"
-deck[14][0], deck[14][1] = "2", "Blue"
-deck[15][0], deck[15][1] = "2", "Blue"
-deck[16][0], deck[16][1] = "2", "Yellow"
-deck[17][0], deck[17][1] = "2", "Yellow"
-deck[18][0], deck[18][1] = "2", "Green"
-deck[19][0], deck[19][1] = "2", "Green"
-deck[20][0], deck[20][1] = "3", "Red"
-deck[21][0], deck[21][1] = "3", "Red"
-deck[22][0], deck[22][1] = "3", "Blue"
-deck[23][0], deck[23][1] = "3", "Blue"
-deck[24][0], deck[24][1] = "3", "Yellow"
-deck[25][0], deck[25][1] = "3", "Yellow"
-deck[26][0], deck[26][1] = "3", "Green"
-deck[27][0], deck[27][1] = "3", "Green"
-deck[28][0], deck[28][1] = "4", "Red"
-deck[29][0], deck[29][1] = "4", "Red"
-deck[30][0], deck[30][1] = "4", "Blue"
-deck[31][0], deck[31][1] = "4", "Blue"
-deck[32][0], deck[32][1] = "4", "Yellow"
-deck[33][0], deck[33][1] = "4", "Yellow"
-deck[34][0], deck[34][1] = "4", "Green"
-deck[35][0], deck[35][1] = "4", "Green"
-deck[36][0], deck[36][1] = "5", "Red"
-deck[37][0], deck[37][1] = "5", "Red"
-deck[38][0], deck[38][1] = "5", "Blue"
-deck[39][0], deck[39][1] = "5", "Blue"
-deck[40][0], deck[40][1] = "5", "Yellow"
-deck[41][0], deck[41][1] = "5", "Yellow"
-deck[42][0], deck[42][1] = "5", "Green"
-deck[43][0], deck[43][1] = "5", "Green"
-deck[44][0], deck[44][1] = "6", "Red"
-deck[45][0], deck[45][1] = "6", "Red"
-deck[46][0], deck[46][1] = "6", "Blue"
-deck[47][0], deck[47][1] = "6", "Blue"
-deck[48][0], deck[48][1] = "6", "Yellow"
-deck[49][0], deck[49][1] = "6", "Yellow"
-deck[50][0], deck[50][1] = "6", "Green"
-deck[51][0], deck[51][1] = "6", "Green"
-deck[52][0], deck[52][1] = "7", "Red"
-deck[53][0], deck[53][1] = "7", "Red"
-deck[54][0], deck[54][1] = "7", "Blue"
-deck[55][0], deck[55][1] = "7", "Blue"
-deck[56][0], deck[56][1] = "7", "Yellow"
-deck[57][0], deck[57][1] = "7", "Yellow"
-deck[58][0], deck[58][1] = "7", "Green"
-deck[59][0], deck[59][1] = "7", "Green"
-deck[60][0], deck[60][1] = "8", "Red"
-deck[61][0], deck[61][1] = "8", "Red"
-deck[62][0], deck[62][1] = "8", "Blue"
-deck[63][0], deck[63][1] = "8", "Blue"
-deck[64][0], deck[64][1] = "8", "Yellow"
-deck[65][0], deck[65][1] = "8", "Yellow"
-deck[66][0], deck[66][1] = "8", "Green"
-deck[67][0], deck[67][1] = "8", "Green"
-deck[68][0], deck[68][1] = "9", "Red"
-deck[69][0], deck[69][1] = "9", "Red"
-deck[70][0], deck[70][1] = "9", "Blue"
-deck[71][0], deck[71][1] = "9", "Blue"
-deck[72][0], deck[72][1] = "9", "Yellow"
-deck[73][0], deck[73][1] = "9", "Yellow"
-deck[74][0], deck[74][1] = "9", "Green"
-deck[75][0], deck[75][1] = "9", "Green"
-deck[76][0], deck[76][1] = "Draw 2", "Red"
-deck[77][0], deck[77][1] = "Draw 2", "Red"
-deck[78][0], deck[78][1] = "Draw 2", "Blue"
-deck[79][0], deck[79][1] = "Draw 2", "Blue"
-deck[80][0], deck[80][1] = "Draw 2", "Yellow"
-deck[81][0], deck[81][1] = "Draw 2", "Yellow"
-deck[82][0], deck[82][1] = "Draw 2", "Green"
-deck[83][0], deck[83][1] = "Draw 2", "Green"
-deck[84][0], deck[84][1] = "Skip", "Red"
-deck[85][0], deck[85][1] = "Skip", "Red"
-deck[86][0], deck[86][1] = "Skip", "Blue"
-deck[87][0], deck[87][1] = "Skip", "Blue"
-deck[88][0], deck[88][1] = "Skip", "Yellow"
-deck[89][0], deck[89][1] = "Skip", "Yellow"
-deck[90][0], deck[90][1] = "Skip", "Green"
-deck[91][0], deck[91][1] = "Skip", "Green"
-deck[92][0], deck[92][1] = "Reverse", "Red"
-deck[93][0], deck[93][1] = "Reverse", "Red"
-deck[94][0], deck[94][1] = "Reverse", "Blue"
-deck[95][0], deck[95][1] = "Reverse", "Blue"
-deck[96][0], deck[96][1] = "Reverse", "Yellow"
-deck[97][0], deck[97][1] = "Reverse", "Yellow"
-deck[98][0], deck[98][1] = "Reverse", "Green"
-deck[99][0], deck[99][1] = "Reverse", "Green"
-deck[100][0], deck[100][1] = "Wild", ""
-deck[101][0], deck[101][1] = "Wild", ""
-deck[102][0], deck[102][1] = "Wild", ""
-deck[103][0], deck[103][1] = "Wild", ""
-deck[104][0], deck[104][1] = "Wild Draw 4", ""
-deck[105][0], deck[105][1] = "Wild Draw 4", ""
-deck[106][0], deck[106][1] = "Wild Draw 4", ""
-deck[107][0], deck[107][1] = "Wild Draw 4", ""
-random.shuffle(deck)
-player1Hand = [deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1)]
-player2Hand = [deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1), deck.pop(-1)]
-discard = []
-discard.append(deck.pop(-1))
-if discard[0][0] == "Wild" or discard[0][0] == "Wild Draw 4":
-    newColor = input("To what color do you want to change it? ")
-    if newColor == "Red" or newColor == "red" or newColor == "r":
-        discard[0][1] = "Red"
+COLORS = ["Red", "Green", "Blue", "Yellow"]
+VALUES = [str(n) for n in range(0, 10)] + ["Skip", "Reverse", "Draw 2"]
 
-    elif newColor == "Blue" or newColor == "blue" or newColor == "b":
-        discard[0][1] = "Blue"
+def create_deck():
+    deck = []
+    for color in COLORS:
+        deck.append(f"{color} 0")
+        for value in VALUES[1:]:
+            deck.extend([f"{color} {value}"] * 2)
+    for _ in range(4):
+        deck.append("Wild")
+        deck.append("Wild Draw 4")
+    random.shuffle(deck)
+    return deck
 
-    elif newColor == "Yellow" or newColor == "yellow" or newColor == "y":
-        discard[0][1] = "Yellow"
+def can_play(card, top_card, current_color):
+    """Check if a card can be played on the current top card."""
+    # Wild cards can always be played
+    if "Wild" in card:
+        return True
 
-    else:
-        discard[0][1] = "Green"
+    # Split card safely
+    card_parts = card.split()
+    if len(card_parts) < 2:
+        return False
 
-def playUno():
-    game = True
-    while game == True:
-        generalPlayer(player1Hand, 1)
-        if len(player1Hand) == 0:
-            print("Player 1 wins!")
-            game = False
-        
-        generalPlayer(player2Hand, 2)
-        if len(player2Hand) == 0:
-            print("Player 2 wins!")
-            game = False
+    card_color, card_value = card_parts[0], card_parts[1]
 
-def generalPlayer(playerHand, playerNumber):
-    global deck
-    global discard
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    turn = True
-    while turn == True:
-        if len(playerHand) == 1:
-            print("Player " + str(playerNumber) + " has Uno!")
+    # If top card is a Wild, match only by chosen color
+    if "Wild" in top_card:
+        return card_color == current_color
 
-        print("Player " + str(playerNumber) + "'s hand")
-        for i in range(0, len(playerHand)):
-            print(str(i + 1) + ". " + str(playerHand[i]))
+    # Normal case: match by color or value
+    top_parts = top_card.split()
+    if len(top_parts) >= 2:
+        top_color, top_value = top_parts[0], top_parts[1]
+        return card_color == current_color or card_value == top_value
 
-        print("Discard Card: ", discard[-1])
-        card = input("What card do you want to play? (from 1 to the size of your hand or 'draw' or 'd' if you can't play a card) ")
-        if card != "draw" and card != "d" and int(card) in range(0, len(playerHand) + 1):
-            actualCard = playerHand[int(card) - 1]
-            print("You play ", actualCard)
+    return False
 
-        elif card == "draw" or card == "d":
-            playerHand.append(deck.pop(-1))
+class UnoGame:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("UNO Multiplayer")
 
-            if len(deck) == 0:
-                deck = [random.shuffle(discard)]
-                discard.clear()
-                discard.append(deck.pop(-1))
+        self.num_players = 0
+        while self.num_players < 2 or self.num_players > 4:
+            try:
+                self.num_players = int(simpledialog.askstring("Players", "Enter number of players (2–4):"))
+            except (ValueError, TypeError):
+                pass
 
-            continue
+        self.players = []
+        for i in range(self.num_players):
+            name = simpledialog.askstring("Player Name", f"Enter name for Player {i+1} (type 'CPU' for computer):")
+            if not name:
+                name = f"Player{i+1}"
+            self.players.append(name)
 
+        self.deck = create_deck()
+        self.hands = [[self.deck.pop() for _ in range(7)] for _ in range(self.num_players)]
+        self.top_card = self.deck.pop()
+        while "Wild" in self.top_card:
+            self.deck.insert(0, self.top_card)
+            random.shuffle(self.deck)
+            self.top_card = self.deck.pop()
+
+        self.current_color = self.top_card.split()[0]
+        self.direction = 1
+        self.turn = 0
+        self.skip_next = False
+        self.drawn_this_turn = False  # Track if player has drawn
+
+        self.top_label = tk.Label(root, text=f"Top Card: {self.top_card}", font=("Arial", 14))
+        self.top_label.pack(pady=10)
+
+        self.color_label = tk.Label(root, text=f"Current Color: {self.current_color}", font=("Arial", 12))
+        self.color_label.pack()
+
+        self.info_label = tk.Label(root, text="", font=("Arial", 12))
+        self.info_label.pack()
+
+        self.player_frame = tk.Frame(root)
+        self.player_frame.pack(pady=10)
+
+        self.button_frame = tk.Frame(root)
+        self.button_frame.pack(pady=5)
+
+        self.draw_button = tk.Button(self.button_frame, text="Draw Card", command=self.draw_card)
+        self.draw_button.pack(side=tk.LEFT, padx=5)
+
+        self.end_turn_button = tk.Button(self.button_frame, text="End Turn", command=self.end_turn)
+        self.end_turn_button.pack(side=tk.LEFT, padx=5)
+
+        self.update_hand_display()
+
+    def update_hand_display(self):
+        for widget in self.player_frame.winfo_children():
+            widget.destroy()
+
+        current_player = self.players[self.turn]
+        self.info_label.config(text=f"{current_player}'s turn")
+
+        if current_player.lower() != "cpu":
+            for card in self.hands[self.turn]:
+                btn = tk.Button(self.player_frame, text=card, width=12, height=2,
+                                command=lambda c=card: self.play_card(c))
+                btn.pack(side=tk.LEFT, padx=2)
         else:
-            print("You must type a number from 1 to the number of cards in your hand, 'draw', or 'd'.")
-            continue
+            self.root.after(1000, self.cpu_turn)
+
+        self.top_label.config(text=f"Top Card: {self.top_card}")
+        self.color_label.config(text=f"Current Color: {self.current_color}")
+
+    def draw_card(self):
+        """Human player draws until he/ she has gotten a playable card, then plays it."""
+        if self.players[self.turn].lower() == "cpu":
+            return  # CPU handled separately
+
+        while True:
+            if not self.deck:
+                messagebox.showinfo("Deck Empty", "No more cards to draw!")
+                break
+
+            drawn_card = self.deck.pop()
+            self.hands[self.turn].append(drawn_card)
+            self.update_hand_display()
+
+            if can_play(drawn_card, self.top_card, self.current_color):
+                # Auto-play the drawn card
+                self.hands[self.turn].remove(drawn_card)
+                self.top_card = drawn_card
+                if "Wild" in drawn_card:
+                    self.choose_color()
+
+                else:
+                    self.current_color = drawn_card.split()[0]
+
+                self.handle_action_card(drawn_card)
+                self.check_winner()
+                break  # Stop drawing after playing
+
+        self.next_turn()
+
+
+    def end_turn(self):
+        if self.players[self.turn].lower() != "cpu":
+            self.next_turn()
+
+    def play_card(self, card):
+        if self.players[self.turn].lower() == "cpu":
+            return
         
-        if actualCard[0] == "Wild":
-            newColor = input("To what color do you want to change it? ")
-            if newColor == "Red" or newColor == "red" or newColor == "r":
-                actualCard[1] = "Red"
-                discard.append(playerHand.pop(int(card) - 1))
-                turn = False
-
-            elif newColor == "Blue" or newColor == "blue" or newColor == "b":
-                actualCard[1] = "Blue"
-                discard.append(playerHand.pop(int(card) - 1))
-                turn = False
-
-            elif newColor == "Yellow" or newColor == "yellow" or newColor == "y":
-                actualCard[1] = "Yellow"
-                discard.append(playerHand.pop(int(card) - 1))
-                turn = False
-
+        if can_play(card, self.top_card, self.current_color):
+            self.hands[self.turn].remove(card)
+            self.top_card = card
+            if "Wild" in card:
+                # Ask player for color
+                chosen_color = simpledialog.askstring("Choose Color", "Enter color (Red, Green, Blue, Yellow):")
+                while chosen_color not in COLORS:
+                    chosen_color = simpledialog.askstring("Choose Color", "Enter color (Red, Green, Blue, Yellow):")
+                self.current_color = chosen_color
+                
             else:
-                actualCard[1] = "Green"
-                discard.append(playerHand.pop(int(card) - 1))
-                turn = False
+                self.current_color = card.split()[0]
 
-        elif actualCard[0] == "Wild Draw 4":
-            newColor = input("To what color do you want to change it? ")
-            if newColor == "Red" or newColor == "red" or newColor == "r":
-                actualCard[1] = "Red"
-                discard.append(playerHand.pop(int(card) - 1))
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
 
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-
-                continue
-
-            elif newColor == "Blue" or newColor == "blue" or newColor == "b":
-                actualCard[1] = "Blue"
-                discard.append(playerHand.pop(int(card) - 1))
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                continue
-
-            elif newColor == "Yellow" or newColor == "yellow" or newColor == "y":
-                actualCard[1] = "Yellow"
-                discard.append(playerHand.pop(int(card) - 1))
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-
-                continue
-
-            else:
-                actualCard[1] = "Green"
-                discard.append(playerHand.pop(int(card) - 1))
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-
-                continue
-
-        elif actualCard[0] == "Skip" or actualCard[0] == "Reverse":
-            if actualCard[0] == discard[-1][0] or actualCard[1] == discard[-1][1]:
-                discard.append(playerHand.pop(int(card) - 1))
-                continue
-
-            else:
-                print("The value and/or the color has to match.")
-                continue
-
-        elif actualCard[0] == "Draw 2":
-            if actualCard[0] == discard[-1][0] or actualCard[1] == discard[-1][1]:
-                discard.append(playerHand.pop(int(card) - 1))
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                if playerNumber == 1:
-                    player2Hand.append(deck.pop(-1))
-
-                else:
-                    player1Hand.append(deck.pop(-1))
-                    
-                if len(deck) == 0:
-                    deck = [random.shuffle(discard)]
-                    discard.clear()
-                    discard.append(deck.pop(-1))
-                
-                continue
-
-            else:
-                print("The value and/or the color has to match.")
-                continue
-
-        elif actualCard[0] == "0" or actualCard[0] == "1" or actualCard[0] == "2" or actualCard[0] == "3" or actualCard[0] == "4" or actualCard[0] == "5" or actualCard[0] == "6" or actualCard[0] == "7" or actualCard[0] == "8" or actualCard[0] == "9":
-            if actualCard[0] == discard[-1][0] or actualCard[1] == discard[-1][1]:
-                discard.append(playerHand.pop(int(card) - 1))
-                turn = False
-
-            else:
-                print("The value and/or the color has to match")
-                continue
-
+            self.handle_action_card(card)
+            self.check_winner()
+            self.next_turn()
         else:
-            print("You must type a number from 1 to the number of cards in your hand, 'draw', or 'd'.")
-            continue
+            messagebox.showinfo("Invalid Move", "You can't play that card.")
 
-playUno()
+    def choose_color(self):
+        color_choice = simpledialog.askstring("Choose Color", "Enter color (Red, Green, Blue, Yellow):")
+        if color_choice and color_choice.capitalize() in COLORS:
+            self.current_color = color_choice.capitalize()
+        else:
+            self.current_color = random.choice(COLORS)
+
+    def handle_action_card(self, card):
+        if "Skip" in card:
+            self.skip_next = True
+
+        elif "Reverse" in card:
+            self.direction *= -1
+
+        elif "Draw 2" in card:
+            next_player = (self.turn + self.direction) % self.num_players
+            self.hands[next_player].extend([self.deck.pop() for _ in range(2)])
+            self.skip_next = True
+
+        elif "Wild Draw 4" in card:
+            next_player = (self.turn + self.direction) % self.num_players
+            self.hands[next_player].extend([self.deck.pop() for _ in range(4)])
+            self.skip_next = True
+
+    def cpu_turn(self):
+        """CPU draws until it has gotten a playable card, then plays it."""
+        playable = [c for c in self.hands[self.turn] if can_play(c, self.top_card, self.current_color)]
+
+        while not playable:
+            if not self.deck:
+                break  # No cards left to draw
+
+            drawn_card = self.deck.pop()
+            self.hands[self.turn].append(drawn_card)
+            playable = [c for c in self.hands[self.turn] if can_play(c, self.top_card, self.current_color)]
+
+        if playable:
+            card = random.choice(playable)
+            self.hands[self.turn].remove(card)
+            self.top_card = card
+            if "Wild" in card:
+                # CPU chooses the color it has the most of
+                color_counts = {color: 0 for color in COLORS}
+                for c in self.hands[self.turn]:
+                    if c.split()[0] in COLORS:
+                        color_counts[c.split()[0]] += 1
+                self.current_color = max(color_counts, key=color_counts.get)
+                print(f"CPU changes color to {self.current_color}")
+            else:
+                self.current_color = card.split()[0]
+
+                
+            self.handle_action_card(card)
+
+        self.check_winner()
+        self.next_turn()
+
+
+    def cpu_choose_color(self):
+        """CPU chooses the color it has the most of."""
+        color_counts = {color: 0 for color in COLORS}
+        for card in self.hands[self.turn]:
+            if card.split()[0] in COLORS:
+                color_counts[card.split()[0]] += 1
+
+        # Pick the color with the highest count, fallback to random
+        best_color = max(color_counts, key=color_counts.get)
+        return best_color if color_counts[best_color] > 0 else random.choice(COLORS)
+    
+    def next_turn(self):
+        self.drawn_this_turn = False
+        if self.skip_next:
+            self.turn = (self.turn + self.direction) % self.num_players
+            self.skip_next = False
+        self.turn = (self.turn + self.direction) % self.num_players
+        self.update_hand_display()
+
+    def check_winner(self):
+        if not self.hands[self.turn]:
+            messagebox.showinfo("Game Over", f"🎉 {self.players[self.turn]} wins!")
+            self.root.destroy()
+
+# === Run Game ===
+if __name__ == "__main__":
+    root = tk.Tk()
+    game = UnoGame(root)
+    root.mainloop()
